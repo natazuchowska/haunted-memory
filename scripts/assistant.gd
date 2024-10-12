@@ -10,10 +10,12 @@ func _ready():
 	lies_container = $HintBubble.get_children() # store all lies
 	
 func interact_assistant():
-	ask_question = true
-	print("can ask question now!")
+	if questions_left > 0:
+		ask_question = true
+		print("can ask question now!")
 	
-	%HintBoard.visible = true # show hint slots
+		%HintBoard.visible = true # show hint slots
+		
 	#await get_tree().create_timer(2.0).timeout
 	#%HintBoard.visible = false # hide hint slots
 	

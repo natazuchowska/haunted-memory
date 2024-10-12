@@ -105,6 +105,7 @@ func check_card2(c): # second card picked
 		
 		if how_many_good == win_count:
 			print("YOU WIN!!!!!!")
+			%Assistant/HintBubble/LIE.text = "YOU WIN!"
 	else:
 		await get_tree().create_timer(0.5).timeout
 		card1.texture_normal = normal_texture # hide back the card
@@ -122,27 +123,33 @@ func check_card2(c): # second card picked
 	
 		
 func swap_rows():
-	children[0].modulate = Color.FIREBRICK
-	children[1].modulate = Color.FIREBRICK
-	await get_tree().create_timer(1.0).timeout
-	children[0].modulate = Color.WHITE
-	children[1].modulate = Color.WHITE
+	$AnimationPlayer.play("row_switch")
+	await get_tree().create_timer(2.0).timeout
+	$AnimationPlayer.play("row2_switch")
+	await get_tree().create_timer(2.0).timeout
+	$AnimationPlayer.stop()
 	
 	$VBoxContainer.move_child(children[1], 0) # swap row 1 with row 2
 	$HintBoard/VBoxContainer.move_child(hint_slots[1], 0) # swap hint rows accordingly
 	
 	
 func show_hint(h):
-	print("showing hint!")
-	print(h.texture_disabled.get_path().get_file())
 	
-	%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
-	
+	if assistant.questions_left > 0:
+		print("showing hint!")
+		%Assistant/AssistantSprite.play("talk") # play assistant animation
+		%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
+		%Assistant.questions_left -= 1
+		
 	hint_board.visible = false
 	assistant.ask_question = false
 	await get_tree().create_timer(3.0).timeout
+	%Assistant/AssistantSprite.play("idle")
 	%Assistant/HintBubble/LIE.text = ""
-
-	#assistant.lies_container[2].visible = true
 	
+	if assistant.questions_left == 0:
+		%Assistant/HintBubble/LIE.text = "you ran out of questions!"
+		
+	print(h.texture_disabled.get_path().get_file())
 	
+	%Assistant/QuestionsLeftLabel.text = ("questions left: " + str(%Assistant.questions_left))
