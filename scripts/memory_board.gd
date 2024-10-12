@@ -21,6 +21,10 @@ var how_many_good = 0
 
 var children # to store rows of cards
 
+@onready var assistant: Node2D = %Assistant
+@onready var hint_board: Node2D = $HintBoard
+var hint_slots
+
 func _ready():
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
@@ -36,11 +40,20 @@ func _ready():
 			win_count += 1
 	win_count /= 2
 	
+	hint_slots = $HintBoard/VBoxContainer.get_children(false)
+	for x in hint_slots:
+		var card_hints = x.get_children(false)
+		for h in card_hints:
+			h.connect("pressed", show_hint.bind(h))
+	
 func check_card(c):
+	if !assistant.ask_question:
 		if card_count == 1:
 			check_card1(c)
 		else:
 			check_card2(c)
+	else:
+		pass
 		
 				
 # methods to check if cards are matching
@@ -116,4 +129,10 @@ func swap_rows():
 	children[1].modulate = Color.WHITE
 	
 	$VBoxContainer.move_child(children[1], 0) # swap row 1 with row 2
+	
+func show_hint(h):
+	print("showing hint!")
+	
+	hint_board.visible = false
+	assistant.ask_question = false
 	
