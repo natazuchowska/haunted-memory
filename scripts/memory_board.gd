@@ -28,8 +28,6 @@ var hint_slots
 func _ready():
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
-	#win_count = 0
-	#how_many_good = 0
 	
 	children = v_box_container.get_children(false) # array of rows
 	
@@ -45,6 +43,9 @@ func _ready():
 		var card_hints = x.get_children(false)
 		for h in card_hints:
 			h.connect("pressed", show_hint.bind(h))
+			
+	wrong_count = 0
+	how_many_good = 0
 	
 func check_card(c):
 	if !assistant.ask_question:
@@ -106,6 +107,7 @@ func check_card2(c): # second card picked
 		if how_many_good == win_count:
 			print("YOU WIN!!!!!!")
 			%Assistant/HintBubble/LIE.text = "YOU WIN!"
+			get_tree().change_scene_to_file("res://scenes/memory_game_LVL1.tscn")
 	else:
 		await get_tree().create_timer(0.5).timeout
 		card1.texture_normal = normal_texture # hide back the card
@@ -124,14 +126,21 @@ func check_card2(c): # second card picked
 		
 func swap_rows():
 	$AnimationPlayer.play("row_switch")
+	$GhostSound.play()
 	await get_tree().create_timer(2.0).timeout
 	$AnimationPlayer.play("row2_switch")
+	$GhostSound.play()
 	await get_tree().create_timer(2.0).timeout
-	$AnimationPlayer.stop()
 	
 	$VBoxContainer.move_child(children[1], 0) # swap row 1 with row 2
 	$HintBoard/VBoxContainer.move_child(hint_slots[1], 0) # swap hint rows accordingly
 	
+	$AnimationPlayer.play_backwards("row_switch")
+	$GhostSound.play()
+	await get_tree().create_timer(2.0).timeout
+	$AnimationPlayer.play_backwards("row2_switch")
+	$GhostSound.play()
+	await get_tree().create_timer(2.0).timeout
 	
 func show_hint(h):
 	

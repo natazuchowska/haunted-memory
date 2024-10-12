@@ -1,0 +1,218 @@
+[gd_scene load_steps=13 format=3 uid="uid://cytvowpuf44g4"]
+
+[ext_resource type="Script" path="res://scripts/memory_board.gd" id="1_8tn1d"]
+[ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo_card.png" id="2_grbax"]
+[ext_resource type="Texture2D" uid="uid://cgo37kgjm2wrs" path="res://assets/memo_card 1.png" id="3_2ijsq"]
+[ext_resource type="Texture2D" uid="uid://bm3kim7kor23i" path="res://assets/memo_card_hover.png" id="4_plbrd"]
+[ext_resource type="Texture2D" uid="uid://dn4chvb1x0sy6" path="res://assets/memo_card_solved.png" id="5_16k3w"]
+[ext_resource type="Texture2D" uid="uid://b8o7doykh62jb" path="res://assets/memo_card 2.png" id="6_rxdke"]
+[ext_resource type="Texture2D" uid="uid://dhwaroqkxjodp" path="res://assets/memo_card 3.png" id="7_chu0a"]
+[ext_resource type="AudioStream" uid="uid://gai5hffeemv8" path="res://assets/audio/ghost_sound.wav" id="8_eeaqe"]
+
+[sub_resource type="Animation" id="Animation_b00mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Row1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ddm66"]
+resource_name = "row2_switch"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3wgu2"]
+resource_name = "row_switch"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v16ol"]
+_data = {
+"RESET": SubResource("Animation_b00mb"),
+"row2_switch": SubResource("Animation_ddm66"),
+"row_switch": SubResource("Animation_3wgu2")
+}
+
+[node name="MemoryBoard" type="Node2D"]
+script = ExtResource("1_8tn1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-10, 7)
+scale = Vector2(2.8, 2.307)
+texture = ExtResource("2_grbax")
+
+[node name="WrongTriesCount" type="Label" parent="."]
+offset_left = -771.0
+offset_top = -1162.0
+offset_right = 836.0
+offset_bottom = -943.0
+theme_override_colors/font_color = Color(0.388235, 0.196078, 0.141176, 1)
+theme_override_font_sizes/font_size = 160
+text = "wrong tries counter: "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -1313.0
+offset_top = -931.0
+offset_right = 3911.0
+offset_bottom = 2811.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("3_2ijsq")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("3_2ijsq")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("6_rxdke")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("6_rxdke")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("7_chu0a")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("7_chu0a")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("3_2ijsq")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("3_2ijsq")
+
+[node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("6_rxdke")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("6_rxdke")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("7_chu0a")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("7_chu0a")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("3_2ijsq")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("3_2ijsq")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("3_2ijsq")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("3_2ijsq")
+
+[node name="Row3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("6_rxdke")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("6_rxdke")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("7_chu0a")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("7_chu0a")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("6_rxdke")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("6_rxdke")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_grbax")
+texture_pressed = ExtResource("7_chu0a")
+texture_hover = ExtResource("4_plbrd")
+texture_disabled = ExtResource("5_16k3w")
+texture_focused = ExtResource("7_chu0a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v16ol")
+}
+
+[node name="GhostSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_eeaqe")

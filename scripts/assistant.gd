@@ -9,6 +9,9 @@ func _ready():
 	$AssistantSprite/AssistantButton.connect("pressed", interact_assistant)
 	lies_container = $HintBubble.get_children() # store all lies
 	
+	lie_count = 0
+	questions_left = 4
+	
 func interact_assistant():
 	if questions_left > 0:
 		ask_question = true

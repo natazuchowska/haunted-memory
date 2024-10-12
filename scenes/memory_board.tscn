@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tynfg00d6lqt"]
+[gd_scene load_steps=13 format=3 uid="uid://tynfg00d6lqt"]
 
 [ext_resource type="Script" path="res://scripts/memory_board.gd" id="1_wya80"]
 [ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo_card.png" id="3_6ryca"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bm3kim7kor23i" path="res://assets/memo_card_hover.png" id="5_wg83c"]
 [ext_resource type="Texture2D" uid="uid://dn4chvb1x0sy6" path="res://assets/memo_card_solved.png" id="6_oc57l"]
 [ext_resource type="Texture2D" uid="uid://b8o7doykh62jb" path="res://assets/memo_card 2.png" id="7_f0nr6"]
+[ext_resource type="AudioStream" uid="uid://gai5hffeemv8" path="res://assets/audio/ghost_sound.wav" id="8_c2rrc"]
 [ext_resource type="Texture2D" uid="uid://dhwaroqkxjodp" path="res://assets/memo_card 3.png" id="8_yo4sd"]
 
 [sub_resource type="Animation" id="Animation_3wgu2"]
@@ -18,10 +19,10 @@ tracks/0/path = NodePath("VBoxContainer/Row1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.06667, 1.5, 1.96667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.95, 0.95, 0.95, 1), Color(0.95, 0.53485, 0.513, 1), Color(0.95, 0.53485, 0.513, 0.576471), Color(0.95, 0.53485, 0.513, 1), Color(0.95, 0.95, 0.95, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_b00mb"]
@@ -29,26 +30,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Row1:modulate")
+tracks/0/path = NodePath("VBoxContainer/Row2:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.95, 0.95, 0.95, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/Row2:modulate")
+tracks/1/path = NodePath("VBoxContainer/Row1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.95, 0.95, 0.95, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ddm66"]
@@ -61,10 +62,10 @@ tracks/0/path = NodePath("VBoxContainer/Row2:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.733333, 1.1, 1.53333, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.95, 0.95, 0.95, 1), Color(0.95, 0.53485, 0.513, 1), Color(0.95, 0.53485, 0.513, 0.576471), Color(0.95, 0.53485, 0.513, 1), Color(0.95, 0.95, 0.95, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v16ol"]
@@ -100,7 +101,6 @@ theme_override_constants/separation = 200
 alignment = 1
 
 [node name="Row1" type="HBoxContainer" parent="VBoxContainer"]
-modulate = Color(0.95, 0.95, 0.95, 1)
 layout_mode = 2
 theme_override_constants/separation = 200
 
@@ -129,7 +129,6 @@ texture_disabled = ExtResource("6_oc57l")
 texture_focused = ExtResource("8_yo4sd")
 
 [node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
-modulate = Color(0.95, 0.95, 0.95, 1)
 layout_mode = 2
 theme_override_constants/separation = 200
 
@@ -161,3 +160,6 @@ texture_focused = ExtResource("4_ro1ac")
 libraries = {
 "": SubResource("AnimationLibrary_v16ol")
 }
+
+[node name="GhostSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_c2rrc")

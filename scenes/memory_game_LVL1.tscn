@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://dw6e2didtig1r"]
+
+[ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
+[ext_resource type="PackedScene" uid="uid://cytvowpuf44g4" path="res://scenes/memory_board2.tscn" id="2_eopxb"]
+[ext_resource type="Texture2D" uid="uid://dn4chvb1x0sy6" path="res://assets/memo_card_solved.png" id="3_uw0vr"]
+[ext_resource type="Texture2D" uid="uid://cgo37kgjm2wrs" path="res://assets/memo_card 1.png" id="4_1aybb"]
+[ext_resource type="Texture2D" uid="uid://b8o7doykh62jb" path="res://assets/memo_card 2.png" id="5_l1bgj"]
+[ext_resource type="Texture2D" uid="uid://dhwaroqkxjodp" path="res://assets/memo_card 3.png" id="6_krnrd"]
+[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="7_xcek8"]
+
+[node name="MemoryGame" type="Node2D"]
+
+[node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
+unique_name_in_owner = true
+position = Vector2(-1037, 265)
+
+[node name="QuestionsLeftLabel" parent="Assistant" index="2"]
+offset_left = -648.0
+offset_top = -1601.0
+offset_right = 507.0
+offset_bottom = -1396.0
+
+[node name="MemoryBoard" parent="." instance=ExtResource("2_eopxb")]
+unique_name_in_owner = true
+position = Vector2(1186, 11)
+
+[node name="HintBoard" parent="MemoryBoard" instance=ExtResource("2_eopxb")]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 0.59, 0.59, 1)
+script = null
+
+[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("4_1aybb")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="1"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("5_l1bgj")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="2"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("6_krnrd")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="3"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("4_1aybb")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="0"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("5_l1bgj")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="1"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("6_krnrd")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="2"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("4_1aybb")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="3"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("4_1aybb")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="0"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("5_l1bgj")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="1"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("6_krnrd")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="2"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("5_l1bgj")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="3"]
+texture_pressed = ExtResource("3_uw0vr")
+texture_disabled = ExtResource("6_krnrd")
+texture_focused = ExtResource("3_uw0vr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xcek8")
+autoplay = true
+
+[editable path="Assistant"]
+[editable path="MemoryBoard/HintBoard"]
