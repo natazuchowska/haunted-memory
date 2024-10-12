@@ -129,6 +129,8 @@ func swap_rows():
 	children[1].modulate = Color.WHITE
 	
 	$VBoxContainer.move_child(children[1], 0) # swap row 1 with row 2
+	$HintBoard/VBoxContainer.move_child(hint_slots[1], 0) # swap hint rows accordingly
+	
 	
 func show_hint(h):
 	print("showing hint!")
