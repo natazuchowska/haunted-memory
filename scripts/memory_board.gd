@@ -81,12 +81,14 @@ func check_card2(c): # second card picked
 		card1.texture_hover = card1.texture_disabled
 		card1.texture_focused = card1.texture_disabled
 		#card1.interactive = false
+		card1.mouse_filter = 2 # ignore further mouse inputs on this card
 		
 		card2.texture_normal = card2.texture_disabled
 		card2.texture_pressed = card2.texture_disabled
 		card2.texture_hover = card2.texture_disabled
 		card2.texture_focused = card2.texture_disabled
 		#card2.interactive = false
+		card2.mouse_filter = 2 # ignore further mouse inputs on this card
 		
 		if how_many_good == win_count:
 			print("YOU WIN!!!!!!")
@@ -99,7 +101,7 @@ func check_card2(c): # second card picked
 		wrong_count += 1
 		if wrong_count >= 10:
 			wrong_tries_count.text = ("YOU LOSE!!")
-		elif wrong_count >= 5:
+		elif wrong_count == 5:
 			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
 			swap_rows()
 		else:
@@ -107,6 +109,11 @@ func check_card2(c): # second card picked
 	
 		
 func swap_rows():
-	$VBoxContainer.move_child(children[1], 0)
-	#children[0].move_child($VBoxContainer/Row1/TextureButton3, 1) # row 1
+	children[0].modulate = Color.FIREBRICK
+	children[1].modulate = Color.FIREBRICK
+	await get_tree().create_timer(1.0).timeout
+	children[0].modulate = Color.WHITE
+	children[1].modulate = Color.WHITE
+	
+	$VBoxContainer.move_child(children[1], 0) # swap row 1 with row 2
 	

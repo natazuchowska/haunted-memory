@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://btg2m7bvufrbs"]
+
+[ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
+[ext_resource type="PackedScene" uid="uid://tynfg00d6lqt" path="res://scenes/memory_board.tscn" id="2_ba4p5"]
+
+[node name="MemoryGame" type="Node2D"]
+
+[node name="Assistant" parent="." instance=ExtResource("1_jjr0j")]
+position = Vector2(-1037, 265)
+
+[node name="MemoryBoard" parent="." instance=ExtResource("2_ba4p5")]
+position = Vector2(-33, -1100)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)

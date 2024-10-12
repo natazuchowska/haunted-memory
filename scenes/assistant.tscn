@@ -1,0 +1,165 @@
+[gd_scene load_steps=23 format=3 uid="uid://b12sqey5g7b7a"]
+
+[ext_resource type="Texture2D" uid="uid://d0jsn3ndnj7yl" path="res://assets/managaer talk animation/manager_talk-1.png" id="1_815j0"]
+[ext_resource type="Script" path="res://scripts/assistant.gd" id="1_ltlxe"]
+[ext_resource type="Texture2D" uid="uid://bdpwvtyp3upqn" path="res://assets/managaer talk animation/manager_talk-2.png" id="2_4crg5"]
+[ext_resource type="Texture2D" uid="uid://cvsmu06f8gtun" path="res://assets/managaer talk animation/manager_talk-3.png" id="3_tihda"]
+[ext_resource type="Texture2D" uid="uid://3hicx0rrgjda" path="res://assets/managaer talk animation/manager_talk-4.png" id="4_2a8tf"]
+[ext_resource type="Texture2D" uid="uid://dna5v15u0y4wr" path="res://assets/managaer talk animation/manager_talk-5.png" id="5_qrepq"]
+[ext_resource type="Texture2D" uid="uid://b2iw6veca6m8r" path="res://assets/managaer talk animation/manager_talk-6.png" id="6_e3be0"]
+[ext_resource type="Texture2D" uid="uid://cp7gw7bakgjrp" path="res://assets/managaer talk animation/manager_talk-7.png" id="7_qjoly"]
+[ext_resource type="Texture2D" uid="uid://n88kmgjsc7h7" path="res://assets/managaer talk animation/manager_talk-8.png" id="8_bqmfp"]
+[ext_resource type="Texture2D" uid="uid://f3vaq3sxv7uh" path="res://assets/managaer talk animation/manager_talk-9.png" id="9_ovntt"]
+[ext_resource type="Texture2D" uid="uid://bqevoo8uq6217" path="res://assets/speech_bubble_yellow.png" id="10_1i6ek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2hwj"]
+atlas = ExtResource("1_815j0")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyi3j"]
+atlas = ExtResource("1_815j0")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80bj6"]
+atlas = ExtResource("2_4crg5")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5adaj"]
+atlas = ExtResource("3_tihda")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl8rn"]
+atlas = ExtResource("4_2a8tf")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcv0f"]
+atlas = ExtResource("5_qrepq")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxpjm"]
+atlas = ExtResource("6_e3be0")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rlag"]
+atlas = ExtResource("7_qjoly")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc0pv"]
+atlas = ExtResource("8_bqmfp")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klfpk"]
+atlas = ExtResource("9_ovntt")
+region = Rect2(0, 0, 1640, 2360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35vf8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2hwj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyi3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80bj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5adaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl8rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcv0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxpjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rlag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc0pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klfpk")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 8.0
+}]
+
+[node name="Assistant" type="Node2D"]
+script = ExtResource("1_ltlxe")
+
+[node name="AssistantSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_35vf8")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AssistantButton" type="Button" parent="AssistantSprite"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -361.0
+offset_top = -810.0
+offset_right = 438.0
+offset_bottom = 862.0
+
+[node name="HintBubble" type="Sprite2D" parent="."]
+position = Vector2(-863, -804)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_1i6ek")
+
+[node name="Label" type="Label" parent="HintBubble"]
+visible = false
+offset_left = -398.667
+offset_top = -95.3333
+offset_right = -162.667
+offset_bottom = 69.6667
+theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
+theme_override_font_sizes/font_size = 120
+text = "lie 1"
+
+[node name="Label2" type="Label" parent="HintBubble"]
+visible = false
+offset_left = -398.667
+offset_top = -95.3333
+offset_right = -162.667
+offset_bottom = 69.6667
+theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
+theme_override_font_sizes/font_size = 120
+text = "lie 2"
+
+[node name="Label3" type="Label" parent="HintBubble"]
+visible = false
+offset_left = -398.667
+offset_top = -95.3333
+offset_right = -162.667
+offset_bottom = 69.6667
+theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
+theme_override_font_sizes/font_size = 120
+text = "lie 3"
+
+[node name="Label4" type="Label" parent="HintBubble"]
+visible = false
+offset_left = -398.667
+offset_top = -95.3333
+offset_right = -162.667
+offset_bottom = 69.6667
+theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
+theme_override_font_sizes/font_size = 120
+text = "lie 4"
+
+[node name="QuestionsLeftLabel" type="Label" parent="."]
+offset_left = -246.0
+offset_top = -1202.0
+offset_right = 909.0
+offset_bottom = -997.0
+theme_override_colors/font_color = Color(0.262745, 0.215686, 0.0392157, 1)
+theme_override_font_sizes/font_size = 150
+text = "questions left: 4"
