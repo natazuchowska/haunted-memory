@@ -132,7 +132,15 @@ func swap_rows():
 	
 func show_hint(h):
 	print("showing hint!")
+	print(h.texture_disabled.get_path().get_file())
+	
+	%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
 	
 	hint_board.visible = false
 	assistant.ask_question = false
+	await get_tree().create_timer(3.0).timeout
+	%Assistant/HintBubble/LIE.text = ""
+
+	#assistant.lies_container[2].visible = true
+	
 	
