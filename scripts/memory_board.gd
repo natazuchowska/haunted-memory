@@ -49,6 +49,7 @@ func _ready():
 	
 func check_card(c):
 	if !assistant.ask_question:
+		$BlockSound.play()
 		if card_count == 1:
 			check_card1(c)
 		else:
@@ -89,6 +90,7 @@ func check_card2(c): # second card picked
 	if card1.texture_pressed.get_path().get_file() == card2.texture_pressed.get_path().get_file():
 		await get_tree().create_timer(0.5).timeout # wait 1 sec before hiding cards
 		how_many_good += 1
+		$GoodMatchSound.play()
 		
 		card1.texture_normal = card1.texture_disabled
 		card1.texture_pressed = card1.texture_disabled
@@ -107,6 +109,7 @@ func check_card2(c): # second card picked
 		if how_many_good == win_count:
 			print("YOU WIN!!!!!!")
 			%Assistant/HintBubble/LIE.text = "YOU WIN!"
+			await get_tree().create_timer(1.0).timeout
 			get_tree().change_scene_to_file("res://scenes/memory_game_LVL1.tscn")
 	else:
 		await get_tree().create_timer(0.5).timeout
@@ -125,6 +128,12 @@ func check_card2(c): # second card picked
 	
 		
 func swap_rows():
+	
+	for x in children:
+		var cards = x.get_children(false) # cards in a certain row
+		for c in cards:
+			c.mouse_filter = 2 # ignore input while animation is playing
+	
 	$AnimationPlayer.play("row_switch")
 	$GhostSound.play()
 	await get_tree().create_timer(2.0).timeout
@@ -141,6 +150,11 @@ func swap_rows():
 	$AnimationPlayer.play_backwards("row2_switch")
 	$GhostSound.play()
 	await get_tree().create_timer(2.0).timeout
+	
+	for x in children:
+		var cards = x.get_children(false) # cards in a certain row
+		for c in cards:
+			c.mouse_filter = 0 # ignore input while animation is playing
 	
 func show_hint(h):
 	

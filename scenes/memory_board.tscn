@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://tynfg00d6lqt"]
+[gd_scene load_steps=15 format=3 uid="uid://tynfg00d6lqt"]
 
 [ext_resource type="Script" path="res://scripts/memory_board.gd" id="1_wya80"]
 [ext_resource type="Texture2D" uid="uid://cpt22ftixd5ed" path="res://assets/memo blocks/eye.png" id="3_0e6gp"]
 [ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="3_6ryca"]
+[ext_resource type="Texture2D" uid="uid://cdxdmqwxlb08e" path="res://assets/memo blocks/memo_card_solved 2.png" id="5_m83vw"]
 [ext_resource type="Texture2D" uid="uid://bm3kim7kor23i" path="res://assets/memo blocks/memo_card_hover.png" id="5_wg83c"]
 [ext_resource type="Texture2D" uid="uid://8401qako0oko" path="res://assets/memo blocks/cat.png" id="6_fj77v"]
-[ext_resource type="Texture2D" uid="uid://dn4chvb1x0sy6" path="res://assets/memo blocks/memo_card_solved.png" id="6_oc57l"]
 [ext_resource type="Texture2D" uid="uid://dm33m04uvs08i" path="res://assets/memo blocks/snail.png" id="7_5hyqe"]
 [ext_resource type="AudioStream" uid="uid://gai5hffeemv8" path="res://assets/audio/ghost_sound.wav" id="8_c2rrc"]
+[ext_resource type="AudioStream" uid="uid://dudxwbnesdv8x" path="res://assets/audio/block_select_sound.mp3" id="9_iqjr0"]
+[ext_resource type="AudioStream" uid="uid://3b8su4pvj345" path="res://assets/audio/good_match_sound.wav" id="10_dwpeo"]
 
 [sub_resource type="Animation" id="Animation_b00mb"]
 length = 0.001
@@ -109,7 +111,7 @@ layout_mode = 2
 texture_normal = ExtResource("3_6ryca")
 texture_pressed = ExtResource("3_0e6gp")
 texture_hover = ExtResource("5_wg83c")
-texture_disabled = ExtResource("6_oc57l")
+texture_disabled = ExtResource("5_m83vw")
 texture_focused = ExtResource("3_0e6gp")
 
 [node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row1"]
@@ -117,7 +119,7 @@ layout_mode = 2
 texture_normal = ExtResource("3_6ryca")
 texture_pressed = ExtResource("6_fj77v")
 texture_hover = ExtResource("5_wg83c")
-texture_disabled = ExtResource("6_oc57l")
+texture_disabled = ExtResource("5_m83vw")
 texture_focused = ExtResource("6_fj77v")
 
 [node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row1"]
@@ -125,7 +127,7 @@ layout_mode = 2
 texture_normal = ExtResource("3_6ryca")
 texture_pressed = ExtResource("7_5hyqe")
 texture_hover = ExtResource("5_wg83c")
-texture_disabled = ExtResource("6_oc57l")
+texture_disabled = ExtResource("5_m83vw")
 texture_focused = ExtResource("7_5hyqe")
 
 [node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
@@ -137,7 +139,7 @@ layout_mode = 2
 texture_normal = ExtResource("3_6ryca")
 texture_pressed = ExtResource("6_fj77v")
 texture_hover = ExtResource("5_wg83c")
-texture_disabled = ExtResource("6_oc57l")
+texture_disabled = ExtResource("5_m83vw")
 texture_focused = ExtResource("6_fj77v")
 
 [node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row2"]
@@ -145,7 +147,7 @@ layout_mode = 2
 texture_normal = ExtResource("3_6ryca")
 texture_pressed = ExtResource("7_5hyqe")
 texture_hover = ExtResource("5_wg83c")
-texture_disabled = ExtResource("6_oc57l")
+texture_disabled = ExtResource("5_m83vw")
 texture_focused = ExtResource("7_5hyqe")
 
 [node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row2"]
@@ -153,7 +155,7 @@ layout_mode = 2
 texture_normal = ExtResource("3_6ryca")
 texture_pressed = ExtResource("3_0e6gp")
 texture_hover = ExtResource("5_wg83c")
-texture_disabled = ExtResource("6_oc57l")
+texture_disabled = ExtResource("5_m83vw")
 texture_focused = ExtResource("3_0e6gp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -163,3 +165,11 @@ libraries = {
 
 [node name="GhostSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_c2rrc")
+
+[node name="BlockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_iqjr0")
+volume_db = 20.0
+
+[node name="GoodMatchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_dwpeo")
+volume_db = 10.0

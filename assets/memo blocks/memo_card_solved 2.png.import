@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3kcuitpbt7gn"
-path="res://.godot/imported/normal_cursor.png-1774eb934be2549e9152d08abd591ab0.ctex"
+uid="uid://cdxdmqwxlb08e"
+path="res://.godot/imported/memo_card_solved 2.png-d6093d46a1e494945c537d96e2cf6e03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/normal_cursor.png"
-dest_files=["res://.godot/imported/normal_cursor.png-1774eb934be2549e9152d08abd591ab0.ctex"]
+source_file="res://assets/memo blocks/memo_card_solved 2.png"
+dest_files=["res://.godot/imported/memo_card_solved 2.png-d6093d46a1e494945c537d96e2cf6e03.ctex"]
 
 [params]
 

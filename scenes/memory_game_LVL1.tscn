@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
 [ext_resource type="PackedScene" uid="uid://cytvowpuf44g4" path="res://scenes/memory_board2.tscn" id="2_eopxb"]
-[ext_resource type="Texture2D" uid="uid://dn4chvb1x0sy6" path="res://assets/memo blocks/memo_card_solved.png" id="3_uw0vr"]
+[ext_resource type="Texture2D" uid="uid://cdxdmqwxlb08e" path="res://assets/memo blocks/memo_card_solved 2.png" id="3_xsgc4"]
 [ext_resource type="Texture2D" uid="uid://cpt22ftixd5ed" path="res://assets/memo blocks/eye.png" id="4_gdwps"]
 [ext_resource type="Texture2D" uid="uid://8401qako0oko" path="res://assets/memo blocks/cat.png" id="5_c103f"]
 [ext_resource type="Texture2D" uid="uid://dm33m04uvs08i" path="res://assets/memo blocks/snail.png" id="6_o67ae"]
@@ -31,70 +31,71 @@ modulate = Color(1, 0.59, 0.59, 1)
 script = null
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("4_gdwps")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="1"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("5_c103f")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="2"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("6_o67ae")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="3"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("4_gdwps")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="0"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("5_c103f")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="1"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("6_o67ae")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="2"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("4_gdwps")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="3"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("4_gdwps")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="0"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("5_c103f")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="1"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("6_o67ae")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="2"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("5_c103f")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="3"]
-texture_pressed = ExtResource("3_uw0vr")
+texture_pressed = ExtResource("3_xsgc4")
 texture_disabled = ExtResource("6_o67ae")
-texture_focused = ExtResource("3_uw0vr")
+texture_focused = ExtResource("3_xsgc4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_xcek8")
+volume_db = -10.0
 autoplay = true
 
 [editable path="Assistant"]
