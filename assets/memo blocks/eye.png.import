@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn4chvb1x0sy6"
-path="res://.godot/imported/memo_card_solved.png-11874d6ab32947e3134c26bae13991dd.ctex"
+uid="uid://cpt22ftixd5ed"
+path="res://.godot/imported/eye.png-2c322472be4d777c3d133cb0715664c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/memo_card_solved.png"
-dest_files=["res://.godot/imported/memo_card_solved.png-11874d6ab32947e3134c26bae13991dd.ctex"]
+source_file="res://assets/memo blocks/eye.png"
+dest_files=["res://.godot/imported/eye.png-2c322472be4d777c3d133cb0715664c3.ctex"]
 
 [params]
 

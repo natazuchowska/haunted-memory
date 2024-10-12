@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdn8xpy5p4yy4"
-path="res://.godot/imported/memo_card.png-53351acf58e6f7366aafe3d27a893e5f.ctex"
+uid="uid://dm33m04uvs08i"
+path="res://.godot/imported/snail.png-587f679d0dcf823cb84c20987487284a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/memo_card.png"
-dest_files=["res://.godot/imported/memo_card.png-53351acf58e6f7366aafe3d27a893e5f.ctex"]
+source_file="res://assets/memo blocks/snail.png"
+dest_files=["res://.godot/imported/snail.png-587f679d0dcf823cb84c20987487284a.ctex"]
 
 [params]
 
