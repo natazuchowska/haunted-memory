@@ -78,6 +78,8 @@ func check_card1(c): # first card picked
 	print(c.texture_pressed.get_path().get_file())
 	c.texture_normal = c.texture_pressed # keep the card shown until card2 selected
 	card_count += 1
+	
+	card1.mouse_filter = 2 # disable clicking this block twice
 		
 	await get_tree().create_timer(0.5).timeout
 	btn1_pressed = false
@@ -100,7 +102,7 @@ func check_card2(c): # second card picked
 	
 	btn2_pressed = false
 	
-	if card1.texture_pressed.get_path().get_file() == card2.texture_pressed.get_path().get_file():
+	if card1.texture_pressed.get_path().get_file() == card2.texture_pressed.get_path().get_file() && card1!=card2:
 		await get_tree().create_timer(0.5).timeout # wait 1 sec before hiding cards
 		how_many_good += 1
 		$GoodMatchSound.play()
@@ -175,6 +177,8 @@ func check_card2(c): # second card picked
 				#if b.texture_normal != b.texture_disabled:
 					#b.mouse_filter = 0 # ignore input while animation is playing
 	#
+	
+	card1.mouse_filter = 0 # enable input detection on first block again
 		
 func swap_rows():
 	swapping_rows = true
