@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://df50o6yrk6ouv"]
+
+[ext_resource type="Script" path="res://scripts/cut_scene_start.gd" id="1_ybi7w"]
+
+[node name="CutScene_START" type="Node2D"]
+script = ExtResource("1_ybi7w")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -11.5
+offset_right = 68.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CUT SCENE START"
+
+[node name="Camera2D" type="Camera2D" parent="."]

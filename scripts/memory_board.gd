@@ -26,6 +26,7 @@ var children # to store rows of cards
 var hint_slots
 
 func _ready():
+	
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
 	
@@ -107,10 +108,13 @@ func check_card2(c): # second card picked
 		card2.mouse_filter = 2 # ignore further mouse inputs on this card
 		
 		if how_many_good == win_count:
-			print("YOU WIN!!!!!!")
 			%Assistant/HintBubble/LIE.text = "YOU WIN!"
 			await get_tree().create_timer(1.0).timeout
-			get_tree().change_scene_to_file("res://scenes/memory_game_LVL1.tscn")
+			Global.increase_level_num()
+			if Global.get_level() < Global.get_levels_size(): # still some levels left
+				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])
+			else: # game won so play cutscene
+				get_tree().change_scene_to_file("res://scenes/cut_scene_end.tscn")
 	else:
 		await get_tree().create_timer(0.5).timeout
 		card1.texture_normal = normal_texture # hide back the card
@@ -118,9 +122,11 @@ func check_card2(c): # second card picked
 		card2.texture_pressed = normal_texture
 		
 		wrong_count += 1
-		if wrong_count >= 10:
+		%LifeBar.decrease_life()
+		if wrong_count >= 5:
 			wrong_tries_count.text = ("YOU LOSE!!")
-		elif wrong_count == 5:
+			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+		elif wrong_count == 3:
 			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
 			swap_rows()
 		else:

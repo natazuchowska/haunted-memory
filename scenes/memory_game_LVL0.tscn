@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=9 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
 [ext_resource type="PackedScene" uid="uid://tynfg00d6lqt" path="res://scenes/memory_board.tscn" id="2_ba4p5"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="4_s1sn6"]
 [ext_resource type="Texture2D" uid="uid://8401qako0oko" path="res://assets/memo blocks/cat.png" id="5_wejxs"]
 [ext_resource type="Texture2D" uid="uid://dm33m04uvs08i" path="res://assets/memo blocks/snail.png" id="6_1aj8f"]
+[ext_resource type="PackedScene" uid="uid://d2oimckjqu21n" path="res://scenes/life_bar.tscn" id="8_djra8"]
 
 [node name="MemoryGame" type="Node2D"]
 
@@ -24,10 +25,6 @@ unique_name_in_owner = true
 visible = false
 modulate = Color(0.635294, 0.623529, 0, 0.603922)
 script = null
-
-[node name="Sprite2D" parent="MemoryBoard/HintBoard" index="0"]
-position = Vector2(2437, 2297.5)
-scale = Vector2(4.02595, 2.92908)
 
 [node name="WrongTriesCount" parent="MemoryBoard/HintBoard" index="1"]
 visible = false
@@ -69,6 +66,10 @@ zoom = Vector2(0.2, 0.2)
 stream = ExtResource("4_s1sn6")
 volume_db = -10.0
 autoplay = true
+
+[node name="LifeBar" parent="." instance=ExtResource("8_djra8")]
+unique_name_in_owner = true
+position = Vector2(-2731, 1344)
 
 [editable path="Assistant"]
 [editable path="MemoryBoard/HintBoard"]

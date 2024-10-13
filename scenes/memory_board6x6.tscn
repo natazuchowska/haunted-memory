@@ -1,0 +1,432 @@
+[gd_scene load_steps=15 format=3 uid="uid://7h4r60lriy3"]
+
+[ext_resource type="Script" path="res://scripts/memory_board.gd" id="1_yxolr"]
+[ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="2_3bjhn"]
+[ext_resource type="Texture2D" uid="uid://cpt22ftixd5ed" path="res://assets/memo blocks/eye.png" id="3_bsasq"]
+[ext_resource type="Texture2D" uid="uid://bm3kim7kor23i" path="res://assets/memo blocks/memo_card_hover.png" id="4_004oi"]
+[ext_resource type="Texture2D" uid="uid://cdxdmqwxlb08e" path="res://assets/memo blocks/memo_card_solved 2.png" id="5_0wsqw"]
+[ext_resource type="Texture2D" uid="uid://8401qako0oko" path="res://assets/memo blocks/cat.png" id="6_lrx8f"]
+[ext_resource type="Texture2D" uid="uid://dm33m04uvs08i" path="res://assets/memo blocks/snail.png" id="7_nno1e"]
+[ext_resource type="AudioStream" uid="uid://gai5hffeemv8" path="res://assets/audio/ghost_sound.wav" id="8_aw8xp"]
+[ext_resource type="AudioStream" uid="uid://dudxwbnesdv8x" path="res://assets/audio/block_select_sound.mp3" id="9_w0xnn"]
+[ext_resource type="AudioStream" uid="uid://3b8su4pvj345" path="res://assets/audio/good_match_sound.wav" id="10_xh45d"]
+
+[sub_resource type="Animation" id="Animation_b00mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Row1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ddm66"]
+resource_name = "row2_switch"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3wgu2"]
+resource_name = "row_switch"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v16ol"]
+_data = {
+"RESET": SubResource("Animation_b00mb"),
+"row2_switch": SubResource("Animation_ddm66"),
+"row_switch": SubResource("Animation_3wgu2")
+}
+
+[node name="MemoryBoard" type="Node2D"]
+script = ExtResource("1_yxolr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(54, 1)
+scale = Vector2(4.33651, 4.33932)
+texture = ExtResource("2_3bjhn")
+
+[node name="WrongTriesCount" type="Label" parent="."]
+offset_left = -771.0
+offset_top = -2143.0
+offset_right = 836.0
+offset_bottom = -1924.0
+theme_override_colors/font_color = Color(0.388235, 0.196078, 0.141176, 1)
+theme_override_font_sizes/font_size = 160
+text = "wrong tries counter: "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -1968.0
+offset_top = -1921.0
+offset_right = 5968.0
+offset_bottom = 5763.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("3_bsasq")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("3_bsasq")
+
+[node name="Row3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="Row4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row4"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row4"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row4"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row4"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/Row4"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/Row4"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="Row5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row5"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row5"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row5"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row5"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/Row5"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/Row5"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="Row6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/Row6"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/Row6"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/Row6"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("6_lrx8f")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("6_lrx8f")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/Row6"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/Row6"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/Row6"]
+layout_mode = 2
+texture_normal = ExtResource("2_3bjhn")
+texture_pressed = ExtResource("7_nno1e")
+texture_hover = ExtResource("4_004oi")
+texture_disabled = ExtResource("5_0wsqw")
+texture_focused = ExtResource("7_nno1e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v16ol")
+}
+
+[node name="GhostSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_aw8xp")
+
+[node name="BlockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_w0xnn")
+volume_db = 20.0
+
+[node name="GoodMatchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_xh45d")
+volume_db = 10.0
