@@ -26,6 +26,8 @@ var children # to store rows of cards
 var hint_slots
 var cards
 
+var swapping_rows = false
+
 func _ready():
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
@@ -49,13 +51,14 @@ func _ready():
 	how_many_good = 0
 	
 func check_card(c):
+			
 	if !assistant.ask_question:
 		$BlockSound.play()
-			
 		if card_count == 1:
 			check_card1(c)
 		else:
 			check_card2(c)
+
 	else:
 		pass
 		
@@ -84,7 +87,8 @@ func check_card2(c): # second card picked
 	for x in children:
 		cards = x.get_children(false) # cards in a certain row
 		for b in cards:
-			b.mouse_filter = 2 # ignore input while animation is playing
+			if b.texture_normal != b.texture_disabled:
+				b.mouse_filter = 2 # ignore input while animation is playing
 	
 	
 	btn2_pressed = true
@@ -132,7 +136,6 @@ func check_card2(c): # second card picked
 					b.mouse_filter = 0 # ignore input while animation is playing
 			
 	else:
-		
 		await get_tree().create_timer(0.5).timeout
 		card1.texture_normal = normal_texture # hide back the card
 		card2.texture_focused = normal_texture
@@ -141,27 +144,40 @@ func check_card2(c): # second card picked
 		
 		wrong_count += 1
 		%LifeBar.decrease_life()
+		
+		for x in children:
+			cards = x.get_children(false) # cards in a certain row
+			for b in cards:
+				if b.texture_normal != b.texture_disabled:
+					b.mouse_filter = 0 # ignore input while animation is playing
+	
+	
 		if wrong_count >= 5:
 			wrong_tries_count.text = ("YOU LOSE!!")
 			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
 		elif wrong_count == 3:
 			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			
+			for x in children: #block mouse input while swapping rows
+				cards = x.get_children(false) # cards in a certain row
+				for b in cards:
+					if b.texture_normal != b.texture_disabled:
+						b.mouse_filter = 2 # ignore input while animation is playing
 			swap_rows()
+			
+			
 		else:
 			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
 	
-		for x in children:
-			cards = x.get_children(false) # cards in a certain row
-			for b in cards:
-				b.mouse_filter = 0 # ignore input while animation is playing
-	
+		#for x in children:
+			#cards = x.get_children(false) # cards in a certain row
+			#for b in cards:
+				#if b.texture_normal != b.texture_disabled:
+					#b.mouse_filter = 0 # ignore input while animation is playing
+	#
 		
 func swap_rows():
-	
-	for x in children:
-		cards = x.get_children(false) # cards in a certain row
-		for c in cards:
-			c.mouse_filter = 2 # ignore input while animation is playing
+	swapping_rows = true
 	
 	$AnimationPlayer.play("row_switch")
 	$GhostSound.play()
@@ -180,10 +196,13 @@ func swap_rows():
 	$GhostSound.play()
 	await get_tree().create_timer(2.0).timeout
 	
-	for x in children:
-		# cards = x.get_children(false) # cards in a certain row
-		for c in cards:
-			c.mouse_filter = 0 # ignore input while animation is playing
+	for x in children: #unlock memory blocks
+		cards = x.get_children(false) # cards in a certain row
+		for b in cards:
+			if b.texture_normal!=b.texture_disabled:
+				b.mouse_filter = 0 # ignore input while animation is playing
+	
+	swapping_rows = false
 	
 func show_hint(h):
 	
