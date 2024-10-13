@@ -24,16 +24,16 @@ var children # to store rows of cards
 @onready var assistant: Node2D = %Assistant
 @onready var hint_board: Node2D = $HintBoard
 var hint_slots
+var cards
 
 func _ready():
-	
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
 	
 	children = v_box_container.get_children(false) # array of rows
 	
 	for x in children: # rows
-		var cards = x.get_children(false) # cards in a certain row
+		cards = x.get_children(false) # cards in a certain row
 		for c in cards:
 			c.connect("pressed", check_card.bind(c))
 			win_count += 1
@@ -51,6 +51,7 @@ func _ready():
 func check_card(c):
 	if !assistant.ask_question:
 		$BlockSound.play()
+			
 		if card_count == 1:
 			check_card1(c)
 		else:
@@ -79,6 +80,13 @@ func check_card1(c): # first card picked
 	btn1_pressed = false
 	
 func check_card2(c): # second card picked
+	
+	for x in children:
+		cards = x.get_children(false) # cards in a certain row
+		for b in cards:
+			b.mouse_filter = 2 # ignore input while animation is playing
+	
+	
 	btn2_pressed = true
 	card2 = c # card button
 	print("checking card: 2")
@@ -107,6 +115,7 @@ func check_card2(c): # second card picked
 		#card2.interactive = false
 		card2.mouse_filter = 2 # ignore further mouse inputs on this card
 		
+		
 		if how_many_good == win_count:
 			%Assistant/HintBubble/LIE.text = "YOU WIN!"
 			await get_tree().create_timer(1.0).timeout
@@ -115,11 +124,20 @@ func check_card2(c): # second card picked
 				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])
 			else: # game won so play cutscene
 				get_tree().change_scene_to_file("res://scenes/cut_scene_end.tscn")
+		
+		for x in children:
+			cards = x.get_children(false) # cards in a certain row
+			for b in cards:
+				if b!=card1 && b!=card2:
+					b.mouse_filter = 0 # ignore input while animation is playing
+			
 	else:
+		
 		await get_tree().create_timer(0.5).timeout
 		card1.texture_normal = normal_texture # hide back the card
 		card2.texture_focused = normal_texture
 		card2.texture_pressed = normal_texture
+		
 		
 		wrong_count += 1
 		%LifeBar.decrease_life()
@@ -132,11 +150,16 @@ func check_card2(c): # second card picked
 		else:
 			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
 	
+		for x in children:
+			cards = x.get_children(false) # cards in a certain row
+			for b in cards:
+				b.mouse_filter = 0 # ignore input while animation is playing
+	
 		
 func swap_rows():
 	
 	for x in children:
-		var cards = x.get_children(false) # cards in a certain row
+		cards = x.get_children(false) # cards in a certain row
 		for c in cards:
 			c.mouse_filter = 2 # ignore input while animation is playing
 	
@@ -158,7 +181,7 @@ func swap_rows():
 	await get_tree().create_timer(2.0).timeout
 	
 	for x in children:
-		var cards = x.get_children(false) # cards in a certain row
+		# cards = x.get_children(false) # cards in a certain row
 		for c in cards:
 			c.mouse_filter = 0 # ignore input while animation is playing
 	

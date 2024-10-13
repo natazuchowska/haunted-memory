@@ -3,6 +3,7 @@ extends Node
 var which_lvl = 0
 var LEVELS
 
+
 func _ready():
 	# store all separate levels in an array
 	LEVELS = ["res://scenes/memory_game_LVL0.tscn", "res://scenes/memory_game_LVL1.tscn", "res://scenes/memory_game_LVL2.tscn", "res://scenes/memory_game_LVL3.tscn"]

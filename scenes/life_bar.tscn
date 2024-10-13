@@ -39,19 +39,3 @@ texture_pressed = ExtResource("1_730h8")
 texture_hover = ExtResource("1_730h8")
 texture_disabled = ExtResource("2_uufx6")
 texture_focused = ExtResource("1_730h8")
-
-[node name="Button4" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_730h8")
-texture_pressed = ExtResource("1_730h8")
-texture_hover = ExtResource("1_730h8")
-texture_disabled = ExtResource("2_uufx6")
-texture_focused = ExtResource("1_730h8")
-
-[node name="Button5" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("1_730h8")
-texture_pressed = ExtResource("1_730h8")
-texture_hover = ExtResource("1_730h8")
-texture_disabled = ExtResource("2_uufx6")
-texture_focused = ExtResource("1_730h8")

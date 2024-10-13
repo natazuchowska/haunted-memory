@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://8401qako0oko" path="res://assets/memo blocks/cat.png" id="5_nab4q"]
 [ext_resource type="Texture2D" uid="uid://dm33m04uvs08i" path="res://assets/memo blocks/snail.png" id="6_gm7n3"]
 [ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="7_bq4dr"]
-[ext_resource type="PackedScene" uid="uid://d2oimckjqu21n" path="res://scenes/life_bar.tscn" id="8_062tx"]
+[ext_resource type="PackedScene" uid="uid://cmtqclx5tfifm" path="res://scenes/life_bar2.tscn" id="8_cvu6x"]
 
 [node name="MemoryGame" type="Node2D"]
 
@@ -140,9 +140,9 @@ stream = ExtResource("7_bq4dr")
 volume_db = -10.0
 autoplay = true
 
-[node name="LifeBar" parent="." instance=ExtResource("8_062tx")]
+[node name="LifeBar" parent="." instance=ExtResource("8_cvu6x")]
 unique_name_in_owner = true
-position = Vector2(-2735, 1353)
+position = Vector2(-2761, 1369)
 
 [editable path="Assistant"]
 [editable path="MemoryBoard/HintBoard"]
