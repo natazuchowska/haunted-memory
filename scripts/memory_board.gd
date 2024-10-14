@@ -212,15 +212,30 @@ func show_hint(h):
 	
 	if assistant.questions_left > 0:
 		print("showing hint!")
-		%Assistant/AssistantSprite.play("talk") # play assistant animation
+		#%Assistant/AssistantSprite.play("talk") # play assistant animation
 		%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
 		%Assistant.questions_left -= 1
+		%HintDisplay.visible = true
+		
+		%HintDisplay.set_symbol(h.texture_disabled)
+		
+		%HintDisplay/HintContainer/AnimatedHint.play("show_bubble") # show the speech bubble
+		%HintDisplay/GhostSound.play()
+		await get_tree().create_timer(0.7).timeout
+		#%Assistant/AssistantSprite.play("talk") # play assistant animation
+		
+		
+		%HintDisplay/AnimationPlayer.play("show_symbol") # show the memo block symbol
+		await get_tree().create_timer(1.1).timeout
+		await get_tree().create_timer(3.4).timeout
+		%HintDisplay/HintContainer/AnimatedHint.stop() # stop speech bubble anim
+		%HintDisplay.visible = false
 		
 	hint_board.visible = false
 	assistant.ask_question = false
-	await get_tree().create_timer(3.0).timeout
-	%Assistant/AssistantSprite.play("idle")
-	%Assistant/HintBubble/LIE.text = ""
+	#await get_tree().create_timer(2.0).timeout
+	#%Assistant/AssistantSprite.play("idle")
+	#%Assistant/HintBubble/LIE.text = ""
 	
 	if assistant.questions_left == 0:
 		%Assistant/HintBubble/LIE.text = "you ran out of questions!"

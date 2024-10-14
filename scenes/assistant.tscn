@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://b12sqey5g7b7a"]
+[gd_scene load_steps=24 format=3 uid="uid://b12sqey5g7b7a"]
 
 [ext_resource type="Texture2D" uid="uid://d0jsn3ndnj7yl" path="res://assets/managaer talk animation/manager_talk-1.png" id="1_815j0"]
 [ext_resource type="Script" path="res://scripts/assistant.gd" id="1_ltlxe"]
 [ext_resource type="Texture2D" uid="uid://bdpwvtyp3upqn" path="res://assets/managaer talk animation/manager_talk-2.png" id="2_4crg5"]
+[ext_resource type="Texture2D" uid="uid://dvjt0y7isiah7" path="res://assets/ghost.png" id="2_xf5w7"]
 [ext_resource type="Texture2D" uid="uid://cvsmu06f8gtun" path="res://assets/managaer talk animation/manager_talk-3.png" id="3_tihda"]
 [ext_resource type="Texture2D" uid="uid://3hicx0rrgjda" path="res://assets/managaer talk animation/manager_talk-4.png" id="4_2a8tf"]
 [ext_resource type="Texture2D" uid="uid://dna5v15u0y4wr" path="res://assets/managaer talk animation/manager_talk-5.png" id="5_qrepq"]
@@ -12,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://f3vaq3sxv7uh" path="res://assets/managaer talk animation/manager_talk-9.png" id="9_ovntt"]
 [ext_resource type="Texture2D" uid="uid://bqevoo8uq6217" path="res://assets/speech_bubble_yellow.png" id="10_1i6ek"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2hwj"]
-atlas = ExtResource("1_815j0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjfhk"]
+atlas = ExtResource("2_xf5w7")
 region = Rect2(0, 0, 1640, 2360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyi3j"]
@@ -56,7 +57,7 @@ region = Rect2(0, 0, 1640, 2360)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i2hwj")
+"texture": SubResource("AtlasTexture_vjfhk")
 }],
 "loop": true,
 "name": &"idle",
@@ -99,6 +100,8 @@ animations = [{
 script = ExtResource("1_ltlxe")
 
 [node name="AssistantSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(431, 558)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_35vf8")
 animation = &"idle"
 autoplay = "idle"
