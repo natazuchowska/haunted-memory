@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=13 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_ugb3h"]
 [ext_resource type="PackedScene" uid="uid://xqpcgkg60hke" path="res://scenes/hint_display.tscn" id="2_00ug0"]
 [ext_resource type="PackedScene" uid="uid://tynfg00d6lqt" path="res://scenes/memory_board.tscn" id="2_ba4p5"]
-[ext_resource type="Texture2D" uid="uid://cdxdmqwxlb08e" path="res://assets/memo blocks/memo_card_solved 2.png" id="3_qsywn"]
+[ext_resource type="Texture2D" uid="uid://btojpfmvu0rxh" path="res://assets/memo blocks/memo_card_select.png" id="3_22ora"]
+[ext_resource type="Texture2D" uid="uid://bccrhcoxox0us" path="res://assets/memo blocks/memo_card_ask.png" id="4_4pehu"]
 [ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="4_s1sn6"]
+[ext_resource type="Texture2D" uid="uid://b5vctl6557och" path="res://assets/memo blocks/memo_card_select_hover.png" id="5_to7hi"]
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="6_ttd1y"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="7_jalms"]
 [ext_resource type="PackedScene" uid="uid://d2oimckjqu21n" path="res://scenes/life_bar.tscn" id="8_djra8"]
@@ -18,15 +20,84 @@ position = Vector2(72, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("1_ugb3h")
 
+[node name="MemoryBoard" parent="." instance=ExtResource("2_ba4p5")]
+unique_name_in_owner = true
+position = Vector2(-284, -1100)
+scale = Vector2(0.5, 0.5)
+
+[node name="HintBoard" parent="MemoryBoard" instance=ExtResource("2_ba4p5")]
+unique_name_in_owner = true
+visible = false
+script = null
+
+[node name="Sprite2D" parent="MemoryBoard/HintBoard" index="0"]
+visible = false
+
+[node name="WrongTriesCount" parent="MemoryBoard/HintBoard" index="1"]
+visible = false
+
+[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
+texture_normal = ExtResource("3_22ora")
+texture_pressed = ExtResource("4_4pehu")
+texture_hover = ExtResource("5_to7hi")
+texture_disabled = ExtResource("6_ttd1y")
+texture_focused = ExtResource("4_4pehu")
+
+[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="1"]
+texture_normal = ExtResource("3_22ora")
+texture_pressed = ExtResource("4_4pehu")
+texture_hover = ExtResource("5_to7hi")
+texture_disabled = ExtResource("7_jalms")
+texture_focused = ExtResource("4_4pehu")
+
+[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="2"]
+texture_normal = ExtResource("3_22ora")
+texture_pressed = ExtResource("4_4pehu")
+texture_hover = ExtResource("5_to7hi")
+texture_disabled = ExtResource("8_hrijr")
+texture_focused = ExtResource("4_4pehu")
+
+[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="0"]
+texture_normal = ExtResource("3_22ora")
+texture_pressed = ExtResource("4_4pehu")
+texture_hover = ExtResource("5_to7hi")
+texture_disabled = ExtResource("7_jalms")
+texture_focused = ExtResource("4_4pehu")
+
+[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="1"]
+texture_normal = ExtResource("3_22ora")
+texture_pressed = ExtResource("4_4pehu")
+texture_hover = ExtResource("5_to7hi")
+texture_disabled = ExtResource("8_hrijr")
+texture_focused = ExtResource("4_4pehu")
+
+[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="2"]
+texture_normal = ExtResource("3_22ora")
+texture_pressed = ExtResource("4_4pehu")
+texture_hover = ExtResource("5_to7hi")
+texture_disabled = ExtResource("6_ttd1y")
+texture_focused = ExtResource("4_4pehu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s1sn6")
+volume_db = -10.0
+autoplay = true
+
+[node name="LifeBar" parent="." instance=ExtResource("8_djra8")]
+unique_name_in_owner = true
+position = Vector2(-2731, 1344)
+
 [node name="Assistant" parent="." instance=ExtResource("1_jjr0j")]
 unique_name_in_owner = true
-position = Vector2(-1515, 293)
+position = Vector2(-1450, 397)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
 position = Vector2(-306, -407)
 
 [node name="HintBubble" parent="Assistant" index="1"]
-visible = false
 position = Vector2(-1687, -861)
 
 [node name="Label" parent="Assistant/HintBubble" index="0"]
@@ -45,73 +116,18 @@ theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
 theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0313726, 1)
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
-offset_left = -1177.0
-offset_top = 13.0
-offset_right = -22.0
-offset_bottom = 218.0
-theme_override_colors/font_color = Color(0.262745, 0.215686, 0.0392157, 1)
+offset_left = -888.0
+offset_top = -185.0
+offset_right = 267.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.627451, 0.627451, 0.596078, 1)
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_00ug0")]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(704, 136)
 scale = Vector2(2, 2)
 
-[node name="MemoryBoard" parent="." instance=ExtResource("2_ba4p5")]
-unique_name_in_owner = true
-position = Vector2(-33, -1100)
-scale = Vector2(0.5, 0.5)
-
-[node name="HintBoard" parent="MemoryBoard" instance=ExtResource("2_ba4p5")]
-unique_name_in_owner = true
-visible = false
-modulate = Color(0.5, 0.5, 0.5, 0.603922)
-script = null
-
-[node name="WrongTriesCount" parent="MemoryBoard/HintBoard" index="1"]
-visible = false
-
-[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
-texture_pressed = ExtResource("3_qsywn")
-texture_disabled = ExtResource("6_ttd1y")
-texture_focused = ExtResource("3_qsywn")
-
-[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="1"]
-texture_pressed = ExtResource("3_qsywn")
-texture_disabled = ExtResource("7_jalms")
-texture_focused = ExtResource("3_qsywn")
-
-[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="2"]
-texture_pressed = ExtResource("3_qsywn")
-texture_disabled = ExtResource("8_hrijr")
-texture_focused = ExtResource("3_qsywn")
-
-[node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="0"]
-texture_pressed = ExtResource("3_qsywn")
-texture_disabled = ExtResource("7_jalms")
-texture_focused = ExtResource("3_qsywn")
-
-[node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="1"]
-texture_pressed = ExtResource("3_qsywn")
-texture_disabled = ExtResource("8_hrijr")
-texture_focused = ExtResource("3_qsywn")
-
-[node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="2"]
-texture_pressed = ExtResource("3_qsywn")
-texture_disabled = ExtResource("6_ttd1y")
-texture_focused = ExtResource("3_qsywn")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.2, 0.2)
-
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_s1sn6")
-volume_db = -10.0
-autoplay = true
-
-[node name="LifeBar" parent="." instance=ExtResource("8_djra8")]
-unique_name_in_owner = true
-position = Vector2(-2731, 1344)
-
-[editable path="Assistant"]
 [editable path="MemoryBoard/HintBoard"]
+[editable path="Assistant"]

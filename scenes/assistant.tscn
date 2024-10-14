@@ -114,6 +114,7 @@ offset_right = 438.0
 offset_bottom = 862.0
 
 [node name="HintBubble" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-863, -804)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("10_1i6ek")

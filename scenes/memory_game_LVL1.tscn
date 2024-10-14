@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=15 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
+[ext_resource type="Texture2D" uid="uid://btojpfmvu0rxh" path="res://assets/memo blocks/memo_card_select.png" id="2_0nhsn"]
 [ext_resource type="PackedScene" uid="uid://cytvowpuf44g4" path="res://scenes/memory_board3x4.tscn" id="2_eopxb"]
 [ext_resource type="PackedScene" uid="uid://xqpcgkg60hke" path="res://scenes/hint_display.tscn" id="2_mixht"]
-[ext_resource type="Texture2D" uid="uid://cdxdmqwxlb08e" path="res://assets/memo blocks/memo_card_solved 2.png" id="3_xsgc4"]
+[ext_resource type="Texture2D" uid="uid://bccrhcoxox0us" path="res://assets/memo blocks/memo_card_ask.png" id="3_t2ir1"]
+[ext_resource type="Texture2D" uid="uid://b5vctl6557och" path="res://assets/memo blocks/memo_card_select_hover.png" id="4_ill4f"]
 [ext_resource type="Texture2D" uid="uid://lpn4bfgncf70" path="res://assets/hint symbols/hint_plus.png" id="5_a03cf"]
 [ext_resource type="Texture2D" uid="uid://b7an42jbcpw7" path="res://assets/hint symbols/hint_pac_man.png" id="6_fl52c"]
 [ext_resource type="Texture2D" uid="uid://bkrt5lqp0bh2q" path="res://assets/hint symbols/hint_cat.png" id="7_ivpyh"]
@@ -15,92 +17,104 @@
 
 [node name="MemoryGame" type="Node2D"]
 
-[node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
-unique_name_in_owner = true
-position = Vector2(-2268, -642)
-
-[node name="HintBubble" parent="Assistant" index="1"]
-visible = false
-
-[node name="QuestionsLeftLabel" parent="Assistant" index="2"]
-offset_left = -276.0
-offset_top = 861.0
-offset_right = 879.0
-offset_bottom = 1066.0
-
-[node name="HintDisplay" parent="Assistant" instance=ExtResource("2_mixht")]
-unique_name_in_owner = true
-visible = false
-
 [node name="MemoryBoard" parent="." instance=ExtResource("2_eopxb")]
 unique_name_in_owner = true
-position = Vector2(1186, 11)
+position = Vector2(874, 11)
 
 [node name="HintBoard" parent="MemoryBoard" instance=ExtResource("2_eopxb")]
 unique_name_in_owner = true
 visible = false
-modulate = Color(1, 0.59, 0.59, 0.470588)
 script = null
 
+[node name="Sprite2D" parent="MemoryBoard/HintBoard" index="0"]
+visible = false
+
+[node name="WrongTriesCount" parent="MemoryBoard/HintBoard" index="1"]
+visible = false
+
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
-texture_pressed = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
 texture_disabled = ExtResource("5_a03cf")
-texture_focused = ExtResource("3_xsgc4")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="1"]
-texture_pressed = ExtResource("3_xsgc4")
-texture_disabled = ExtResource("6_fl52c")
-texture_focused = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
+texture_disabled = ExtResource("9_oqvux")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="2"]
-texture_pressed = ExtResource("3_xsgc4")
-texture_disabled = ExtResource("7_ivpyh")
-texture_focused = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
+texture_disabled = ExtResource("10_gtgtg")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="3"]
-texture_pressed = ExtResource("3_xsgc4")
-texture_disabled = ExtResource("8_y1lei")
-texture_focused = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
+texture_disabled = ExtResource("9_oqvux")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="0"]
-texture_pressed = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
 texture_disabled = ExtResource("5_a03cf")
-texture_focused = ExtResource("3_xsgc4")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="1"]
-texture_pressed = ExtResource("3_xsgc4")
-texture_disabled = ExtResource("9_oqvux")
-texture_focused = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
+texture_disabled = ExtResource("6_fl52c")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="2"]
-texture_pressed = ExtResource("3_xsgc4")
-texture_disabled = ExtResource("10_gtgtg")
-texture_focused = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
+texture_disabled = ExtResource("7_ivpyh")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="3"]
-texture_pressed = ExtResource("3_xsgc4")
-texture_disabled = ExtResource("9_oqvux")
-texture_focused = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
+texture_disabled = ExtResource("8_y1lei")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="0"]
-texture_pressed = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
 texture_disabled = ExtResource("10_gtgtg")
-texture_focused = ExtResource("3_xsgc4")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="1"]
-texture_pressed = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
 texture_disabled = ExtResource("7_ivpyh")
-texture_focused = ExtResource("3_xsgc4")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton3" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="2"]
-texture_pressed = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
 texture_disabled = ExtResource("8_y1lei")
-texture_focused = ExtResource("3_xsgc4")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row3" index="3"]
-texture_pressed = ExtResource("3_xsgc4")
+texture_normal = ExtResource("2_0nhsn")
+texture_pressed = ExtResource("3_t2ir1")
+texture_hover = ExtResource("4_ill4f")
 texture_disabled = ExtResource("6_fl52c")
-texture_focused = ExtResource("3_xsgc4")
+texture_focused = ExtResource("3_t2ir1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
@@ -114,5 +128,22 @@ autoplay = true
 unique_name_in_owner = true
 position = Vector2(-2714, 1352)
 
-[editable path="Assistant"]
+[node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
+unique_name_in_owner = true
+position = Vector2(-2268, -642)
+
+[node name="QuestionsLeftLabel" parent="Assistant" index="2"]
+offset_left = -276.0
+offset_top = 861.0
+offset_right = 879.0
+offset_bottom = 1066.0
+
+[node name="HintDisplay" parent="Assistant" instance=ExtResource("2_mixht")]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(1437, 1086)
+scale = Vector2(2, 2)
+
 [editable path="MemoryBoard/HintBoard"]
+[editable path="Assistant"]
