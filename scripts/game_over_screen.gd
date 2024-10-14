@@ -8,3 +8,4 @@ func _ready() -> void:
 func restart_game():
 	get_tree().change_scene_to_file(Global.LEVELS[Global.which_lvl])
 	
+	

@@ -239,7 +239,12 @@ func swap_rows():
 		await get_tree().create_timer(2.0).timeout
 		
 		$VBoxContainer.move_child(children[1], 0) # swap row 1 with row 2
-		$HintBoard/VBoxContainer.move_child(hint_slots[1], 0) # swap hint rows accordingly
+		#$HintBoard/VBoxContainer.move_child(hint_slots[1], 0) # swap hint rows accordingly
+		
+		# interchange the hint rows BELOW accordingly
+		$HintBoard/VBoxContainer.move_child(hint_slots[3], 2) # move right btn to left
+		#$HintBoard/VBoxContainer.move_child(hint_btns[0], 2) # move right btn to left
+		
 		
 		$AnimationPlayer.play_backwards("row_switch")
 		$GhostSound.play()
@@ -274,7 +279,7 @@ func show_hint(h):
 	if assistant.questions_left > 0:
 		print("showing hint!")
 		#%Assistant/AssistantSprite.play("talk") # play assistant animation
-		%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
+		#%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
 		%Assistant.questions_left -= 1
 		%HintDisplay.visible = true
 		
@@ -307,7 +312,7 @@ func show_hint(h):
 	if assistant.questions_left == 0:
 		%Assistant/HintBubble/LIE.text = "you ran out of questions!"
 		
-	print(h.texture_disabled.get_path().get_file())
+	#print(h.texture_disabled.get_path().get_file())
 	
-	%Assistant/QuestionsLeftLabel.text = ("questions left: " + str(%Assistant.questions_left))
+	%Assistant/QuestionsLeftLabel.text = (tr("QUESTIONS_LEFT") + ": " + str(%Assistant.questions_left))
 	

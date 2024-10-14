@@ -86,6 +86,7 @@ scale = Vector2(4.02595, 2.92908)
 texture = ExtResource("3_6ryca")
 
 [node name="WrongTriesCount" type="Label" parent="."]
+visible = false
 offset_left = 1498.0
 offset_top = 2173.0
 offset_right = 3105.0

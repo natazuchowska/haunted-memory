@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddtok1s33umoj"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_rawig"]
+[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="2_s0u7b"]
+[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="3_a1yya"]
+[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="4_l6hgp"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 82.0
+offset_bottom = 82.0
+grow_horizontal = 2
+script = ExtResource("1_rawig")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.5
+offset_right = 181.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "Game Title
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -110.0
+offset_top = 140.0
+offset_right = 1046.0
+offset_bottom = 3682.0
+scale = Vector2(0.2, 0.2)
+theme_override_constants/separation = 100
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s0u7b")
+texture_pressed = ExtResource("3_a1yya")
+texture_hover = ExtResource("4_l6hgp")
+
+[node name="Label" type="Label" parent="VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 250
+text = "Start"
+
+[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s0u7b")
+texture_pressed = ExtResource("3_a1yya")
+texture_hover = ExtResource("4_l6hgp")
+
+[node name="Label" type="Label" parent="VBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 250
+text = "settings"
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_s0u7b")
+texture_pressed = ExtResource("3_a1yya")
+texture_hover = ExtResource("4_l6hgp")
+
+[node name="Label" type="Label" parent="VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.5
+offset_top = -171.0
+offset_right = 261.5
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 250
+text = "Quit
+"

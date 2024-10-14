@@ -3,6 +3,8 @@ extends Node
 var which_lvl = 0
 var LEVELS
 
+var language
+
 
 func _ready():
 	# store all separate levels in an array
@@ -17,3 +19,11 @@ func get_level():
 	
 func get_levels_size():
 	return LEVELS.size()
+	
+func set_language(index):
+	if index == 0:
+		language = "english"
+	elif index == 1:
+		language = "polish"
+	elif index == 2:
+		language = "french"

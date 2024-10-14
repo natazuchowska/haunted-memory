@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=16 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
+[ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_whpx8"]
 [ext_resource type="Texture2D" uid="uid://btojpfmvu0rxh" path="res://assets/memo blocks/memo_card_select.png" id="2_0nhsn"]
 [ext_resource type="PackedScene" uid="uid://cytvowpuf44g4" path="res://scenes/memory_board3x4.tscn" id="2_eopxb"]
 [ext_resource type="PackedScene" uid="uid://xqpcgkg60hke" path="res://scenes/hint_display.tscn" id="2_mixht"]
@@ -17,6 +18,11 @@
 
 [node name="MemoryGame" type="Node2D"]
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(3, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("1_whpx8")
+
 [node name="MemoryBoard" parent="." instance=ExtResource("2_eopxb")]
 unique_name_in_owner = true
 position = Vector2(874, 11)
@@ -27,9 +33,6 @@ visible = false
 script = null
 
 [node name="Sprite2D" parent="MemoryBoard/HintBoard" index="0"]
-visible = false
-
-[node name="WrongTriesCount" parent="MemoryBoard/HintBoard" index="1"]
 visible = false
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
