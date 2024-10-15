@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=22 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
+[ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_uckwq"]
 [ext_resource type="Texture2D" uid="uid://btojpfmvu0rxh" path="res://assets/memo blocks/memo_card_select.png" id="2_0q5gj"]
 [ext_resource type="PackedScene" uid="uid://xqpcgkg60hke" path="res://scenes/hint_display.tscn" id="2_336fr"]
 [ext_resource type="PackedScene" uid="uid://ccxsle1bheae6" path="res://scenes/memory_board4x5.tscn" id="2_mpxrq"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="20_bqnfe"]
 
 [node name="MemoryGame" type="Node2D"]
+script = ExtResource("1_uckwq")
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

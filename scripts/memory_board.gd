@@ -65,6 +65,11 @@ func check_card(c):
 			%BoardTutorial.visible = false
 			%AssistantTutorial.visible = true
 			tutorial_count += 1
+		
+		elif Global.get_level() == 0 && tutorial_count == 2:
+			%GhostMessage.visible = false
+			%GameTutorial.visible = true
+			tutorial_count += 1
 		# ================================================
 			
 		$BlockSound.play()
@@ -136,6 +141,12 @@ func check_card2(c): # second card picked
 		
 		
 		if how_many_good == win_count:
+			# ONLY AT THE START -> TUTORIAL LEVEL ============
+			if Global.get_level() == 0:
+				%GameTutorial.visible = false
+				%ClosingMessage.visible = true
+			# ================================================
+			
 			%Assistant/HintBubble/LIE.text = "YOU WIN!"
 			await get_tree().create_timer(1.0).timeout
 			Global.increase_level_num()
@@ -284,6 +295,8 @@ func show_hint(h):
 	# ONLY AT THE START -> TUTORIAL LEVEL ============
 	if Global.get_level() == 0 && tutorial_count == 1:
 		%AssistantTutorial.visible = false
+		%GhostMessage.visible = true
+		#%GameTutorial.visible = true
 		tutorial_count += 1
 	# ================================================
 	
@@ -334,5 +347,5 @@ func show_hint(h):
 		
 	#print(h.texture_disabled.get_path().get_file())
 	
-	%Assistant/QuestionsLeftLabel.text = (tr("QUESTIONS_LEFT") + ": " + str(%Assistant.questions_left))
-	
+	%Assistant/QuestionsLeftLabel.text = (tr("QUESTIONS_LEFT") + ":")  #+ ": " + str(%Assistant.questions_left))
+	%QuestionBar.decrease_life()

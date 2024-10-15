@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ja0xq5tdwo4w"]
+[gd_scene load_steps=13 format=3 uid="uid://ja0xq5tdwo4w"]
 
 [ext_resource type="Texture2D" uid="uid://df5jy5qg81m8o" path="res://assets/language icons/icons8-uk-48.png" id="1_35wbb"]
 [ext_resource type="Script" path="res://scripts/settings_page.gd" id="1_hvuxw"]
@@ -7,10 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_rpls1"]
 [ext_resource type="Texture2D" uid="uid://bydnwu6o3b3lo" path="res://assets/language icons/icons8-france-48.png" id="3_ixikc"]
 [ext_resource type="PackedScene" uid="uid://xkhbr4wy44f3" path="res://scenes/volume_slider.tscn" id="4_nc5oy"]
+[ext_resource type="Texture2D" uid="uid://cb53u28q2ur7b" path="res://assets/slider.png" id="5_82oht"]
 [ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="5_lg86q"]
 [ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="6_mss1n"]
 [ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="7_j66of"]
-[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="11_y7ksi"]
+[ext_resource type="AudioStream" uid="uid://cveojv1csao1r" path="res://assets/audio/button_click.wav" id="12_qck1s"]
 
 [node name="SettingsPage" type="Control"]
 layout_mode = 3
@@ -51,14 +52,21 @@ theme_override_font_sizes/font_size = 40
 text = "Music"
 vertical_alignment = 1
 
-[node name="VolumeSlider" parent="Music" instance=ExtResource("4_nc5oy")]
+[node name="MusicSlider" parent="Music" instance=ExtResource("4_nc5oy")]
 layout_mode = 1
-offset_left = 299.0
-offset_top = -28.0
-offset_right = 493.0
-offset_bottom = 36.0
+offset_left = 339.0
+offset_top = -24.0
+offset_right = 533.0
+offset_bottom = 40.0
+value = 0.5
 rounded = false
 bus_name = "Music"
+
+[node name="Sprite2D" type="Sprite2D" parent="Music/MusicSlider"]
+show_behind_parent = true
+position = Vector2(213, 57)
+scale = Vector2(0.45269, 0.40051)
+texture = ExtResource("5_82oht")
 
 [node name="SFX" type="Label" parent="."]
 layout_mode = 0
@@ -72,15 +80,21 @@ theme_override_font_sizes/font_size = 40
 text = "Sound Effects"
 vertical_alignment = 1
 
-[node name="VolumeSlider" parent="SFX" instance=ExtResource("4_nc5oy")]
+[node name="SFXSlider" parent="SFX" instance=ExtResource("4_nc5oy")]
 layout_mode = 1
-offset_left = 301.0
-offset_top = -5.0
-offset_right = 352.0
-offset_bottom = 1.0
-value = 1.0
+offset_left = 341.0
+offset_top = -3.0
+offset_right = 392.0
+offset_bottom = 3.0
+value = 0.75
 rounded = false
 bus_name = "SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="SFX/SFXSlider"]
+show_behind_parent = true
+position = Vector2(211.5, 27)
+scale = Vector2(0.453618, 0.377551)
+texture = ExtResource("5_82oht")
 
 [node name="Language" type="Label" parent="."]
 layout_mode = 1
@@ -98,6 +112,13 @@ theme_override_font_sizes/font_size = 40
 text = "Language"
 vertical_alignment = 1
 
+[node name="ButtonPressed" type="Sprite2D" parent="Language"]
+modulate = Color(0.942823, 0.942823, 0.942823, 1)
+show_behind_parent = true
+position = Vector2(447, 38)
+scale = Vector2(0.255357, 0.236787)
+texture = ExtResource("6_mss1n")
+
 [node name="OptionButton" type="OptionButton" parent="Language"]
 modulate = Color(1, 1, 1, 0.996078)
 layout_mode = 1
@@ -106,9 +127,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 166.0
-offset_top = -28.5
-offset_right = 403.0
+offset_left = 203.0
+offset_top = -16.5
+offset_right = 440.0
 offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -159,7 +180,5 @@ theme_override_font_sizes/font_size = 220
 text = "Go back"
 horizontal_alignment = 1
 
-[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_y7ksi")
-autoplay = true
-bus = &"Music"
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_qck1s")

@@ -10,6 +10,11 @@ func _ready():
 	$Language/OptionButton.connect("item_selected", set_language)
 	$GoBackButton.connect("pressed", return_to_menu)
 	
+	$Language/OptionButton.selected = Global.get_language()
+	
+	$Music/MusicSlider.value = Global.get_music_slider_val()
+	$SFX/SFXSlider.value = Global.get_sfx_slider_val()
+	
 	if lang_id != -1:
 		$Language/OptionButton.selected = lang_id
 	
@@ -35,4 +40,6 @@ func updateUI():
 	$Language/OptionButton.set_item_text(2, tr("FRENCH"))
 	
 func return_to_menu():
+	$ButtonClick.play()
+	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

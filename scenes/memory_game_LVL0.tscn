@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=20 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_j84x5"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://tynfg00d6lqt" path="res://scenes/memory_board.tscn" id="2_ba4p5"]
 [ext_resource type="Texture2D" uid="uid://btojpfmvu0rxh" path="res://assets/memo blocks/memo_card_select.png" id="3_22ora"]
 [ext_resource type="Texture2D" uid="uid://bccrhcoxox0us" path="res://assets/memo blocks/memo_card_ask.png" id="4_4pehu"]
-[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="4_s1sn6"]
 [ext_resource type="Texture2D" uid="uid://b5vctl6557och" path="res://assets/memo blocks/memo_card_select_hover.png" id="5_to7hi"]
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="6_ttd1y"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="7_jalms"]
@@ -121,12 +120,6 @@ texture_focused = ExtResource("4_4pehu")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
 
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_s1sn6")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
-
 [node name="LifeBar" parent="." instance=ExtResource("8_djra8")]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
@@ -164,8 +157,13 @@ offset_right = 482.0
 offset_bottom = 20.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("13_2vh6c")
+text = "questions left:"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="QuestionBar" parent="Assistant" instance=ExtResource("8_djra8")]
+unique_name_in_owner = true
+position = Vector2(-565, 47)
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_00ug0")]
 unique_name_in_owner = true
@@ -182,10 +180,10 @@ libraries = {
 [node name="ChangeScene" parent="." instance=ExtResource("15_3gggk")]
 unique_name_in_owner = true
 z_index = 5
-offset_left = -1630.0
-offset_top = -1560.0
-offset_right = -1630.0
-offset_bottom = -1560.0
+offset_left = -2865.0
+offset_top = -1615.0
+offset_right = -2865.0
+offset_bottom = -1615.0
 scale = Vector2(6, 6)
 
 [node name="BoardTutorial" type="Label" parent="."]
@@ -201,6 +199,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="BoardTutorial"]
+visible = false
 position = Vector2(1672, -656)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_22ora")
@@ -225,6 +224,59 @@ autowrap_mode = 2
 [node name="Sprite2D" type="Sprite2D" parent="AssistantTutorial"]
 position = Vector2(647, 1352)
 texture = ExtResource("17_pou7a")
+
+[node name="GhostMessage" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -871.0
+offset_top = -1458.0
+offset_right = 1231.0
+offset_bottom = -851.0
+theme_override_fonts/font = ExtResource("13_2vh6c")
+theme_override_font_sizes/font_size = 160
+text = "but remember! 
+ghost enjoy riddles, they won't always tell the truth..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="GhostMessage"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 2275.0
+offset_right = 3667.0
+offset_bottom = 3016.0
+theme_override_fonts/font = ExtResource("13_2vh6c")
+theme_override_font_sizes/font_size = 160
+text = "however, if you crack their code it can give you a big advantage"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="GameTutorial" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -383.0
+offset_top = -1331.0
+offset_right = 2237.0
+offset_bottom = -776.0
+theme_override_fonts/font = ExtResource("13_2vh6c")
+theme_override_font_sizes/font_size = 160
+text = "once you find all the matching pairs you will defeat your enemy"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ClosingMessage" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -2701.0
+offset_top = 817.0
+offset_right = -804.0
+offset_bottom = 1372.0
+theme_override_fonts/font = ExtResource("13_2vh6c")
+theme_override_font_sizes/font_size = 160
+text = "Good job! 
+Now let's get started..."
+horizontal_alignment = 1
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xkhbr4wy44f3"]
+[gd_scene load_steps=3 format=3 uid="uid://xkhbr4wy44f3"]
 
 [ext_resource type="Script" path="res://scripts/volume_slider.gd" id="1_6qjs4"]
+[ext_resource type="Texture2D" uid="uid://bs7xk3ns4dr4h" path="res://assets/grab.png" id="1_e68eq"]
 
 [node name="VolumeSlider" type="HSlider"]
 anchors_preset = 15
@@ -12,6 +13,9 @@ offset_right = -2.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_icons/grabber = ExtResource("1_e68eq")
+theme_override_icons/grabber_highlight = ExtResource("1_e68eq")
+theme_override_icons/grabber_disabled = ExtResource("1_e68eq")
 max_value = 1.0
 step = 0.001
 rounded = true

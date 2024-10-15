@@ -1,5 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://dw6e2didtig1r"]
 
+[ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_iyl53"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_whpx8"]
 [ext_resource type="Texture2D" uid="uid://btojpfmvu0rxh" path="res://assets/memo blocks/memo_card_select.png" id="2_0nhsn"]
@@ -10,28 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://lpn4bfgncf70" path="res://assets/hint symbols/hint_plus.png" id="5_a03cf"]
 [ext_resource type="Texture2D" uid="uid://b7an42jbcpw7" path="res://assets/hint symbols/hint_pac_man.png" id="6_fl52c"]
 [ext_resource type="Texture2D" uid="uid://bkrt5lqp0bh2q" path="res://assets/hint symbols/hint_cat.png" id="7_ivpyh"]
-[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="7_xcek8"]
 [ext_resource type="PackedScene" uid="uid://bpndtqpuywt14" path="res://scenes/life_bar1.tscn" id="8_0rjya"]
 [ext_resource type="Texture2D" uid="uid://c0v3vka1sdjvt" path="res://assets/hint symbols/hint_rainbow.png" id="8_y1lei"]
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="9_oqvux"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="10_gtgtg"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="15_7xe26"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="17_q7m4a"]
-
-[sub_resource type="Animation" id="Animation_136ps"]
-resource_name = "start_scene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_kocpt"]
 length = 0.001
@@ -48,6 +33,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_136ps"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggc25"]
 _data = {
 "RESET": SubResource("Animation_kocpt"),
@@ -56,6 +56,7 @@ _data = {
 
 [node name="MemoryGame" type="Node2D"]
 modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_iyl53")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(3, -1)
@@ -161,15 +162,19 @@ texture_focused = ExtResource("3_t2ir1")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
 
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_xcek8")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
+[node name="LivesLeft" type="Label" parent="."]
+offset_left = -2343.0
+offset_top = 618.0
+offset_right = -1338.0
+offset_bottom = 801.0
+theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
+theme_override_fonts/font = ExtResource("15_7xe26")
+theme_override_font_sizes/font_size = 160
+text = "Mistakes left:"
 
-[node name="LifeBar" parent="." instance=ExtResource("8_0rjya")]
+[node name="LifeBar" parent="LivesLeft" instance=ExtResource("8_0rjya")]
 unique_name_in_owner = true
-position = Vector2(-2714, 1352)
+position = Vector2(53, 247)
 
 [node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
 unique_name_in_owner = true
@@ -182,8 +187,16 @@ offset_right = 1205.0
 offset_bottom = 981.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("15_7xe26")
+text = "questions left:"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="QuestionBar" parent="Assistant/QuestionsLeftLabel" index="0" instance=ExtResource("8_0rjya")]
+unique_name_in_owner = true
+position = Vector2(452, 225)
+
+[node name="Button" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="0"]
+visible = false
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_mixht")]
 unique_name_in_owner = true
@@ -207,3 +220,4 @@ offset_bottom = -1296.0
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]
+[editable path="Assistant/QuestionsLeftLabel/QuestionBar"]

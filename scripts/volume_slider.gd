@@ -13,3 +13,8 @@ func on_value_changed(value: float):
 		bus_index,
 		linear_to_db(value)
 	)
+	
+	if name == "MusicSlider":
+		Global.set_music_slider_val(value)
+	if name == "SFXSlider":
+		Global.set_sfx_slider_val(value)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rq0wt1plw25q"]
+
+[ext_resource type="Script" path="res://scripts/game_music.gd" id="1_cf0oc"]
+[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="1_rvmbi"]
+
+[node name="GameMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rvmbi")
+volume_db = -50.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("1_cf0oc")

@@ -4,6 +4,10 @@ var which_lvl = 0
 var LEVELS
 
 var language
+var languageID = 0
+
+var music_slider_val = 0.75
+var sfx_slider_val = 0.9
 
 
 func _ready():
@@ -23,7 +27,26 @@ func get_levels_size():
 func set_language(index):
 	if index == 0:
 		language = "english"
+		languageID = 0
 	elif index == 1:
 		language = "polish"
+		languageID = 1
 	elif index == 2:
 		language = "french"
+		languageID = 2
+		
+func get_language():
+	return languageID
+		
+# geters and setters for music sliders to remember grabber positions
+func set_music_slider_val(value: float):
+	music_slider_val = value
+	
+func set_sfx_slider_val(value: float):
+	sfx_slider_val = value
+
+func get_music_slider_val():
+	return music_slider_val
+	
+func get_sfx_slider_val():
+	return sfx_slider_val

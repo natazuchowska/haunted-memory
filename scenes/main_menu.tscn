@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddtok1s33umoj"]
+[gd_scene load_steps=9 format=3 uid="uid://ddtok1s33umoj"]
 
 [ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="1_piux1"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_rawig"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="2_s0u7b"]
 [ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="3_a1yya"]
 [ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="4_l6hgp"]
+[ext_resource type="AudioStream" uid="uid://cveojv1csao1r" path="res://assets/audio/button_click.wav" id="9_iv8ej"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -136,4 +137,5 @@ text = "Quit
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_iv8ej")
