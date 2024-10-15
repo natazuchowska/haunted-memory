@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddtok1s33umoj"]
+[gd_scene load_steps=8 format=3 uid="uid://ddtok1s33umoj"]
 
+[ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="1_piux1"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_rawig"]
+[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_4xjbw"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="2_31koj"]
 [ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="2_s0u7b"]
 [ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="3_a1yya"]
 [ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="4_l6hgp"]
@@ -15,27 +18,44 @@ offset_bottom = 82.0
 grow_horizontal = 2
 script = ExtResource("1_rawig")
 
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.51308, 0.448299, 0.354012, 1)
+position = Vector2(4, 254)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4xjbw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.86565, 0.8613, 0.87, 1)
+position = Vector2(2.19345e-05, 243)
+scale = Vector2(0.64468, 0.530745)
+texture = ExtResource("1_piux1")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -181.5
-offset_right = 181.5
-offset_bottom = 96.0
+offset_left = -300.0
+offset_top = 58.0
+offset_right = 301.0
+offset_bottom = 173.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 70
-text = "Game Title
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_31koj")
+theme_override_font_sizes/font_size = 100
+text = "HAUNTED MEMO
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = -110.0
-offset_top = 140.0
+offset_top = 179.0
 offset_right = 1046.0
-offset_bottom = 3682.0
+offset_bottom = 3721.0
 scale = Vector2(0.2, 0.2)
-theme_override_constants/separation = 100
+theme_override_constants/separation = 40
 
 [node name="StartButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -50,14 +70,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -338.0
+offset_top = -136.5
+offset_right = 336.0
+offset_bottom = 139.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 250
-text = "Start"
+theme_override_colors/font_color = Color(0.354278, 0.266309, 0.12672, 1)
+theme_override_fonts/font = ExtResource("2_31koj")
+theme_override_font_sizes/font_size = 200
+text = "start"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -72,14 +96,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -11.5
-offset_right = 31.0
-offset_bottom = 11.5
+offset_left = -513.0
+offset_top = -124.5
+offset_right = 512.0
+offset_bottom = 140.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 250
+theme_override_colors/font_color = Color(0.354278, 0.266309, 0.12672, 1)
+theme_override_fonts/font = ExtResource("2_31koj")
+theme_override_font_sizes/font_size = 200
 text = "settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -94,12 +122,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -261.5
-offset_top = -171.0
-offset_right = 261.5
-offset_bottom = 171.0
+offset_left = -263.0
+offset_top = -162.5
+offset_right = 260.0
+offset_bottom = 179.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 250
+theme_override_colors/font_color = Color(0.354278, 0.266309, 0.12672, 1)
+theme_override_fonts/font = ExtResource("2_31koj")
+theme_override_font_sizes/font_size = 200
 text = "Quit
 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]

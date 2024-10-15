@@ -29,9 +29,15 @@ var cards
 
 var swapping_rows = false
 
+var tutorial_count = 0
+
 func _ready():
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
+	
+	# play opening scene animation
+	%ChangeScene/AnimationPlayer.play("scene_start")
+	$"../AnimationPlayer".play("start_scene")
 	
 	children = v_box_container.get_children(false) # array of rows
 	
@@ -54,12 +60,18 @@ func _ready():
 func check_card(c):
 			
 	if !assistant.ask_question:
+		# ONLY AT THE START -> TUTORIAL LEVEL ============
+		if Global.get_level() == 0 && tutorial_count == 0:
+			%BoardTutorial.visible = false
+			%AssistantTutorial.visible = true
+			tutorial_count += 1
+		# ================================================
+			
 		$BlockSound.play()
 		if card_count == 1:
 			check_card1(c)
 		else:
 			check_card2(c)
-
 	else:
 		pass
 		
@@ -128,6 +140,8 @@ func check_card2(c): # second card picked
 			await get_tree().create_timer(1.0).timeout
 			Global.increase_level_num()
 			if Global.get_level() < Global.get_levels_size(): # still some levels left
+				%ChangeScene/AnimationPlayer.play("scene_end")
+				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])
 			else: # game won so play cutscene
 				get_tree().change_scene_to_file("res://scenes/cut_scene_end.tscn")
@@ -266,6 +280,12 @@ func swap_rows():
 	swapping_rows = false
 	
 func show_hint(h):
+	
+	# ONLY AT THE START -> TUTORIAL LEVEL ============
+	if Global.get_level() == 0 && tutorial_count == 1:
+		%AssistantTutorial.visible = false
+		tutorial_count += 1
+	# ================================================
 	
 	%HintBoard.process_mode = 4 # disabled
 

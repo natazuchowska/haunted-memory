@@ -1,11 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://ytyrtgxhnd0o"]
+[gd_scene load_steps=7 format=3 uid="uid://ytyrtgxhnd0o"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_1ek6m"]
+[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_2qkrh"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="2_rb2qo"]
+[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="3_o136p"]
+[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="4_er3gb"]
+[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="5_vtm83"]
 
 [node name="GameOverScreen" type="Node2D"]
 script = ExtResource("1_1ek6m")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.51308, 0.448299, 0.354012, 1)
+position = Vector2(582, 327)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_2qkrh")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(575, 323)
+scale = Vector2(0.697321, 1.04334)
+texture = ExtResource("3_o136p")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
@@ -13,25 +29,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -11.5
-offset_right = 41.0
-offset_bottom = 11.5
+offset_left = -249.0
+offset_top = -102.0
+offset_right = 249.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_rb2qo")
 theme_override_font_sizes/font_size = 120
 text = "YOU LOSE!"
 
-[node name="RestartButton" type="Button" parent="CanvasLayer"]
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = 95.0
-offset_right = 59.0
-offset_bottom = 141.0
+offset_left = -100.0
+offset_top = 57.0
+offset_right = 1020.0
+offset_bottom = 530.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.18, 0.18)
+texture_normal = ExtResource("3_o136p")
+texture_pressed = ExtResource("4_er3gb")
+texture_hover = ExtResource("5_vtm83")
+
+[node name="Label" type="Label" parent="CanvasLayer/RestartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_rb2qo")
+theme_override_font_sizes/font_size = 200
 text = "try again"

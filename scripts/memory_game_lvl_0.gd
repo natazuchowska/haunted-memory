@@ -6,4 +6,4 @@ func _ready():
 	
 	
 func updateUI():
-	$Assistant/QuestionsLeftLabel.text = tr("QUESTIONS_LEFT")
+	$Assistant/QuestionsLeftLabel.text = tr("QUESTIONS_LEFT") + ": 4"

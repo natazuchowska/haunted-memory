@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=21 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="10_w288t"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="11_d0yu8"]
 [ext_resource type="Texture2D" uid="uid://boktykkbhllnu" path="res://assets/hint symbols/hint_hanger.png" id="12_iwe6a"]
+[ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="20_bqnfe"]
 
 [node name="MemoryGame" type="Node2D"]
 
@@ -37,9 +38,6 @@ visible = false
 script = null
 
 [node name="Sprite2D" parent="MemoryBoard/HintBoard" index="0"]
-visible = false
-
-[node name="WrongTriesCount" parent="MemoryBoard/HintBoard" index="1"]
 visible = false
 
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
@@ -213,6 +211,9 @@ visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(271, 184)
 scale = Vector2(2, 2)
+
+[node name="ChangeScene" parent="." instance=ExtResource("20_bqnfe")]
+unique_name_in_owner = true
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

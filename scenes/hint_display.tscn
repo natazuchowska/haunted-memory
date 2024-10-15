@@ -366,3 +366,4 @@ libraries = {
 stream = ExtResource("26_hfiku")
 volume_db = -7.429
 pitch_scale = 1.3
+bus = &"SFX"

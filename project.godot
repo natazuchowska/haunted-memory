@@ -22,8 +22,6 @@ Global="*res://scripts/global.gd"
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://assets/icons8-cursor-50-2.png"
-mouse_cursor/custom_image_hotspot=Vector2(25, 25)
 
 [input]
 

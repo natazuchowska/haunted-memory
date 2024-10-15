@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ja0xq5tdwo4w"]
+[gd_scene load_steps=12 format=3 uid="uid://ja0xq5tdwo4w"]
 
 [ext_resource type="Texture2D" uid="uid://df5jy5qg81m8o" path="res://assets/language icons/icons8-uk-48.png" id="1_35wbb"]
 [ext_resource type="Script" path="res://scripts/settings_page.gd" id="1_hvuxw"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="2_gqflr"]
 [ext_resource type="Texture2D" uid="uid://de6xk3r46lvfy" path="res://assets/language icons/icons8-poland-48.png" id="2_qos6y"]
+[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_rpls1"]
 [ext_resource type="Texture2D" uid="uid://bydnwu6o3b3lo" path="res://assets/language icons/icons8-france-48.png" id="3_ixikc"]
-[ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="5_amrvj"]
+[ext_resource type="PackedScene" uid="uid://xkhbr4wy44f3" path="res://scenes/volume_slider.tscn" id="4_nc5oy"]
+[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="5_lg86q"]
+[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="6_mss1n"]
+[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="7_j66of"]
+[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="11_y7ksi"]
 
 [node name="SettingsPage" type="Control"]
 layout_mode = 3
@@ -15,53 +21,104 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hvuxw")
 
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.51308, 0.448299, 0.354012, 1)
+position = Vector2(589, 337)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_rpls1")
+
+[node name="Display" type="Label" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 166.0
+offset_right = 394.0
+offset_bottom = 213.0
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_gqflr")
+theme_override_font_sizes/font_size = 40
+text = "display
+"
+
 [node name="Music" type="Label" parent="."]
 layout_mode = 0
-offset_left = 325.0
-offset_top = 171.0
-offset_right = 545.0
-offset_bottom = 226.0
+offset_left = 269.0
+offset_top = 259.0
+offset_right = 489.0
+offset_bottom = 314.0
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_gqflr")
 theme_override_font_sizes/font_size = 40
 text = "Music"
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Music" instance=ExtResource("4_nc5oy")]
+layout_mode = 1
+offset_left = 299.0
+offset_top = -28.0
+offset_right = 493.0
+offset_bottom = 36.0
+rounded = false
+bus_name = "Music"
 
 [node name="SFX" type="Label" parent="."]
 layout_mode = 0
-offset_left = 326.0
-offset_top = 277.0
-offset_right = 588.0
-offset_bottom = 332.0
+offset_left = 267.0
+offset_top = 366.0
+offset_right = 634.0
+offset_bottom = 421.0
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_gqflr")
 theme_override_font_sizes/font_size = 40
 text = "Sound Effects"
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="SFX" instance=ExtResource("4_nc5oy")]
+layout_mode = 1
+offset_left = 301.0
+offset_top = -5.0
+offset_right = 352.0
+offset_bottom = 1.0
+value = 1.0
+rounded = false
+bus_name = "SFX"
 
 [node name="Language" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -241.0
-offset_top = 380.0
-offset_right = -55.0
-offset_bottom = 435.0
+offset_left = -304.0
+offset_top = 468.0
+offset_right = -60.0
+offset_bottom = 523.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_gqflr")
 theme_override_font_sizes/font_size = 40
 text = "Language"
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Language"]
+modulate = Color(1, 1, 1, 0.996078)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 144.0
+offset_left = 166.0
 offset_top = -28.5
-offset_right = 381.0
+offset_right = 403.0
 offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/icon_normal_color = Color(0.318314, 0.273729, 0.214959, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 12
-theme_override_font_sizes/font_size = 40
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_gqflr")
+theme_override_font_sizes/font_size = 30
+theme_override_constants/modulate_arrow = 0
 item_count = 3
 popup/item_0/text = "English"
 popup/item_0/icon = ExtResource("1_35wbb")
@@ -79,7 +136,9 @@ offset_top = 40.0
 offset_right = 74.0
 offset_bottom = 80.0
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("5_amrvj")
+texture_normal = ExtResource("5_lg86q")
+texture_pressed = ExtResource("6_mss1n")
+texture_hover = ExtResource("7_j66of")
 
 [node name="Label" type="Label" parent="GoBackButton"]
 layout_mode = 1
@@ -88,11 +147,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -11.5
-offset_right = 31.0
-offset_bottom = 11.5
+offset_left = -410.0
+offset_top = -96.5
+offset_right = 405.0
+offset_bottom = 103.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 200
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("2_gqflr")
+theme_override_font_sizes/font_size = 220
 text = "Go back"
+horizontal_alignment = 1
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_y7ksi")
+autoplay = true
+bus = &"Music"

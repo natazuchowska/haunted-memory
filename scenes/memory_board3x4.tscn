@@ -328,11 +328,14 @@ libraries = {
 
 [node name="GhostSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_eeaqe")
+bus = &"SFX"
 
 [node name="BlockSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_lah1n")
 volume_db = 20.0
+bus = &"SFX"
 
 [node name="GoodMatchSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_ta1pu")
 volume_db = 10.0
+bus = &"SFX"

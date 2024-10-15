@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=21 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_whpx8"]
@@ -15,8 +15,47 @@
 [ext_resource type="Texture2D" uid="uid://c0v3vka1sdjvt" path="res://assets/hint symbols/hint_rainbow.png" id="8_y1lei"]
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="9_oqvux"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="10_gtgtg"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="15_7xe26"]
+[ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="17_q7m4a"]
+
+[sub_resource type="Animation" id="Animation_136ps"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kocpt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ggc25"]
+_data = {
+"RESET": SubResource("Animation_kocpt"),
+"start_scene": SubResource("Animation_136ps")
+}
 
 [node name="MemoryGame" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(3, -1)
@@ -126,6 +165,7 @@ zoom = Vector2(0.2, 0.2)
 stream = ExtResource("7_xcek8")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="LifeBar" parent="." instance=ExtResource("8_0rjya")]
 unique_name_in_owner = true
@@ -136,10 +176,14 @@ unique_name_in_owner = true
 position = Vector2(-2268, -642)
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
-offset_left = -276.0
-offset_top = 861.0
-offset_right = 879.0
-offset_bottom = 1066.0
+offset_left = -362.0
+offset_top = 776.0
+offset_right = 1205.0
+offset_bottom = 981.0
+theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
+theme_override_fonts/font = ExtResource("15_7xe26")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_mixht")]
 unique_name_in_owner = true
@@ -147,6 +191,19 @@ visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1437, 1086)
 scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ggc25")
+}
+
+[node name="ChangeScene" parent="." instance=ExtResource("17_q7m4a")]
+unique_name_in_owner = true
+z_index = 5
+offset_left = -2304.0
+offset_top = -1296.0
+offset_right = -2304.0
+offset_bottom = -1296.0
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

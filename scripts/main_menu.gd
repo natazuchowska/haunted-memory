@@ -6,7 +6,7 @@ func _ready():
 	$VBoxContainer/SettingsButton.connect("pressed", go_to_settings)
 	$VBoxContainer/QuitButton.connect("pressed", quit_game)
 	
-	$Label.text = tr("GAME_TITLE")
+	#$Label.text = tr("GAME_TITLE")
 	$VBoxContainer/StartButton/Label.text = tr("START")
 	$VBoxContainer/SettingsButton/Label.text = tr("SETTINGS")
 	$VBoxContainer/QuitButton/Label.text = tr("QUIT")

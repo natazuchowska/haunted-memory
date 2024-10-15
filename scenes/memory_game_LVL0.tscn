@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=21 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_j84x5"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
@@ -13,8 +13,49 @@
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="7_jalms"]
 [ext_resource type="PackedScene" uid="uid://d2oimckjqu21n" path="res://scenes/life_bar.tscn" id="8_djra8"]
 [ext_resource type="Texture2D" uid="uid://bkrt5lqp0bh2q" path="res://assets/hint symbols/hint_cat.png" id="8_hrijr"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="13_2vh6c"]
+[ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="15_3gggk"]
+[ext_resource type="Texture2D" uid="uid://bs0fic2orbjwk" path="res://assets/Grafika_bez_nazwy 47.png" id="16_dpjfu"]
+[ext_resource type="Texture2D" uid="uid://c6dgfmlyhh0rj" path="res://assets/Grafika_bez_nazwy 46.png" id="17_pou7a"]
+
+[sub_resource type="Animation" id="Animation_5dwjt"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h3hka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bx5qe"]
+_data = {
+"RESET": SubResource("Animation_h3hka"),
+"start_scene": SubResource("Animation_5dwjt")
+}
 
 [node name="MemoryGame" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_j84x5")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -84,9 +125,11 @@ zoom = Vector2(0.2, 0.2)
 stream = ExtResource("4_s1sn6")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="LifeBar" parent="." instance=ExtResource("8_djra8")]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-2731, 1344)
 
 [node name="Assistant" parent="." instance=ExtResource("1_jjr0j")]
@@ -115,11 +158,14 @@ theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
 theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0313726, 1)
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
-offset_left = -888.0
+offset_left = -1085.0
 offset_top = -185.0
-offset_right = 267.0
+offset_right = 482.0
 offset_bottom = 20.0
-theme_override_colors/font_color = Color(0.627451, 0.627451, 0.596078, 1)
+theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
+theme_override_fonts/font = ExtResource("13_2vh6c")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_00ug0")]
 unique_name_in_owner = true
@@ -127,6 +173,58 @@ visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(704, 136)
 scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bx5qe")
+}
+
+[node name="ChangeScene" parent="." instance=ExtResource("15_3gggk")]
+unique_name_in_owner = true
+z_index = 5
+offset_left = -1630.0
+offset_top = -1560.0
+offset_right = -1630.0
+offset_bottom = -1560.0
+scale = Vector2(6, 6)
+
+[node name="BoardTutorial" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -1440.0
+offset_top = 1042.0
+offset_right = 342.0
+offset_bottom = 1411.0
+theme_override_fonts/font = ExtResource("13_2vh6c")
+theme_override_font_sizes/font_size = 160
+text = "click on a memory block to reveal it"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BoardTutorial"]
+position = Vector2(1672, -656)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_22ora")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BoardTutorial"]
+position = Vector2(1429, -741)
+texture = ExtResource("16_dpjfu")
+
+[node name="AssistantTutorial" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -971.0
+offset_top = -1424.0
+offset_right = 1154.0
+offset_bottom = -869.0
+theme_override_fonts/font = ExtResource("13_2vh6c")
+theme_override_font_sizes/font_size = 160
+text = "Click on the ghost to ask a question and then choose the block of interest"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="AssistantTutorial"]
+position = Vector2(647, 1352)
+texture = ExtResource("17_pou7a")
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]
