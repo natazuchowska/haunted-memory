@@ -71,6 +71,15 @@ unique_name_in_owner = true
 visible = false
 script = null
 
+[node name="Sprite2D" parent="MemoryBoard/HintBoard" index="0"]
+visible = false
+
+[node name="YAxis" parent="MemoryBoard/HintBoard" index="2"]
+visible = false
+
+[node name="XAxis" parent="MemoryBoard/HintBoard" index="3"]
+visible = false
+
 [node name="TextureButton" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="0"]
 texture_normal = ExtResource("3_42ps6")
 texture_pressed = ExtResource("4_4mk03")
@@ -398,6 +407,7 @@ texture_focused = ExtResource("4_iusmi")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("6_wtsu8")]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1436, 1086)
 scale = Vector2(2, 2)
