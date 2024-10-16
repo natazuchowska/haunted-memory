@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=28 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bkrt5lqp0bh2q" path="res://assets/hint symbols/hint_cat.png" id="5_ayqrg"]
 [ext_resource type="Texture2D" uid="uid://ckyq3646f52ch" path="res://assets/hint symbols/hint_p.png" id="6_vegub"]
 [ext_resource type="Texture2D" uid="uid://b7an42jbcpw7" path="res://assets/hint symbols/hint_pac_man.png" id="7_7a0bp"]
-[ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="7_bq4dr"]
 [ext_resource type="Texture2D" uid="uid://dinqottkbefbp" path="res://assets/hint symbols/hint_wow.png" id="7_y4tor"]
 [ext_resource type="PackedScene" uid="uid://cmtqclx5tfifm" path="res://scenes/life_bar2.tscn" id="8_cvu6x"]
 [ext_resource type="Texture2D" uid="uid://lpn4bfgncf70" path="res://assets/hint symbols/hint_plus.png" id="8_nlosx"]
@@ -225,11 +224,6 @@ texture_focused = ExtResource("3_k6v81")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
-
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_bq4dr")
-volume_db = -10.0
-autoplay = true
 
 [node name="LivesLeft" type="Label" parent="."]
 offset_left = -2298.0

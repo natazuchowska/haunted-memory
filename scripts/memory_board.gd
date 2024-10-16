@@ -218,6 +218,7 @@ func check_card2(c): # second card picked
 		if mistakes_left <= 0:
 			wrong_tries_count.text = ("YOU LOSE!!")
 			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+		
 		# LEVEL 1 SWAPPING BUTTONS -> after 3rd mistake
 		elif wrong_count == 3 && level == 1:
 			print("LEVEL: " + str(level))
@@ -231,6 +232,28 @@ func check_card2(c): # second card picked
 			swap_rows()
 		# LEVEL 2 SWAPPING ROWS -> after 4th mistake
 		elif wrong_count == 4 && level == 2:
+			print("LEVEL: " + str(level))
+			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			
+			for x in children: #block mouse input while swapping rows
+				cards = x.get_children(false) # cards in a certain row
+				for b in cards:
+					if b.texture_normal != b.texture_disabled:
+						b.mouse_filter = 2 # ignore input while animation is playing
+			swap_rows()
+		# LEVEL 3 SWAPPING BLOCKS
+		elif wrong_count == 4 && level == 3:
+			print("LEVEL: " + str(level))
+			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			
+			for x in children: #block mouse input while swapping rows
+				cards = x.get_children(false) # cards in a certain row
+				for b in cards:
+					if b.texture_normal != b.texture_disabled:
+						b.mouse_filter = 2 # ignore input while animation is playing
+			swap_rows()
+		# LEVEL 3 SWAPPING ROWS
+		elif wrong_count == 7 && level == 3:
 			print("LEVEL: " + str(level))
 			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
 			
@@ -287,7 +310,7 @@ func swap_rows():
 		await get_tree().create_timer(2.0).timeout
 		
 	elif Global.get_level() == 2:
-		# switch row 1 with row 3
+		# switch row 1 with row 2
 		$AnimationPlayer.play("row_switch")
 		$GhostSound.play()
 		await get_tree().create_timer(2.0).timeout
@@ -311,7 +334,26 @@ func swap_rows():
 		await get_tree().create_timer(2.0).timeout
 		
 	elif Global.get_level() == 3:
-		pass
+		# switch row 1 with row 6
+		$AnimationPlayer.play("row3_switch")
+		$GhostSound.play()
+		await get_tree().create_timer(2.0).timeout
+		$AnimationPlayer.play("row4_switch")
+		$GhostSound.play()
+		await get_tree().create_timer(2.0).timeout
+		
+		$VBoxContainer.move_child(children[3], 2) # swap 2 middle rows
+		
+		# interchange the hint rows BELOW accordingly
+		%HintBoard/VBoxContainer.move_child(hint_slots[3], 2) # swap the same hint rows
+		
+		$AnimationPlayer.play_backwards("row3_switch")
+		$GhostSound.play()
+		await get_tree().create_timer(2.0).timeout
+		$AnimationPlayer.play_backwards("row4_switch")
+		$GhostSound.play()
+		await get_tree().create_timer(2.0).timeout
+		
 	
 	
 	for x in children: #unlock memory blocks

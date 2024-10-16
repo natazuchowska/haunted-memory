@@ -79,3 +79,11 @@ texture_pressed = ExtResource("2_bt4f2")
 texture_hover = ExtResource("2_bt4f2")
 texture_disabled = ExtResource("3_2d15p")
 texture_focused = ExtResource("2_bt4f2")
+
+[node name="Button9" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_bt4f2")
+texture_pressed = ExtResource("2_bt4f2")
+texture_hover = ExtResource("2_bt4f2")
+texture_disabled = ExtResource("3_2d15p")
+texture_focused = ExtResource("2_bt4f2")
