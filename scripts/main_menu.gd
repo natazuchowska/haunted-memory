@@ -4,14 +4,14 @@ extends Control
 func _ready():
 	GameMusic.play_music_menu()
 	
-	$VBoxContainer/StartButton.connect("pressed", start_game)
-	$VBoxContainer/SettingsButton.connect("pressed", go_to_settings)
-	$VBoxContainer/QuitButton.connect("pressed", quit_game)
+	$MenuContainer/VBoxContainer/StartButton.connect("pressed", start_game)
+	$MenuContainer/VBoxContainer/SettingsButton.connect("pressed", go_to_settings)
+	$MenuContainer/VBoxContainer/QuitButton.connect("pressed", quit_game)
 	
 	#$Label.text = tr("GAME_TITLE")
-	$VBoxContainer/StartButton/Label.text = tr("START")
-	$VBoxContainer/SettingsButton/Label.text = tr("SETTINGS")
-	$VBoxContainer/QuitButton/Label.text = tr("QUIT")
+	$MenuContainer/VBoxContainer/StartButton/Label.text = tr("START")
+	$MenuContainer/VBoxContainer/SettingsButton/Label.text = tr("SETTINGS")
+	$MenuContainer/VBoxContainer/QuitButton/Label.text = tr("QUIT")
 	
 	
 func start_game():

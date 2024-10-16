@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=29 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="20_bqnfe"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="20_vvatp"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="20_xhytv"]
+[ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="22_ely1g"]
+[ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="23_fome7"]
 
 [sub_resource type="Animation" id="Animation_7ohmy"]
 resource_name = "start_scene"
@@ -70,8 +72,8 @@ texture = ExtResource("1_62dgc")
 
 [node name="MemoryBoard" parent="." instance=ExtResource("2_mpxrq")]
 unique_name_in_owner = true
-position = Vector2(891, 0)
-scale = Vector2(0.9, 0.9)
+position = Vector2(913, 0)
+scale = Vector2(0.85, 0.85)
 
 [node name="HintBoard" parent="MemoryBoard" instance=ExtResource("2_mpxrq")]
 unique_name_in_owner = true
@@ -241,10 +243,10 @@ text = "mistakes left:"
 
 [node name="LifeBar" parent="LivesLeft" instance=ExtResource("8_cvu6x")]
 unique_name_in_owner = true
-position = Vector2(-115, 263)
+position = Vector2(-54, 263)
 
 [node name="Surprise" type="Sprite2D" parent="LivesLeft"]
-position = Vector2(704, 332)
+position = Vector2(389, 332)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("20_vvatp")
 
@@ -267,7 +269,31 @@ text = "questions left:"
 
 [node name="QuestionBar" parent="Assistant/QuestionsLeftLabel" index="0" instance=ExtResource("8_cvu6x")]
 unique_name_in_owner = true
-position = Vector2(-30, 256)
+position = Vector2(-229, 256)
+
+[node name="Button7" type="TextureButton" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="6"]
+layout_mode = 2
+texture_normal = ExtResource("22_ely1g")
+texture_pressed = ExtResource("22_ely1g")
+texture_hover = ExtResource("22_ely1g")
+texture_disabled = ExtResource("23_fome7")
+texture_focused = ExtResource("22_ely1g")
+
+[node name="Button8" type="TextureButton" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="7"]
+layout_mode = 2
+texture_normal = ExtResource("22_ely1g")
+texture_pressed = ExtResource("22_ely1g")
+texture_hover = ExtResource("22_ely1g")
+texture_disabled = ExtResource("23_fome7")
+texture_focused = ExtResource("22_ely1g")
+
+[node name="Button9" type="TextureButton" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="8"]
+layout_mode = 2
+texture_normal = ExtResource("22_ely1g")
+texture_pressed = ExtResource("22_ely1g")
+texture_hover = ExtResource("22_ely1g")
+texture_disabled = ExtResource("23_fome7")
+texture_focused = ExtResource("22_ely1g")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_336fr")]
 unique_name_in_owner = true
@@ -283,6 +309,11 @@ libraries = {
 
 [node name="ChangeScene" parent="." instance=ExtResource("20_bqnfe")]
 unique_name_in_owner = true
+offset_left = -2302.0
+offset_top = -1294.0
+offset_right = -2302.0
+offset_bottom = -1294.0
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]
+[editable path="Assistant/QuestionsLeftLabel/QuestionBar"]

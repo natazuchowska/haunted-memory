@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=24 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_iyl53"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="10_gtgtg"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="15_4nhfw"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="15_7xe26"]
+[ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="17_miao3"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="17_q7m4a"]
+[ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="18_npq6q"]
 
 [sub_resource type="Animation" id="Animation_kocpt"]
 length = 0.001
@@ -199,10 +201,15 @@ vertical_alignment = 1
 
 [node name="QuestionBar" parent="Assistant/QuestionsLeftLabel" index="0" instance=ExtResource("8_0rjya")]
 unique_name_in_owner = true
-position = Vector2(452, 225)
+position = Vector2(260, 225)
 
-[node name="Button" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="0"]
-visible = false
+[node name="Button6" type="TextureButton" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="5"]
+layout_mode = 2
+texture_normal = ExtResource("17_miao3")
+texture_pressed = ExtResource("17_miao3")
+texture_hover = ExtResource("17_miao3")
+texture_disabled = ExtResource("18_npq6q")
+texture_focused = ExtResource("17_miao3")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_mixht")]
 unique_name_in_owner = true
@@ -225,5 +232,6 @@ offset_right = -2304.0
 offset_bottom = -1296.0
 
 [editable path="MemoryBoard/HintBoard"]
+[editable path="LivesLeft/LifeBar"]
 [editable path="Assistant"]
 [editable path="Assistant/QuestionsLeftLabel/QuestionBar"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddtok1s33umoj"]
+[gd_scene load_steps=12 format=3 uid="uid://ddtok1s33umoj"]
 
 [ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="1_piux1"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_rawig"]
@@ -25,14 +25,16 @@ position = Vector2(4, 254)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_4xjbw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MenuContainer" type="Node2D" parent="."]
+position = Vector2(0, 9)
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuContainer"]
 modulate = Color(0.86565, 0.8613, 0.87, 1)
-position = Vector2(2.19345e-05, 243)
+position = Vector2(0, 243)
 scale = Vector2(0.64468, 0.530745)
 texture = ExtResource("1_piux1")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
+[node name="Label" type="Label" parent="MenuContainer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -49,8 +51,7 @@ text = "HAUNTED MEMO
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
 offset_left = -110.0
 offset_top = 179.0
 offset_right = 1046.0
@@ -58,13 +59,13 @@ offset_bottom = 3721.0
 scale = Vector2(0.2, 0.2)
 theme_override_constants/separation = 40
 
-[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_s0u7b")
 texture_pressed = ExtResource("3_a1yya")
 texture_hover = ExtResource("4_l6hgp")
 
-[node name="Label" type="Label" parent="VBoxContainer/StartButton"]
+[node name="Label" type="Label" parent="MenuContainer/VBoxContainer/StartButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,13 +85,13 @@ text = "start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_s0u7b")
 texture_pressed = ExtResource("3_a1yya")
 texture_hover = ExtResource("4_l6hgp")
 
-[node name="Label" type="Label" parent="VBoxContainer/SettingsButton"]
+[node name="Label" type="Label" parent="MenuContainer/VBoxContainer/SettingsButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,13 +111,13 @@ text = "settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_s0u7b")
 texture_pressed = ExtResource("3_a1yya")
 texture_hover = ExtResource("4_l6hgp")
 
-[node name="Label" type="Label" parent="VBoxContainer/QuitButton"]
+[node name="Label" type="Label" parent="MenuContainer/VBoxContainer/QuitButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -139,3 +140,9 @@ vertical_alignment = 1
 
 [node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_iv8ej")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1h8q1")
+}
+autoplay = "levitate"

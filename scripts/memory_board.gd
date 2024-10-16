@@ -31,6 +31,9 @@ var swapping_rows = false
 
 var tutorial_count = 0
 
+var questions_left = 4
+var mistakes_left = 100
+
 func _ready():
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
@@ -38,6 +41,17 @@ func _ready():
 	# play opening scene animation
 	%ChangeScene/AnimationPlayer.play("scene_start")
 	$"../AnimationPlayer".play("start_scene")
+	
+	# check the current level
+	level = Global.get_level()
+	
+	# set the number of questions and mistakes based on the level 
+	questions_left = %QuestionBar/VBoxContainer/HBoxContainer.get_children(false).size() 
+	mistakes_left = %LifeBar/VBoxContainer/HBoxContainer.get_children(false).size()
+	
+	print("questions for start: " + str(questions_left))
+	print("mistakes for start: "+ str(mistakes_left))
+	# ===========================================================
 	
 	children = v_box_container.get_children(false) # array of rows
 	
@@ -180,10 +194,12 @@ func check_card2(c): # second card picked
 				# for all not yet solved cards
 				if b.texture_normal != b.texture_disabled:
 					b.mouse_filter = 0 
-	
+		
+		mistakes_left -= 1 # take 1 life
+		%LifeBar.decrease_life() # take 1 bubble away
 	
 		# DO THINGS BASED ON NUMBER OF MISTAKES =========================================
-		var level = Global.which_lvl # which level we are in
+		# var level = Global.which_lvl # which level we are in
 		
 		# BASED ON LEVEL SWAP DIFFERENT ELEMENTS ========================================
 		#if wrong_count >=5:
@@ -199,12 +215,25 @@ func check_card2(c): # second card picked
 			#swap_rows()
 			#
 			#
-		if wrong_count >= 5:
+			
+		if mistakes_left <= 0:
 			wrong_tries_count.text = ("YOU LOSE!!")
 			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
-		elif wrong_count == 3:
+		# LEVEL 1 SWAPPING BUTTONS -> after 3rd mistake
+		elif wrong_count == 3 && level == 1:
 			print("LEVEL: " + str(level))
-			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			
+			for x in children: #block mouse input while swapping rows
+				cards = x.get_children(false) # cards in a certain row
+				for b in cards:
+					if b.texture_normal != b.texture_disabled:
+						b.mouse_filter = 2 # ignore input while animation is playing
+			swap_rows()
+		# LEVEL 2 SWAPPING ROWS -> after 4th mistake
+		elif wrong_count == 4 && level == 2:
+			print("LEVEL: " + str(level))
+			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
 			
 			for x in children: #block mouse input while swapping rows
 				cards = x.get_children(false) # cards in a certain row
@@ -213,7 +242,8 @@ func check_card2(c): # second card picked
 						b.mouse_filter = 2 # ignore input while animation is playing
 			swap_rows()
 		else:
-			wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			pass
 	
 		#for x in children:
 			#cards = x.get_children(false) # cards in a certain row
@@ -316,7 +346,9 @@ func show_hint(h):
 		print("showing hint!")
 		#%Assistant/AssistantSprite.play("talk") # play assistant animation
 		#%Assistant/HintBubble/LIE.text = str(h.texture_disabled.get_path().get_file())
-		%Assistant.questions_left -= 1
+		
+		questions_left -= 1
+		%Assistant.questions_left = questions_left
 		%HintDisplay.visible = true
 		
 		%HintDisplay.set_symbol(h.texture_disabled)
@@ -351,4 +383,5 @@ func show_hint(h):
 	#print(h.texture_disabled.get_path().get_file())
 	
 	%Assistant/QuestionsLeftLabel.text = (tr("QUESTIONS_LEFT") + ":")  #+ ": " + str(%Assistant.questions_left))
+	
 	%QuestionBar.decrease_life()

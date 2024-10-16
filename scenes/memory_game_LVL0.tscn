@@ -280,3 +280,4 @@ horizontal_alignment = 1
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]
+[editable path="Assistant/QuestionBar"]
