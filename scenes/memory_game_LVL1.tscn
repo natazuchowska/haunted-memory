@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=22 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_iyl53"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c0v3vka1sdjvt" path="res://assets/hint symbols/hint_rainbow.png" id="8_y1lei"]
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="9_oqvux"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="10_gtgtg"]
+[ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="15_4nhfw"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="15_7xe26"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="17_q7m4a"]
 
@@ -175,6 +176,11 @@ text = "Mistakes left:"
 [node name="LifeBar" parent="LivesLeft" instance=ExtResource("8_0rjya")]
 unique_name_in_owner = true
 position = Vector2(53, 247)
+
+[node name="Surprise" type="Sprite2D" parent="LivesLeft"]
+position = Vector2(496, 316)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("15_4nhfw")
 
 [node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
 unique_name_in_owner = true

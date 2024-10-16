@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=27 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -8,21 +8,60 @@
 [ext_resource type="PackedScene" uid="uid://ccxsle1bheae6" path="res://scenes/memory_board4x5.tscn" id="2_mpxrq"]
 [ext_resource type="Texture2D" uid="uid://bccrhcoxox0us" path="res://assets/memo blocks/memo_card_ask.png" id="3_k6v81"]
 [ext_resource type="Texture2D" uid="uid://b5vctl6557och" path="res://assets/memo blocks/memo_card_select_hover.png" id="4_u3pvh"]
-[ext_resource type="Texture2D" uid="uid://cpt22ftixd5ed" path="res://assets/memo blocks/eye.png" id="4_ulow6"]
 [ext_resource type="Texture2D" uid="uid://bkrt5lqp0bh2q" path="res://assets/hint symbols/hint_cat.png" id="5_ayqrg"]
-[ext_resource type="Texture2D" uid="uid://dm33m04uvs08i" path="res://assets/memo blocks/snail.png" id="6_gm7n3"]
 [ext_resource type="Texture2D" uid="uid://ckyq3646f52ch" path="res://assets/hint symbols/hint_p.png" id="6_vegub"]
 [ext_resource type="Texture2D" uid="uid://b7an42jbcpw7" path="res://assets/hint symbols/hint_pac_man.png" id="7_7a0bp"]
 [ext_resource type="AudioStream" uid="uid://ikeddoj1cag1" path="res://assets/audio/background_music.wav" id="7_bq4dr"]
+[ext_resource type="Texture2D" uid="uid://dinqottkbefbp" path="res://assets/hint symbols/hint_wow.png" id="7_y4tor"]
 [ext_resource type="PackedScene" uid="uid://cmtqclx5tfifm" path="res://scenes/life_bar2.tscn" id="8_cvu6x"]
 [ext_resource type="Texture2D" uid="uid://lpn4bfgncf70" path="res://assets/hint symbols/hint_plus.png" id="8_nlosx"]
 [ext_resource type="Texture2D" uid="uid://c0v3vka1sdjvt" path="res://assets/hint symbols/hint_rainbow.png" id="9_qcdx7"]
+[ext_resource type="Texture2D" uid="uid://cbmcf41r6bj83" path="res://assets/hint symbols/hint_sunset.png" id="10_t5y00"]
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="10_w288t"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="11_d0yu8"]
 [ext_resource type="Texture2D" uid="uid://boktykkbhllnu" path="res://assets/hint symbols/hint_hanger.png" id="12_iwe6a"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="20_bqnfe"]
+[ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="20_vvatp"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="20_xhytv"]
+
+[sub_resource type="Animation" id="Animation_7ohmy"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wd586"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tk2ft"]
+_data = {
+"RESET": SubResource("Animation_wd586"),
+"start_scene": SubResource("Animation_7ohmy")
+}
 
 [node name="MemoryGame" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_uckwq")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -46,7 +85,7 @@ visible = false
 texture_normal = ExtResource("2_0q5gj")
 texture_pressed = ExtResource("3_k6v81")
 texture_hover = ExtResource("4_u3pvh")
-texture_disabled = ExtResource("4_ulow6")
+texture_disabled = ExtResource("7_y4tor")
 texture_focused = ExtResource("3_k6v81")
 
 [node name="TextureButton2" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="1"]
@@ -67,7 +106,7 @@ texture_focused = ExtResource("3_k6v81")
 texture_normal = ExtResource("2_0q5gj")
 texture_pressed = ExtResource("3_k6v81")
 texture_hover = ExtResource("4_u3pvh")
-texture_disabled = ExtResource("4_ulow6")
+texture_disabled = ExtResource("10_t5y00")
 texture_focused = ExtResource("3_k6v81")
 
 [node name="TextureButton5" parent="MemoryBoard/HintBoard/VBoxContainer/Row1" index="4"]
@@ -95,7 +134,7 @@ texture_focused = ExtResource("3_k6v81")
 texture_normal = ExtResource("2_0q5gj")
 texture_pressed = ExtResource("3_k6v81")
 texture_hover = ExtResource("4_u3pvh")
-texture_disabled = ExtResource("4_ulow6")
+texture_disabled = ExtResource("7_y4tor")
 texture_focused = ExtResource("3_k6v81")
 
 [node name="TextureButton4" parent="MemoryBoard/HintBoard/VBoxContainer/Row2" index="3"]
@@ -179,7 +218,7 @@ texture_focused = ExtResource("3_k6v81")
 texture_normal = ExtResource("2_0q5gj")
 texture_pressed = ExtResource("3_k6v81")
 texture_hover = ExtResource("4_u3pvh")
-texture_disabled = ExtResource("6_gm7n3")
+texture_disabled = ExtResource("10_t5y00")
 texture_focused = ExtResource("3_k6v81")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -190,9 +229,24 @@ stream = ExtResource("7_bq4dr")
 volume_db = -10.0
 autoplay = true
 
-[node name="LifeBar" parent="." instance=ExtResource("8_cvu6x")]
+[node name="LivesLeft" type="Label" parent="."]
+offset_left = -2298.0
+offset_top = 631.0
+offset_right = -1293.0
+offset_bottom = 814.0
+theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
+theme_override_fonts/font = ExtResource("20_xhytv")
+theme_override_font_sizes/font_size = 160
+text = "mistakes left:"
+
+[node name="LifeBar" parent="LivesLeft" instance=ExtResource("8_cvu6x")]
 unique_name_in_owner = true
-position = Vector2(-2761, 1369)
+position = Vector2(-115, 263)
+
+[node name="Surprise" type="Sprite2D" parent="LivesLeft"]
+position = Vector2(704, 332)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("20_vvatp")
 
 [node name="Assistant" parent="." instance=ExtResource("1_dcj7y")]
 unique_name_in_owner = true
@@ -202,10 +256,18 @@ position = Vector2(-1037, 265)
 position = Vector2(-756, -343)
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
-offset_left = -1333.0
-offset_top = -135.0
-offset_right = -178.0
-offset_bottom = 70.0
+offset_left = -1352.0
+offset_top = -116.0
+offset_right = -197.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
+theme_override_fonts/font = ExtResource("20_xhytv")
+theme_override_font_sizes/font_size = 160
+text = "questions left:"
+
+[node name="QuestionBar" parent="Assistant/QuestionsLeftLabel" index="0" instance=ExtResource("8_cvu6x")]
+unique_name_in_owner = true
+position = Vector2(-30, 256)
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_336fr")]
 unique_name_in_owner = true
@@ -213,6 +275,11 @@ visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(271, 184)
 scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tk2ft")
+}
 
 [node name="ChangeScene" parent="." instance=ExtResource("20_bqnfe")]
 unique_name_in_owner = true

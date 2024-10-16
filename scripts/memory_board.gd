@@ -120,6 +120,7 @@ func check_card2(c): # second card picked
 	
 	btn2_pressed = false
 	
+	# NEED FIXING THE FLIPPING BLOCKS BUG!!
 	if card1.texture_pressed.get_path().get_file() == card2.texture_pressed.get_path().get_file() && card1!=card2:
 		await get_tree().create_timer(0.5).timeout # wait 1 sec before hiding cards
 		how_many_good += 1
@@ -160,15 +161,15 @@ func check_card2(c): # second card picked
 		for x in children:
 			cards = x.get_children(false) # cards in a certain row
 			for b in cards:
-				if b!=card1 && b!=card2:
-					b.mouse_filter = 0 # ignore input while animation is playing
+				# for all cards that are not the currently selected ones and not any already solved ones
+				if b!=card1 && b!=card2 && b.texture_normal != b.texture_disabled:
+					b.mouse_filter = 0 # allow input detection again
 			
-	else:
+	else: # if chosen blocks do not match
 		await get_tree().create_timer(0.5).timeout
 		card1.texture_normal = normal_texture # hide back the card
 		card2.texture_focused = normal_texture
 		card2.texture_pressed = normal_texture
-		
 		
 		wrong_count += 1
 		%LifeBar.decrease_life()
@@ -176,8 +177,9 @@ func check_card2(c): # second card picked
 		for x in children:
 			cards = x.get_children(false) # cards in a certain row
 			for b in cards:
+				# for all not yet solved cards
 				if b.texture_normal != b.texture_disabled:
-					b.mouse_filter = 0 # ignore input while animation is playing
+					b.mouse_filter = 0 
 	
 	
 		# DO THINGS BASED ON NUMBER OF MISTAKES =========================================
@@ -220,7 +222,8 @@ func check_card2(c): # second card picked
 					#b.mouse_filter = 0 # ignore input while animation is playing
 	#
 	
-	card1.mouse_filter = 0 # enable input detection on first block again
+		# if cards didn't match
+		card1.mouse_filter = 0 # enable input detection on first block again
 		
 func swap_rows():
 	swapping_rows = true
