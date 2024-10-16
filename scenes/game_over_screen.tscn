@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_2qkrh"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="2_rb2qo"]
 [ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="3_3o2ug"]
-[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="3_o136p"]
-[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="4_er3gb"]
-[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="5_vtm83"]
+[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/UI/button.png" id="3_o136p"]
+[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/UI/button_pressed.png" id="4_er3gb"]
+[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/UI/button_hover.png" id="5_vtm83"]
 [ext_resource type="AudioStream" uid="uid://cveojv1csao1r" path="res://assets/audio/button_click.wav" id="8_vfove"]
 
 [node name="GameOverScreen" type="Node2D"]

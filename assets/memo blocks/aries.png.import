@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfehi180lsly4"
-path="res://.godot/imported/button_pressed.png-72c3921d1f8d6c8c935f804481f3e257.ctex"
+uid="uid://bav01l36u3ud5"
+path="res://.godot/imported/aries.png-f95a50246b3fcfd6d4407d51e6e71473.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/button_pressed.png"
-dest_files=["res://.godot/imported/button_pressed.png-72c3921d1f8d6c8c935f804481f3e257.ctex"]
+source_file="res://assets/memo blocks/aries.png"
+dest_files=["res://.godot/imported/aries.png-f95a50246b3fcfd6d4407d51e6e71473.ctex"]
 
 [params]
 

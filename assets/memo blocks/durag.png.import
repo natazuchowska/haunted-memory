@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs7xk3ns4dr4h"
-path="res://.godot/imported/grab.png-5c7c745684840687e0a113f4b0b4d61d.ctex"
+uid="uid://b2uu2xuxfkpyu"
+path="res://.godot/imported/durag.png-bf93d243c93b2854d1d3976af0107a24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/grab.png"
-dest_files=["res://.godot/imported/grab.png-5c7c745684840687e0a113f4b0b4d61d.ctex"]
+source_file="res://assets/memo blocks/durag.png"
+dest_files=["res://.godot/imported/durag.png-bf93d243c93b2854d1d3976af0107a24.ctex"]
 
 [params]
 

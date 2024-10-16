@@ -186,7 +186,8 @@ func check_card2(c): # second card picked
 		card2.texture_pressed = normal_texture
 		
 		wrong_count += 1
-		%LifeBar.decrease_life()
+		mistakes_left -= 1 # take 1 life
+		%LifeBar.decrease_life() # take 1 bubble away
 		
 		for x in children:
 			cards = x.get_children(false) # cards in a certain row
@@ -195,8 +196,6 @@ func check_card2(c): # second card picked
 				if b.texture_normal != b.texture_disabled:
 					b.mouse_filter = 0 
 		
-		mistakes_left -= 1 # take 1 life
-		%LifeBar.decrease_life() # take 1 bubble away
 	
 		# DO THINGS BASED ON NUMBER OF MISTAKES =========================================
 		# var level = Global.which_lvl # which level we are in

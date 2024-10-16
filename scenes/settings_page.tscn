@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://ja0xq5tdwo4w"]
+[gd_scene load_steps=14 format=3 uid="uid://ja0xq5tdwo4w"]
 
 [ext_resource type="Texture2D" uid="uid://df5jy5qg81m8o" path="res://assets/language icons/icons8-uk-48.png" id="1_35wbb"]
 [ext_resource type="Script" path="res://scripts/settings_page.gd" id="1_hvuxw"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="2_gqflr"]
 [ext_resource type="Texture2D" uid="uid://de6xk3r46lvfy" path="res://assets/language icons/icons8-poland-48.png" id="2_qos6y"]
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_rpls1"]
+[ext_resource type="Texture2D" uid="uid://tvbboe5fwodj" path="res://assets/UI/box.png" id="3_fmofj"]
 [ext_resource type="Texture2D" uid="uid://bydnwu6o3b3lo" path="res://assets/language icons/icons8-france-48.png" id="3_ixikc"]
 [ext_resource type="PackedScene" uid="uid://xkhbr4wy44f3" path="res://scenes/volume_slider.tscn" id="4_nc5oy"]
-[ext_resource type="Texture2D" uid="uid://cb53u28q2ur7b" path="res://assets/slider.png" id="5_82oht"]
-[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/button.png" id="5_lg86q"]
-[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/button_pressed.png" id="6_mss1n"]
-[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/button_hover.png" id="7_j66of"]
+[ext_resource type="Texture2D" uid="uid://cb53u28q2ur7b" path="res://assets/UI/slider.png" id="5_82oht"]
+[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/UI/button.png" id="5_lg86q"]
+[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/UI/button_pressed.png" id="6_mss1n"]
+[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/UI/button_hover.png" id="7_j66of"]
 [ext_resource type="AudioStream" uid="uid://cveojv1csao1r" path="res://assets/audio/button_click.wav" id="12_qck1s"]
 
 [node name="SettingsPage" type="Control"]
@@ -28,24 +29,17 @@ position = Vector2(589, 337)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_rpls1")
 
-[node name="Display" type="Label" parent="."]
-layout_mode = 0
-offset_left = 270.0
-offset_top = 166.0
-offset_right = 394.0
-offset_bottom = 213.0
-theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
-theme_override_fonts/font = ExtResource("2_gqflr")
-theme_override_font_sizes/font_size = 40
-text = "display
-"
+[node name="Box" type="Sprite2D" parent="."]
+position = Vector2(575, 328)
+scale = Vector2(0.868208, 0.62874)
+texture = ExtResource("3_fmofj")
 
 [node name="Music" type="Label" parent="."]
 layout_mode = 0
-offset_left = 269.0
-offset_top = 259.0
-offset_right = 489.0
-offset_bottom = 314.0
+offset_left = 205.0
+offset_top = 214.0
+offset_right = 425.0
+offset_bottom = 269.0
 theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("2_gqflr")
 theme_override_font_sizes/font_size = 40
@@ -56,24 +50,24 @@ vertical_alignment = 1
 layout_mode = 1
 offset_left = 339.0
 offset_top = -24.0
-offset_right = 533.0
+offset_right = 481.0
 offset_bottom = 40.0
-value = 0.5
+value = 1.0
 rounded = false
 bus_name = "Music"
 
 [node name="Sprite2D" type="Sprite2D" parent="Music/MusicSlider"]
 show_behind_parent = true
-position = Vector2(213, 57)
-scale = Vector2(0.45269, 0.40051)
+position = Vector2(187.5, 57)
+scale = Vector2(0.40538, 0.40051)
 texture = ExtResource("5_82oht")
 
 [node name="SFX" type="Label" parent="."]
 layout_mode = 0
-offset_left = 267.0
-offset_top = 366.0
-offset_right = 634.0
-offset_bottom = 421.0
+offset_left = 203.0
+offset_top = 304.0
+offset_right = 570.0
+offset_bottom = 359.0
 theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("2_gqflr")
 theme_override_font_sizes/font_size = 40
@@ -84,16 +78,16 @@ vertical_alignment = 1
 layout_mode = 1
 offset_left = 341.0
 offset_top = -3.0
-offset_right = 392.0
+offset_right = 333.0
 offset_bottom = 3.0
-value = 0.75
+value = 1.0
 rounded = false
 bus_name = "SFX"
 
 [node name="Sprite2D" type="Sprite2D" parent="SFX/SFXSlider"]
 show_behind_parent = true
-position = Vector2(211.5, 27)
-scale = Vector2(0.453618, 0.377551)
+position = Vector2(187, 27)
+scale = Vector2(0.408163, 0.377551)
 texture = ExtResource("5_82oht")
 
 [node name="Language" type="Label" parent="."]
@@ -101,10 +95,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -304.0
-offset_top = 468.0
-offset_right = -60.0
-offset_bottom = 523.0
+offset_left = -368.0
+offset_top = 392.0
+offset_right = -124.0
+offset_bottom = 447.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("2_gqflr")
@@ -152,14 +146,15 @@ popup/item_2/id = 2
 
 [node name="GoBackButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 40.0
-offset_right = 74.0
-offset_bottom = 80.0
+offset_left = 807.0
+offset_top = 149.0
+offset_right = 2117.0
+offset_bottom = 729.0
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("5_lg86q")
 texture_pressed = ExtResource("6_mss1n")
 texture_hover = ExtResource("7_j66of")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="GoBackButton"]
 layout_mode = 1
@@ -176,7 +171,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("2_gqflr")
-theme_override_font_sizes/font_size = 220
+theme_override_font_sizes/font_size = 260
 text = "Go back"
 horizontal_alignment = 1
 

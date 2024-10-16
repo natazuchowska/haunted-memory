@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb53u28q2ur7b"
-path="res://.godot/imported/slider.png-0ae9312726c482ea6b8c8410fbfc83ab.ctex"
+uid="uid://lhprmpeoqk43"
+path="res://.godot/imported/ladybug.png-989f39ff3bf6ab2184a93ec4bf2629d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slider.png"
-dest_files=["res://.godot/imported/slider.png-0ae9312726c482ea6b8c8410fbfc83ab.ctex"]
+source_file="res://assets/memo blocks/ladybug.png"
+dest_files=["res://.godot/imported/ladybug.png-989f39ff3bf6ab2184a93ec4bf2629d2.ctex"]
 
 [params]
 
