@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0bp3t7prpoh0"]
+[gd_scene load_steps=38 format=3 uid="uid://c0bp3t7prpoh0"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_0jfk1"]
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_0skrm"]
@@ -31,7 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://jtbpycl61hve" path="res://assets/hint symbols/hint_division.png" id="19_rkqhf"]
 [ext_resource type="Texture2D" uid="uid://blbgpif14qno0" path="res://assets/hint symbols/hint_ladybug.png" id="20_p4ceh"]
 [ext_resource type="Texture2D" uid="uid://bben6g0hinrse" path="res://assets/hint symbols/hint_chair.png" id="21_5jvom"]
+[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="28_fnyvo"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="30_f1rps"]
+[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="32_4h6hp"]
 [ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="33_4pa7d"]
 
 [sub_resource type="Animation" id="Animation_0stlw"]
@@ -334,13 +336,14 @@ texture_disabled = ExtResource("21_5jvom")
 texture_focused = ExtResource("4_4mk03")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.2, 0.2)
+position = Vector2(-12, -29)
+zoom = Vector2(0.195, 0.195)
 
 [node name="LivesLeft" type="Label" parent="."]
 offset_left = -2281.0
-offset_top = 612.0
+offset_top = 787.0
 offset_right = -1276.0
-offset_bottom = 795.0
+offset_bottom = 970.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("2_xpnn5")
 theme_override_font_sizes/font_size = 160
@@ -361,9 +364,18 @@ position = Vector2(135, 324)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("30_f1rps")
 
+[node name="FrameBackground" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.101961, 0.137255, 1)
+position = Vector2(-1778, -518)
+scale = Vector2(0.566949, 0.789634)
+texture = ExtResource("28_fnyvo")
+
 [node name="Assistant" parent="." instance=ExtResource("1_0jfk1")]
 unique_name_in_owner = true
-position = Vector2(-2236, -630)
+position = Vector2(-2236, -484)
+
+[node name="AssistantSprite" parent="Assistant" index="0"]
+position = Vector2(425, -8)
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -119.0
@@ -405,6 +417,11 @@ texture_pressed = ExtResource("4_iusmi")
 texture_hover = ExtResource("4_iusmi")
 texture_disabled = ExtResource("5_vsxmh")
 texture_focused = ExtResource("4_iusmi")
+
+[node name="Frame" parent="Assistant" index="3"]
+position = Vector2(452, -19)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("32_4h6hp")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("6_wtsu8")]
 unique_name_in_owner = true

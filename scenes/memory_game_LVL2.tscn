@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=31 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -19,11 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://idnlaypql7l6" path="res://assets/hint symbols/hint_snail.png" id="10_w288t"]
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="11_d0yu8"]
 [ext_resource type="Texture2D" uid="uid://boktykkbhllnu" path="res://assets/hint symbols/hint_hanger.png" id="12_iwe6a"]
+[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="20_7ic7h"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="20_bqnfe"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="20_vvatp"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="20_xhytv"]
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="22_ely1g"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="23_fome7"]
+[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="24_5na0f"]
 [ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="25_75wh7"]
 
 [sub_resource type="Animation" id="Animation_7ohmy"]
@@ -228,9 +230,9 @@ zoom = Vector2(0.2, 0.2)
 
 [node name="LivesLeft" type="Label" parent="."]
 offset_left = -2298.0
-offset_top = 631.0
+offset_top = 796.0
 offset_right = -1293.0
-offset_bottom = 814.0
+offset_bottom = 979.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("20_xhytv")
 theme_override_font_sizes/font_size = 160
@@ -245,12 +247,18 @@ position = Vector2(389, 332)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("20_vvatp")
 
+[node name="FrameBackground" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.101961, 0.137255, 1)
+position = Vector2(-1805, -485)
+scale = Vector2(0.56822, 0.788415)
+texture = ExtResource("20_7ic7h")
+
 [node name="Assistant" parent="." instance=ExtResource("1_dcj7y")]
 unique_name_in_owner = true
-position = Vector2(-1037, 265)
+position = Vector2(-1037, 438)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
-position = Vector2(-756, -343)
+position = Vector2(-756, -914)
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -1352.0
@@ -289,6 +297,11 @@ texture_pressed = ExtResource("22_ely1g")
 texture_hover = ExtResource("22_ely1g")
 texture_disabled = ExtResource("23_fome7")
 texture_focused = ExtResource("22_ely1g")
+
+[node name="Frame" parent="Assistant" index="3"]
+position = Vector2(-767, -919)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("24_5na0f")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_336fr")]
 unique_name_in_owner = true

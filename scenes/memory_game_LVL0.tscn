@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=23 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_j84x5"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="7_jalms"]
 [ext_resource type="PackedScene" uid="uid://d2oimckjqu21n" path="res://scenes/life_bar.tscn" id="8_djra8"]
 [ext_resource type="Texture2D" uid="uid://bkrt5lqp0bh2q" path="res://assets/hint symbols/hint_cat.png" id="8_hrijr"]
+[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="11_sd1gp"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="13_2vh6c"]
+[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="14_322n1"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="15_3gggk"]
 [ext_resource type="Texture2D" uid="uid://bs0fic2orbjwk" path="res://assets/Grafika_bez_nazwy 47.png" id="16_dpjfu"]
 [ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="17_6njax"]
@@ -126,9 +128,15 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-2731, 1344)
 
+[node name="FrameBackground" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.101961, 0.137255, 1)
+position = Vector2(-1769.5, -541)
+scale = Vector2(0.583475, 0.780488)
+texture = ExtResource("11_sd1gp")
+
 [node name="Assistant" parent="." instance=ExtResource("1_jjr0j")]
 unique_name_in_owner = true
-position = Vector2(-1450, 397)
+position = Vector2(-1450, 348)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
 position = Vector2(-306, -938)
@@ -163,7 +171,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" parent="Assistant" index="3"]
-position = Vector2(-309, -977)
+position = Vector2(-309, -933)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("14_322n1")
 
 [node name="QuestionBar" parent="Assistant" instance=ExtResource("8_djra8")]
 unique_name_in_owner = true
