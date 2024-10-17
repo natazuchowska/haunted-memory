@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=24 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_j84x5"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
@@ -18,13 +18,29 @@
 [ext_resource type="Texture2D" uid="uid://bs0fic2orbjwk" path="res://assets/Grafika_bez_nazwy 47.png" id="16_dpjfu"]
 [ext_resource type="Texture2D" uid="uid://c6dgfmlyhh0rj" path="res://assets/Grafika_bez_nazwy 46.png" id="17_pou7a"]
 [ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="18_pioe0"]
+[ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="19_5tbfs"]
 
-[sub_resource type="Animation" id="Animation_5dwjt"]
-resource_name = "start_scene"
+[sub_resource type="Animation" id="Animation_h3hka"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("TransitionBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nbhke"]
+resource_name = "end_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,12 +50,25 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_h3hka"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_5dwjt"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bx5qe"]
 _data = {
 "RESET": SubResource("Animation_h3hka"),
+"end_scene": SubResource("Animation_nbhke"),
 "start_scene": SubResource("Animation_5dwjt")
 }
 
@@ -137,21 +166,6 @@ offset_bottom = 437.0
 [node name="HintBubble" parent="Assistant" index="1"]
 position = Vector2(-1687, -861)
 
-[node name="Label" parent="Assistant/HintBubble" index="0"]
-theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
-
-[node name="Label2" parent="Assistant/HintBubble" index="1"]
-theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
-
-[node name="Label3" parent="Assistant/HintBubble" index="2"]
-theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
-
-[node name="Label4" parent="Assistant/HintBubble" index="3"]
-theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0470588, 1)
-
-[node name="LIE" parent="Assistant/HintBubble" index="4"]
-theme_override_colors/font_color = Color(0.266667, 0.215686, 0.0313726, 1)
-
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -1085.0
 offset_top = -185.0
@@ -177,12 +191,6 @@ visible = false
 modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(704, 136)
 scale = Vector2(2, 2)
-
-[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_bx5qe")
-}
 
 [node name="ChangeScene" parent="." instance=ExtResource("15_3gggk")]
 unique_name_in_owner = true
@@ -290,6 +298,18 @@ unique_name_in_owner = true
 stream = ExtResource("18_pioe0")
 volume_db = 12.0
 bus = &"SFX"
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_bx5qe")
+}
+
+[node name="TransitionBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("19_5tbfs")
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

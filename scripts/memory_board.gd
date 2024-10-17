@@ -184,6 +184,7 @@ func check_card2(c): # second card picked
 			await get_tree().create_timer(1.0).timeout
 			Global.increase_level_num()
 			if Global.get_level() < Global.get_levels_size(): # still some levels left
+				%TransitionPlayer.play("end_scene")
 				#%ChangeScene/AnimationPlayer.play("scene_end")
 				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])

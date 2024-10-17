@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=31 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -20,11 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://bq12hcdj5gift" path="res://assets/hint symbols/hint_eye.png" id="11_d0yu8"]
 [ext_resource type="Texture2D" uid="uid://boktykkbhllnu" path="res://assets/hint symbols/hint_hanger.png" id="12_iwe6a"]
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="20_7ic7h"]
-[ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="20_bqnfe"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="20_vvatp"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="20_xhytv"]
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="22_ely1g"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="23_fome7"]
+[ext_resource type="PackedScene" uid="uid://i8gqt8ml5rhs" path="res://scenes/scene_transition.tscn" id="26_2yclr"]
 [ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="26_48ceo"]
 
 [sub_resource type="Animation" id="Animation_wd586"]
@@ -32,10 +32,22 @@ resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("SceneTransition:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneEndBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -47,7 +59,22 @@ resource_name = "start_scene"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("SceneTransition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ofy3e"]
+resource_name = "end_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneEndBackground:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,11 +87,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tk2ft"]
 _data = {
 "RESET": SubResource("Animation_wd586"),
+"end_scene": SubResource("Animation_ofy3e"),
 "start_scene": SubResource("Animation_7ohmy")
 }
 
 [node name="MemoryGame" type="Node2D"]
-modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_uckwq")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -315,23 +342,23 @@ modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(271, 184)
 scale = Vector2(2, 2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_tk2ft")
 }
-
-[node name="ChangeScene" parent="." instance=ExtResource("20_bqnfe")]
-unique_name_in_owner = true
-offset_left = -2302.0
-offset_top = -1294.0
-offset_right = -2302.0
-offset_bottom = -1294.0
 
 [node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("26_48ceo")
 volume_db = 12.0
 bus = &"SFX"
+
+[node name="SceneTransition" parent="." instance=ExtResource("26_2yclr")]
+scale = Vector2(2.5, 2.5)
+
+[node name="SceneEndBackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

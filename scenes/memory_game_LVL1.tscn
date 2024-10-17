@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=28 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_iyl53"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="17_miao3"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="18_npq6q"]
 [ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="21_dmdhe"]
+[ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="23_57kbg"]
 [ext_resource type="PackedScene" uid="uid://i8gqt8ml5rhs" path="res://scenes/scene_transition.tscn" id="23_lgnpe"]
 
 [sub_resource type="Animation" id="Animation_kocpt"]
@@ -60,6 +61,33 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.866667)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SceneEndBackground:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sjokf"]
+resource_name = "end_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneEndBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_136ps"]
@@ -105,6 +133,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggc25"]
 _data = {
 "RESET": SubResource("Animation_kocpt"),
+"end_scene": SubResource("Animation_sjokf"),
 "start_scene": SubResource("Animation_136ps")
 }
 
@@ -308,6 +337,11 @@ modulate = Color(0.137255, 0.0980392, 0.0509804, 1)
 
 [node name="LevelButton" parent="SceneTransition/TransitionBackground" index="1"]
 modulate = Color(1, 1, 1, 0.866667)
+
+[node name="SceneEndBackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("23_57kbg")
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="LivesLeft/LifeBar"]
