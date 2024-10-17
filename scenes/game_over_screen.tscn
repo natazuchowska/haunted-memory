@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_1ek6m"]
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_2qkrh"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="2_rb2qo"]
-[ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="3_3o2ug"]
+[ext_resource type="Texture2D" uid="uid://tvbboe5fwodj" path="res://assets/UI/box.png" id="3_jm6at"]
 [ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/UI/button.png" id="3_o136p"]
 [ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/UI/button_pressed.png" id="4_er3gb"]
 [ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/UI/button_hover.png" id="5_vtm83"]
@@ -21,10 +21,9 @@ texture = ExtResource("2_2qkrh")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.905769, 0.905769, 0.905769, 1)
-position = Vector2(575, 327)
+position = Vector2(575, 337)
 scale = Vector2(0.697321, 0.418312)
-texture = ExtResource("3_3o2ug")
+texture = ExtResource("3_jm6at")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8

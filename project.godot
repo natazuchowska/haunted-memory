@@ -42,4 +42,4 @@ check_card={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://game_tr.en.translation", "res://game_tr.fr.translation", "res://game_tr.pl.translation")
+locale/translations=PackedStringArray("res://haunted memo translation - Arkusz1.en.translation", "res://haunted memo translation - Arkusz1.fr.translation", "res://haunted memo translation - Arkusz1.pl.translation")

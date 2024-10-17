@@ -32,10 +32,12 @@ func set_language(index):
 	print("setting the language:" + str(index))
 	lang_id = index
 	
-	if index == 0:
+	if index == 0: # ENGLISH
 		TranslationServer.set_locale("en")
-	elif index == 1:
+	elif index == 1: # POLISH
 		TranslationServer.set_locale("pl")
+	elif index == 2: # FRENCH
+		TranslationServer.set_locale("fr")
 		
 	Global.set_language(index)
 	
@@ -48,6 +50,8 @@ func updateUI():
 	$Language/OptionButton.set_item_text(0, tr("ENGLISH"))
 	$Language/OptionButton.set_item_text(1, tr("POLISH"))
 	$Language/OptionButton.set_item_text(2, tr("FRENCH"))
+	
+	$GoBackButton/Label.text = tr("GO_BACK")
 	
 func return_to_menu():
 	$ButtonClick.play()

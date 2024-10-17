@@ -318,22 +318,23 @@ texture_focused = ExtResource("3_t2ir1")
 zoom = Vector2(0.2, 0.2)
 
 [node name="LivesLeft" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = -2343.0
+offset_left = -2527.0
 offset_top = 762.0
-offset_right = -1338.0
+offset_right = -1096.0
 offset_bottom = 945.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("15_7xe26")
 theme_override_font_sizes/font_size = 160
 text = "Mistakes left:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LifeBar" parent="LivesLeft" instance=ExtResource("8_0rjya")]
 unique_name_in_owner = true
-position = Vector2(53, 247)
+position = Vector2(258, 247)
 
 [node name="Surprise" type="Sprite2D" parent="LivesLeft"]
-position = Vector2(496, 316)
+position = Vector2(514, 316)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("15_4nhfw")
 
@@ -345,7 +346,6 @@ texture = ExtResource("16_rjqww")
 
 [node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 position = Vector2(-2268, -426)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]

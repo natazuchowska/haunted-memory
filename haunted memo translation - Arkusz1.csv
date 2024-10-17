@@ -1,0 +1,24 @@
+,en,pl,fr,de
+ENGLISH,English,Angielski,Anglais,
+POLISH,Polish,Polski,Polonais,
+FRENCH,French,Francuski,Français,
+SETTINGS,Settings,Ustawienia,Paramètres,
+GO_BACK,Go back,Powrót,Retourner,
+LANGUAGE,Language,Język,Langue,
+START,Start,Start,Jouer,
+QUIT,Quit,Wyjdź,Quitter,
+QUESTIONS_LEFT,Questions left,Pozostałe pytania,Questions Restantes,
+MISTAKES_LEFT,Mistakes left,Pozostałe błędy,Erreurs Restantes,
+YOU_LOST,You lost,Przegrałeś,Perdu,
+TRY_AGAIN,Try again,Spróbuj ponownie,Réessayer,
+MUSIC,Music,Muzyka,Musique,
+SOUND_EFFECTS,Sound effects,Efekty dźwiękowe,Effets Sonores,
+TUTORIAL_MSG_1,Click on a memory block to reveal it,Kliknij na bloczek memory by go odsłonić,Clique sur sur un bloc pour le retourner,
+TUTORIAL_MSG_2,Click on the ghost to ask a question and then choose the block of interest,Kliknij na ducha w celu zadania pytania a następnie wybierz bloczek o który chcesz zapytać,Clique sur le fantôme pour demander une question et choisis le bloc qui t'intéresse,
+TUTORIAL_MSG_3,"but remember! 
+ghost enjoy riddles, they won't always tell the truth...","Jednak pamiętaj! Duchy lubią zagadki, nie zawsze mówią więc prawdę","Mais sois prudent!
+Le fantôme adore les devinettes, et ne dira pas toujours la vérité...",
+TUTORIAL_MSG_4,"however, if you crack their code it can give you a big advantage",Jeśli jednak uda ci się złamać ich szyfr może to dać ci dużą przewagę,Mais si tu déchiffres son code tu auras un gros avantage,
+TUTORIAL_MSG_5,once you find all the matching pairs you will defeat your enemy,Odnajdując wszystkie pary na planszy pokonasz przeciwnika,Trouve toutes les paires pour battre ton adversaire,
+TUTORIAL_MSG_6,"Good job! 
+Now let's get started...",Dobra robota! A więc pora zaczynać...,"Bien joué! Maintenant, on peut commencer...",

@@ -36,6 +36,48 @@
 [ext_resource type="PackedScene" uid="uid://i8gqt8ml5rhs" path="res://scenes/scene_transition.tscn" id="35_krexd"]
 [ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="36_lnitf"]
 
+[sub_resource type="Animation" id="Animation_j7cmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneTransition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneEndBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qfj0v"]
+resource_name = "end_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SceneEndBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_0stlw"]
 resource_name = "start_scene"
 length = 3.5
@@ -136,48 +178,6 @@ tracks/7/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_j7cmv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SceneTransition:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SceneEndBackground:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_qfj0v"]
-resource_name = "end_scene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SceneEndBackground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ge14e"]
 _data = {
 "RESET": SubResource("Animation_j7cmv"),
@@ -195,7 +195,6 @@ texture = ExtResource("1_0skrm")
 
 [node name="MemoryBoard" parent="." instance=ExtResource("2_xxq3m")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1120, 5)
 scale = Vector2(0.65, 0.65)
 
@@ -470,33 +469,34 @@ position = Vector2(-12, -29)
 zoom = Vector2(0.195, 0.195)
 
 [node name="LivesLeft" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = -2281.0
+offset_left = -2613.0
 offset_top = 787.0
-offset_right = -1276.0
+offset_right = -973.0
 offset_bottom = 970.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("2_xpnn5")
 theme_override_font_sizes/font_size = 160
 text = "Mistakes left:
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LifeBar" parent="LivesLeft" instance=ExtResource("8_dmpv3")]
 unique_name_in_owner = true
-position = Vector2(-309, 256)
+position = Vector2(12, 254)
 
 [node name="Surprise" type="Sprite2D" parent="LivesLeft"]
-position = Vector2(697, 324)
+position = Vector2(1018, 322)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("30_f1rps")
 
 [node name="Surprise2" type="Sprite2D" parent="LivesLeft"]
-position = Vector2(135, 324)
+position = Vector2(456, 322)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("30_f1rps")
 
 [node name="FrameBackground" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0.0784314, 0.101961, 0.137255, 1)
 position = Vector2(-1778, -518)
 scale = Vector2(0.566949, 0.789634)
 texture = ExtResource("28_fnyvo")
@@ -516,21 +516,24 @@ offset_right = 539.0
 offset_bottom = 430.0
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
-offset_left = -119.0
+offset_left = -365.0
 offset_top = 771.0
-offset_right = 1036.0
+offset_right = 1277.0
 offset_bottom = 976.0
 theme_override_colors/font_color = Color(0.0784314, 0.101961, 0.137255, 1)
 theme_override_fonts/font = ExtResource("2_xpnn5")
 theme_override_font_sizes/font_size = 160
 text = "questions left:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuestionBar" parent="Assistant/QuestionsLeftLabel" index="0" instance=ExtResource("8_dmpv3")]
 unique_name_in_owner = true
-position = Vector2(-409, 238)
+position = Vector2(-261, 238)
 
 [node name="VBoxContainer" parent="Assistant/QuestionsLeftLabel/QuestionBar" index="0"]
-offset_right = 4400.0
+offset_left = 22.0
+offset_right = 4422.0
 
 [node name="Button10" type="TextureButton" parent="Assistant/QuestionsLeftLabel/QuestionBar/VBoxContainer/HBoxContainer" index="9"]
 layout_mode = 2
@@ -587,6 +590,9 @@ modulate = Color(0.14, 0.10031, 0.0518, 0)
 
 [node name="LevelButton" parent="SceneTransition/TransitionBackground" index="1"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="Label" parent="SceneTransition/TransitionBackground/LevelButton" index="0"]
+text = "level 3"
 
 [node name="SceneEndBackground" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
