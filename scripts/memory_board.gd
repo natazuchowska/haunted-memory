@@ -34,13 +34,16 @@ var tutorial_count = 0
 var questions_left = 4
 var mistakes_left = 100
 
+var cursor_hand = preload("res://assets/UI/cursor_hand.png")
+var cursor_normal = preload("res://assets/UI/cursor_normal.png")
+
 func _ready():
 	# load the normal texture
 	normal_texture = $VBoxContainer/Row1/TextureButton.texture_normal
 	
 	# play opening scene animation
-	%ChangeScene/AnimationPlayer.play("scene_start")
-	$"../AnimationPlayer".play("start_scene")
+	%TransitionPlayer.play("start_scene")
+	#$"../AnimationPlayer".play("start_scene")
 	
 	# check the current level
 	level = Global.get_level()
@@ -59,6 +62,9 @@ func _ready():
 		cards = x.get_children(false) # cards in a certain row
 		for c in cards:
 			c.connect("pressed", check_card.bind(c))
+			# change cursor icon to hand when over memory blocks
+			c.connect("mouse_entered", set_cursor)
+			c.connect("mouse_exited", reset_cursor)
 			win_count += 1
 	win_count /= 2
 	
@@ -67,10 +73,21 @@ func _ready():
 		var card_hints = x.get_children(false)
 		for h in card_hints:
 			h.connect("pressed", show_hint.bind(h))
+			# change cursor icon to hand when over memory blocks
+			h.connect("mouse_entered", set_cursor)
+			h.connect("mouse_exited", reset_cursor)
 			
 	wrong_count = 0
 	how_many_good = 0
 	
+# cursor icon operations ===============================================================
+func set_cursor():
+	Input.set_custom_mouse_cursor(cursor_hand, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+	
+func reset_cursor():
+	Input.set_custom_mouse_cursor(cursor_normal, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+# =======================================================================================
+
 func check_card(c):
 			
 	if !assistant.ask_question:
@@ -167,7 +184,7 @@ func check_card2(c): # second card picked
 			await get_tree().create_timer(1.0).timeout
 			Global.increase_level_num()
 			if Global.get_level() < Global.get_levels_size(): # still some levels left
-				%ChangeScene/AnimationPlayer.play("scene_end")
+				#%ChangeScene/AnimationPlayer.play("scene_end")
 				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])
 			else: # game won so play cutscene
@@ -190,6 +207,7 @@ func check_card2(c): # second card picked
 		mistakes_left -= 1 # take 1 life
 		%LifeBar.decrease_life() # take 1 bubble away
 		
+		# allow mouse input on all unsolved blocks again
 		for x in children:
 			cards = x.get_children(false) # cards in a certain row
 			for b in cards:
@@ -197,87 +215,70 @@ func check_card2(c): # second card picked
 				if b.texture_normal != b.texture_disabled:
 					b.mouse_filter = 0 
 		
-	
-		# DO THINGS BASED ON NUMBER OF MISTAKES =========================================
-		# var level = Global.which_lvl # which level we are in
+		# level 0 -> no swapping rows and no losing
+		if Global.get_level() != 0:
+			if mistakes_left <= 0:
+				wrong_tries_count.text = ("YOU LOSE!!")
+				get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+			
+			# LEVEL 1 SWAPPING BUTTONS -> after 3rd mistake
+			elif wrong_count == 3 && level == 1:
+				print("LEVEL: " + str(level))
+				#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+				
+				for x in children: #block mouse input while swapping rows
+					cards = x.get_children(false) # cards in a certain row
+					for b in cards:
+						if b.texture_normal != b.texture_disabled:
+							b.mouse_filter = 2 # ignore input while animation is playing
+				swap_rows()
+			# LEVEL 2 SWAPPING ROWS -> after 4th mistake
+			elif wrong_count == 4 && level == 2:
+				print("LEVEL: " + str(level))
+				#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+				
+				for x in children: #block mouse input while swapping rows
+					cards = x.get_children(false) # cards in a certain row
+					for b in cards:
+						if b.texture_normal != b.texture_disabled:
+							b.mouse_filter = 2 # ignore input while animation is playing
+				swap_rows()
+			# LEVEL 3 SWAPPING BLOCKS
+			elif wrong_count == 4 && level == 3:
+				print("LEVEL: " + str(level))
+				#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+				
+				for x in children: #block mouse input while swapping rows
+					cards = x.get_children(false) # cards in a certain row
+					for b in cards:
+						if b.texture_normal != b.texture_disabled:
+							b.mouse_filter = 2 # ignore input while animation is playing
+				swap_rows()
+			# LEVEL 3 SWAPPING ROWS
+			elif wrong_count == 7 && level == 3:
+				print("LEVEL: " + str(level))
+				#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+				
+				for x in children: #block mouse input while swapping rows
+					cards = x.get_children(false) # cards in a certain row
+					for b in cards:
+						if b.texture_normal != b.texture_disabled:
+							b.mouse_filter = 2 # ignore input while animation is playing
+				swap_rows()
+			else:
+				#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+				pass
 		
-		# BASED ON LEVEL SWAP DIFFERENT ELEMENTS ========================================
-		#if wrong_count >=5:
-			#wrong_tries_count.text = ("YOU LOSE!!")
-			#get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
-		#elif wrong_count == 3:
-			#print("SWAP BLOCKS!!")
-			#for x in children: #block mouse input while swapping rows
+			#for x in children:
 				#cards = x.get_children(false) # cards in a certain row
 				#for b in cards:
 					#if b.texture_normal != b.texture_disabled:
-						#b.mouse_filter = 2 # ignore input while animation is playing
-			#swap_rows()
-			#
-			#
-			
-		if mistakes_left <= 0:
-			wrong_tries_count.text = ("YOU LOSE!!")
-			get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+						#b.mouse_filter = 0 # ignore input while animation is playing
+		#
 		
-		# LEVEL 1 SWAPPING BUTTONS -> after 3rd mistake
-		elif wrong_count == 3 && level == 1:
-			print("LEVEL: " + str(level))
-			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
+			# if cards didn't match
+			card1.mouse_filter = 0 # enable input detection on first block again
 			
-			for x in children: #block mouse input while swapping rows
-				cards = x.get_children(false) # cards in a certain row
-				for b in cards:
-					if b.texture_normal != b.texture_disabled:
-						b.mouse_filter = 2 # ignore input while animation is playing
-			swap_rows()
-		# LEVEL 2 SWAPPING ROWS -> after 4th mistake
-		elif wrong_count == 4 && level == 2:
-			print("LEVEL: " + str(level))
-			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
-			
-			for x in children: #block mouse input while swapping rows
-				cards = x.get_children(false) # cards in a certain row
-				for b in cards:
-					if b.texture_normal != b.texture_disabled:
-						b.mouse_filter = 2 # ignore input while animation is playing
-			swap_rows()
-		# LEVEL 3 SWAPPING BLOCKS
-		elif wrong_count == 4 && level == 3:
-			print("LEVEL: " + str(level))
-			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
-			
-			for x in children: #block mouse input while swapping rows
-				cards = x.get_children(false) # cards in a certain row
-				for b in cards:
-					if b.texture_normal != b.texture_disabled:
-						b.mouse_filter = 2 # ignore input while animation is playing
-			swap_rows()
-		# LEVEL 3 SWAPPING ROWS
-		elif wrong_count == 7 && level == 3:
-			print("LEVEL: " + str(level))
-			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
-			
-			for x in children: #block mouse input while swapping rows
-				cards = x.get_children(false) # cards in a certain row
-				for b in cards:
-					if b.texture_normal != b.texture_disabled:
-						b.mouse_filter = 2 # ignore input while animation is playing
-			swap_rows()
-		else:
-			#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
-			pass
-	
-		#for x in children:
-			#cards = x.get_children(false) # cards in a certain row
-			#for b in cards:
-				#if b.texture_normal != b.texture_disabled:
-					#b.mouse_filter = 0 # ignore input while animation is playing
-	#
-	
-		# if cards didn't match
-		card1.mouse_filter = 0 # enable input detection on first block again
-		
 func swap_rows():
 	swapping_rows = true
 	

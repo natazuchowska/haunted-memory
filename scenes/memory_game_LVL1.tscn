@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=26 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_iyl53"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
@@ -19,39 +19,87 @@
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="15_7xe26"]
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="16_rjqww"]
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="17_miao3"]
-[ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="17_q7m4a"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="18_npq6q"]
-[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="20_1fsug"]
-[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="21_gvho6"]
+[ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="21_dmdhe"]
+[ext_resource type="PackedScene" uid="uid://i8gqt8ml5rhs" path="res://scenes/scene_transition.tscn" id="23_lgnpe"]
 
 [sub_resource type="Animation" id="Animation_kocpt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("SceneTransition:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneTransition/TransitionBackground/FrameBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.137255, 0.0980392, 0.0509804, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SceneTransition/TransitionBackground/LevelButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.866667)]
 }
 
 [sub_resource type="Animation" id="Animation_136ps"]
 resource_name = "start_scene"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("SceneTransition:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.33333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneTransition/TransitionBackground/FrameBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.14, 0.10031, 0.0518, 0), Color(0.137255, 0.0980392, 0.0509804, 1), Color(0.14, 0.10031, 0.0518, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SceneTransition/TransitionBackground/LevelButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggc25"]
@@ -61,7 +109,6 @@ _data = {
 }
 
 [node name="MemoryGame" type="Node2D"]
-modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_iyl53")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -198,7 +245,14 @@ unique_name_in_owner = true
 position = Vector2(-2268, -426)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
-position = Vector2(435, 11)
+position = Vector2(435, 73)
+scale = Vector2(1.35, 1.35)
+
+[node name="AssistantButton" parent="Assistant/AssistantSprite" index="0"]
+offset_left = -498.0
+offset_top = -570.0
+offset_right = 529.0
+offset_bottom = 421.0
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -362.0
@@ -226,7 +280,6 @@ texture_focused = ExtResource("17_miao3")
 [node name="Frame" parent="Assistant" index="3"]
 position = Vector2(452, -3)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("20_1fsug")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_mixht")]
 unique_name_in_owner = true
@@ -235,26 +288,29 @@ modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1437, 1086)
 scale = Vector2(2, 2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_ggc25")
 }
 
-[node name="ChangeScene" parent="." instance=ExtResource("17_q7m4a")]
-unique_name_in_owner = true
-z_index = 5
-offset_left = -2304.0
-offset_top = -1296.0
-offset_right = -2304.0
-offset_bottom = -1296.0
-
 [node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("21_gvho6")
-volume_db = -5.0
+stream = ExtResource("21_dmdhe")
+volume_db = 12.0
 bus = &"SFX"
+
+[node name="SceneTransition" parent="." instance=ExtResource("23_lgnpe")]
+scale = Vector2(2.5, 2.5)
+
+[node name="FrameBackground" parent="SceneTransition/TransitionBackground" index="0"]
+modulate = Color(0.137255, 0.0980392, 0.0509804, 1)
+
+[node name="LevelButton" parent="SceneTransition/TransitionBackground" index="1"]
+modulate = Color(1, 1, 1, 0.866667)
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="LivesLeft/LifeBar"]
 [editable path="Assistant"]
 [editable path="Assistant/QuestionsLeftLabel/QuestionBar"]
+[editable path="SceneTransition"]

@@ -33,8 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://bben6g0hinrse" path="res://assets/hint symbols/hint_chair.png" id="21_5jvom"]
 [ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="28_fnyvo"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="30_f1rps"]
-[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="32_4h6hp"]
-[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="33_4pa7d"]
+[ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="34_8dh6j"]
+[ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="36_lnitf"]
 
 [sub_resource type="Animation" id="Animation_0stlw"]
 resource_name = "start_scene"
@@ -375,7 +375,14 @@ unique_name_in_owner = true
 position = Vector2(-2236, -484)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
-position = Vector2(425, -8)
+position = Vector2(425, 51)
+scale = Vector2(1.35, 1.35)
+
+[node name="AssistantButton" parent="Assistant/AssistantSprite" index="0"]
+offset_left = -502.0
+offset_top = -561.0
+offset_right = 539.0
+offset_bottom = 430.0
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -119.0
@@ -421,7 +428,6 @@ texture_focused = ExtResource("4_iusmi")
 [node name="Frame" parent="Assistant" index="3"]
 position = Vector2(452, -19)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("32_4h6hp")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("6_wtsu8")]
 unique_name_in_owner = true
@@ -444,9 +450,13 @@ offset_bottom = -1296.0
 
 [node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("33_4pa7d")
-volume_db = -5.0
+stream = ExtResource("34_8dh6j")
+volume_db = 12.0
 bus = &"SFX"
+
+[node name="TransitionBackground" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("36_lnitf")
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

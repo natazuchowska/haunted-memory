@@ -5,8 +5,16 @@ var questions_left = 4
 var lies_container
 var ask_question = false
 
+var cursor_hand = preload("res://assets/UI/cursor_hand.png")
+var cursor_normal = preload("res://assets/UI/cursor_normal.png")
+
 func _ready():
 	$AssistantSprite/AssistantButton.connect("pressed", interact_assistant)
+	
+	# manage cursor icon
+	$AssistantSprite/AssistantButton.connect("mouse_entered", set_cursor)
+	$AssistantSprite/AssistantButton.connect("mouse_exited", reset_cursor)
+		
 	lies_container = $HintBubble.get_children() # store all lies
 	
 	#lie_count = 0
@@ -33,3 +41,10 @@ func interact_assistant():
 		#print("NO HINTS LEFT!")
 	#
 	#$QuestionsLeftLabel.text = ("questions left: " + str(questions_left - lie_count))
+
+# cursor icon operations
+func set_cursor():
+	Input.set_custom_mouse_cursor(cursor_hand, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+	
+func reset_cursor():
+		Input.set_custom_mouse_cursor(cursor_normal, Input.CURSOR_ARROW, Vector2(15.0, 15.0))

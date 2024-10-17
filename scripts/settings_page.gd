@@ -5,10 +5,20 @@ var language_codes = ["en", "pl"]
 
 var lang_id = -1
 
+var cursor_hand = preload("res://assets/UI/cursor_hand.png")
+var cursor_normal = preload("res://assets/UI/cursor_normal.png")
+
+
 func _ready():
 	updateUI()
 	$Language/OptionButton.connect("item_selected", set_language)
 	$GoBackButton.connect("pressed", return_to_menu)
+	
+	# cursor icon changes
+	$Language/OptionButton.connect("mouse_entered", set_cursor)
+	$Language/OptionButton.connect("mouse_exited", reset_cursor)
+	$GoBackButton.connect("mouse_entered", set_cursor)
+	$GoBackButton.connect("mouse_exited", reset_cursor)
 	
 	$Language/OptionButton.selected = Global.get_language()
 	
@@ -43,3 +53,12 @@ func return_to_menu():
 	$ButtonClick.play()
 	await get_tree().create_timer(0.6).timeout
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+	
+# cursor icon operations ===============================================================
+func set_cursor():
+	Input.set_custom_mouse_cursor(cursor_hand, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+	
+func reset_cursor():
+	Input.set_custom_mouse_cursor(cursor_normal, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+# =======================================================================================

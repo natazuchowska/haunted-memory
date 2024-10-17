@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=30 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -25,23 +25,7 @@
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="20_xhytv"]
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="22_ely1g"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="23_fome7"]
-[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="24_5na0f"]
-[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="25_75wh7"]
-
-[sub_resource type="Animation" id="Animation_7ohmy"]
-resource_name = "start_scene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="26_48ceo"]
 
 [sub_resource type="Animation" id="Animation_wd586"]
 resource_name = "RESET"
@@ -56,6 +40,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ohmy"]
+resource_name = "start_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tk2ft"]
@@ -258,7 +257,14 @@ unique_name_in_owner = true
 position = Vector2(-1037, 438)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
-position = Vector2(-756, -914)
+position = Vector2(-756, -843)
+scale = Vector2(1.35, 1.35)
+
+[node name="AssistantButton" parent="Assistant/AssistantSprite" index="0"]
+offset_left = -524.0
+offset_top = -572.0
+offset_right = 503.0
+offset_bottom = 423.0
 
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -1352.0
@@ -301,7 +307,6 @@ texture_focused = ExtResource("22_ely1g")
 [node name="Frame" parent="Assistant" index="3"]
 position = Vector2(-767, -919)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("24_5na0f")
 
 [node name="HintDisplay" parent="Assistant" instance=ExtResource("2_336fr")]
 unique_name_in_owner = true
@@ -324,8 +329,8 @@ offset_bottom = -1294.0
 
 [node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("25_75wh7")
-volume_db = -5.0
+stream = ExtResource("26_48ceo")
+volume_db = 12.0
 bus = &"SFX"
 
 [editable path="MemoryBoard/HintBoard"]

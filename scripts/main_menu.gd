@@ -1,5 +1,8 @@
 extends Control
 
+var cursor_hand = preload("res://assets/UI/cursor_hand.png")
+var cursor_normal = preload("res://assets/UI/cursor_normal.png")
+
 
 func _ready():
 	GameMusic.play_music_menu()
@@ -12,6 +15,15 @@ func _ready():
 	$MenuContainer/VBoxContainer/StartButton/Label.text = tr("START")
 	$MenuContainer/VBoxContainer/SettingsButton/Label.text = tr("SETTINGS")
 	$MenuContainer/VBoxContainer/QuitButton/Label.text = tr("QUIT")
+	
+	# cursor icon changing
+	$MenuContainer/VBoxContainer/StartButton.connect("mouse_entered", set_cursor)
+	$MenuContainer/VBoxContainer/SettingsButton.connect("mouse_entered", set_cursor)
+	$MenuContainer/VBoxContainer/QuitButton.connect("mouse_entered", set_cursor)
+	
+	$MenuContainer/VBoxContainer/StartButton.connect("mouse_exited", reset_cursor)
+	$MenuContainer/VBoxContainer/SettingsButton.connect("mouse_exited", reset_cursor)
+	$MenuContainer/VBoxContainer/QuitButton.connect("mouse_exited", reset_cursor)
 	
 	
 func start_game():
@@ -27,3 +39,12 @@ func go_to_settings():
 func quit_game():
 	$ButtonClick.play()
 	pass
+	
+	
+# cursor icon operations ===============================================================
+func set_cursor():
+	Input.set_custom_mouse_cursor(cursor_hand, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+	
+func reset_cursor():
+	Input.set_custom_mouse_cursor(cursor_normal, Input.CURSOR_ARROW, Vector2(15.0, 15.0))
+# =======================================================================================
