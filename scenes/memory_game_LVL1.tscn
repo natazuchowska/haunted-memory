@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dw6e2didtig1r"]
+[gd_scene load_steps=25 format=3 uid="uid://dw6e2didtig1r"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_iyl53"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_qbdj4"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="17_miao3"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="17_q7m4a"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="18_npq6q"]
+[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="21_gvho6"]
 
 [sub_resource type="Animation" id="Animation_kocpt"]
 length = 0.001
@@ -188,6 +189,9 @@ texture = ExtResource("15_4nhfw")
 unique_name_in_owner = true
 position = Vector2(-2268, -642)
 
+[node name="AssistantSprite" parent="Assistant" index="0"]
+position = Vector2(435, 528)
+
 [node name="QuestionsLeftLabel" parent="Assistant" index="2"]
 offset_left = -362.0
 offset_top = 776.0
@@ -230,6 +234,12 @@ offset_left = -2304.0
 offset_top = -1296.0
 offset_right = -2304.0
 offset_bottom = -1296.0
+
+[node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("21_gvho6")
+volume_db = -5.0
+bus = &"SFX"
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="LivesLeft/LifeBar"]

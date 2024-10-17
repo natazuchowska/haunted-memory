@@ -9,6 +9,10 @@ func _play_music(music: AudioStream, volume = 0.0):
 	
 	stream = music 
 	volume_db = volume
+	
+	if music == level_music:
+		volume_db -= 5
+		
 	play()
 	
 func play_music_level():

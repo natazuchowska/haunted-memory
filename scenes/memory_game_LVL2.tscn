@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=29 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -24,6 +24,7 @@
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="20_xhytv"]
 [ext_resource type="Texture2D" uid="uid://ppx4fmas0qrt" path="res://assets/life.png" id="22_ely1g"]
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="23_fome7"]
+[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="25_75wh7"]
 
 [sub_resource type="Animation" id="Animation_7ohmy"]
 resource_name = "start_scene"
@@ -307,6 +308,12 @@ offset_left = -2302.0
 offset_top = -1294.0
 offset_right = -2302.0
 offset_bottom = -1294.0
+
+[node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("25_75wh7")
+volume_db = -5.0
+bus = &"SFX"
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

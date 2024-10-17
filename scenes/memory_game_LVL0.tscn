@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btg2m7bvufrbs"]
+[gd_scene load_steps=21 format=3 uid="uid://btg2m7bvufrbs"]
 
 [ext_resource type="Script" path="res://scripts/memory_game_lvl_0.gd" id="1_j84x5"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_jjr0j"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="13_2vh6c"]
 [ext_resource type="PackedScene" uid="uid://cx11yeks6ohel" path="res://scenes/change_scene.tscn" id="15_3gggk"]
 [ext_resource type="Texture2D" uid="uid://bs0fic2orbjwk" path="res://assets/Grafika_bez_nazwy 47.png" id="16_dpjfu"]
+[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="17_6njax"]
 [ext_resource type="Texture2D" uid="uid://c6dgfmlyhh0rj" path="res://assets/Grafika_bez_nazwy 46.png" id="17_pou7a"]
 
 [sub_resource type="Animation" id="Animation_5dwjt"]
@@ -130,7 +131,7 @@ unique_name_in_owner = true
 position = Vector2(-1450, 397)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]
-position = Vector2(-306, -407)
+position = Vector2(-306, -938)
 
 [node name="HintBubble" parent="Assistant" index="1"]
 position = Vector2(-1687, -861)
@@ -160,6 +161,9 @@ theme_override_fonts/font = ExtResource("13_2vh6c")
 text = "questions left:"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Frame" parent="Assistant" index="3"]
+position = Vector2(-309, -977)
 
 [node name="QuestionBar" parent="Assistant" instance=ExtResource("8_djra8")]
 unique_name_in_owner = true
@@ -277,6 +281,12 @@ theme_override_font_sizes/font_size = 160
 text = "Good job! 
 Now let's get started..."
 horizontal_alignment = 1
+
+[node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_6njax")
+volume_db = -5.0
+bus = &"SFX"
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]

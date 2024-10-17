@@ -162,7 +162,8 @@ func check_card2(c): # second card picked
 				%ClosingMessage.visible = true
 			# ================================================
 			
-			%Assistant/HintBubble/LIE.text = "YOU WIN!"
+			#%Assistant/HintBubble/LIE.text = "YOU WIN!"
+			%BoardCompleted.play() # play winning sound
 			await get_tree().create_timer(1.0).timeout
 			Global.increase_level_num()
 			if Global.get_level() < Global.get_levels_size(): # still some levels left

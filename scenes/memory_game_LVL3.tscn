@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0bp3t7prpoh0"]
+[gd_scene load_steps=36 format=3 uid="uid://c0bp3t7prpoh0"]
 
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_0jfk1"]
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_0skrm"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://blbgpif14qno0" path="res://assets/hint symbols/hint_ladybug.png" id="20_p4ceh"]
 [ext_resource type="Texture2D" uid="uid://bben6g0hinrse" path="res://assets/hint symbols/hint_chair.png" id="21_5jvom"]
 [ext_resource type="Texture2D" uid="uid://h4waxkbqmdn5" path="res://assets/life_change.png" id="30_f1rps"]
+[ext_resource type="AudioStream" uid="uid://bquwiwai2757i" path="res://assets/audio/board_completed.wav" id="33_4pa7d"]
 
 [sub_resource type="Animation" id="Animation_0stlw"]
 resource_name = "start_scene"
@@ -423,6 +424,12 @@ offset_left = -2304.0
 offset_top = -1296.0
 offset_right = -2304.0
 offset_bottom = -1296.0
+
+[node name="BoardCompleted" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("33_4pa7d")
+volume_db = -5.0
+bus = &"SFX"
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]
