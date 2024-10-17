@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bsy8w0yhto1ev"]
+[gd_scene load_steps=32 format=3 uid="uid://bsy8w0yhto1ev"]
 
 [ext_resource type="Texture2D" uid="uid://b1eodtmym6odk" path="res://assets/background.png" id="1_62dgc"]
 [ext_resource type="PackedScene" uid="uid://b12sqey5g7b7a" path="res://scenes/assistant.tscn" id="1_dcj7y"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cf5eamv24gybh" path="res://assets/life_used.png" id="23_fome7"]
 [ext_resource type="PackedScene" uid="uid://i8gqt8ml5rhs" path="res://scenes/scene_transition.tscn" id="26_2yclr"]
 [ext_resource type="AudioStream" uid="uid://bu402735xfqds" path="res://assets/audio/memo solved.wav" id="26_48ceo"]
+[ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="27_jclql"]
 
 [sub_resource type="Animation" id="Animation_wd586"]
 resource_name = "RESET"
@@ -53,9 +54,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SceneTransition/TransitionBackground/LevelButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.866667)]
+}
 
 [sub_resource type="Animation" id="Animation_7ohmy"]
 resource_name = "start_scene"
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,10 +77,94 @@ tracks/0/path = NodePath("SceneTransition:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2.8, 3.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FrameBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.0784314, 0.101961, 0.137255, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SceneTransition/TransitionBackground/LevelButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SceneEndBackground:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MemoryBoard:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LivesLeft:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Assistant:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SceneTransition/TransitionBackground/FrameBackground:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.9, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.14, 0.10031, 0.0518, 0), Color(0.135692, 0.0983571, 0.0492942, 1), Color(0.135692, 0.0983571, 0.0492942, 1), Color(0.14, 0.10031, 0.0518, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ofy3e"]
@@ -357,9 +455,18 @@ bus = &"SFX"
 [node name="SceneTransition" parent="." instance=ExtResource("26_2yclr")]
 scale = Vector2(2.5, 2.5)
 
+[node name="FrameBackground" parent="SceneTransition/TransitionBackground" index="0"]
+modulate = Color(0.14, 0.10031, 0.0518, 0)
+
+[node name="LevelButton" parent="SceneTransition/TransitionBackground" index="1"]
+modulate = Color(1, 1, 1, 0.866667)
+
 [node name="SceneEndBackground" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("27_jclql")
 
 [editable path="MemoryBoard/HintBoard"]
 [editable path="Assistant"]
 [editable path="Assistant/QuestionsLeftLabel/QuestionBar"]
+[editable path="SceneTransition"]

@@ -189,6 +189,7 @@ func check_card2(c): # second card picked
 				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])
 			else: # game won so play cutscene
+				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file("res://scenes/cut_scene_end.tscn")
 		
 		for x in children:

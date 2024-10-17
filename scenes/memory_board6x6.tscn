@@ -1,11 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://7h4r60lriy3"]
+[gd_scene load_steps=35 format=3 uid="uid://7h4r60lriy3"]
 
 [ext_resource type="Script" path="res://scripts/memory_board.gd" id="1_yxolr"]
 [ext_resource type="Texture2D" uid="uid://bdn8xpy5p4yy4" path="res://assets/memo blocks/memo_card.png" id="2_3bjhn"]
+[ext_resource type="Texture2D" uid="uid://thqj4cgcvwir" path="res://assets/y_axis.png" id="3_awdkf"]
 [ext_resource type="Texture2D" uid="uid://8rl8jtbcf7l2" path="res://assets/memo blocks/chair.png" id="3_b0v22"]
 [ext_resource type="Texture2D" uid="uid://cpt22ftixd5ed" path="res://assets/memo blocks/eye.png" id="3_bsasq"]
-[ext_resource type="Texture2D" uid="uid://dn4chvb1x0sy6" path="res://assets/memo blocks/memo_card_solved.png" id="3_lab2b"]
 [ext_resource type="Texture2D" uid="uid://bm3kim7kor23i" path="res://assets/memo blocks/memo_card_hover.png" id="4_004oi"]
+[ext_resource type="Texture2D" uid="uid://bdqpvayjehegw" path="res://assets/x_axis.png" id="4_d5cbp"]
 [ext_resource type="Texture2D" uid="uid://cdxdmqwxlb08e" path="res://assets/memo blocks/memo_card_solved 2.png" id="5_0wsqw"]
 [ext_resource type="Texture2D" uid="uid://lhprmpeoqk43" path="res://assets/memo blocks/ladybug.png" id="6_kiu8t"]
 [ext_resource type="Texture2D" uid="uid://8401qako0oko" path="res://assets/memo blocks/cat.png" id="6_lrx8f"]
@@ -106,13 +107,29 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_3wgu2"]
-resource_name = "row_switch"
+[sub_resource type="Animation" id="Animation_wp387"]
+resource_name = "row3_switch"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Row1:modulate")
+tracks/0/path = NodePath("VBoxContainer/Row3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wi1nt"]
+resource_name = "row4_switch"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Row4:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,29 +155,13 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_wp387"]
-resource_name = "row3_switch"
+[sub_resource type="Animation" id="Animation_3wgu2"]
+resource_name = "row_switch"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Row3:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.766667, 1.06667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wi1nt"]
-resource_name = "row4_switch"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Row4:modulate")
+tracks/0/path = NodePath("VBoxContainer/Row1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -199,14 +200,16 @@ theme_override_font_sizes/font_size = 160
 text = "wrong tries counter: "
 
 [node name="YAxis" type="Sprite2D" parent="."]
-position = Vector2(15.5, -6.00078)
-scale = Vector2(0.127163, 4.32675)
-texture = ExtResource("3_lab2b")
+position = Vector2(15.4998, 39)
+rotation = -0.00872665
+scale = Vector2(0.765951, 1.30086)
+texture = ExtResource("3_awdkf")
 
 [node name="XAxis" type="Sprite2D" parent="."]
-position = Vector2(11.0002, -8.00002)
-scale = Vector2(4.26644, 0.159785)
-texture = ExtResource("3_lab2b")
+position = Vector2(3.47324, -2.88984)
+rotation = 0.00523599
+scale = Vector2(1.22605, 0.704623)
+texture = ExtResource("4_d5cbp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = -1968.0
