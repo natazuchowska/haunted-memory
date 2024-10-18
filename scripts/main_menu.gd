@@ -29,7 +29,7 @@ func _ready():
 func start_game():
 	$ButtonClick.play()
 	await get_tree().create_timer(0.6).timeout
-	get_tree().change_scene_to_file("res://scenes/cut_scene_start.tscn")
+	get_tree().change_scene_to_file("res://scenes/cut_scene.tscn")
 	
 func go_to_settings():
 	$ButtonClick.play()

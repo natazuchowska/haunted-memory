@@ -334,7 +334,7 @@ unique_name_in_owner = true
 position = Vector2(258, 247)
 
 [node name="Surprise" type="Sprite2D" parent="LivesLeft"]
-position = Vector2(514, 316)
+position = Vector2(703, 316)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("15_4nhfw")
 
