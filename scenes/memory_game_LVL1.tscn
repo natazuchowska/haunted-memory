@@ -318,6 +318,7 @@ texture_focused = ExtResource("3_t2ir1")
 zoom = Vector2(0.2, 0.2)
 
 [node name="LivesLeft" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = -2527.0
 offset_top = 762.0
 offset_right = -1096.0
@@ -346,6 +347,7 @@ texture = ExtResource("16_rjqww")
 
 [node name="Assistant" parent="." instance=ExtResource("1_qbdj4")]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-2268, -426)
 
 [node name="AssistantSprite" parent="Assistant" index="0"]

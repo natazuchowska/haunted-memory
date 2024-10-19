@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3am3bd5ddfef"]
+[gd_scene load_steps=14 format=3 uid="uid://3am3bd5ddfef"]
 
 [ext_resource type="Script" path="res://scripts/cut_scene_end.gd" id="1_rbcde"]
 [ext_resource type="Texture2D" uid="uid://deq4bwa2su2bi" path="res://assets/cutscene/background_color.png" id="1_rii56"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/UI/button.png" id="5_o6yfa"]
 [ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/UI/button_pressed.png" id="6_fyco3"]
 [ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/UI/button_hover.png" id="7_qonip"]
+[ext_resource type="AudioStream" uid="uid://cveojv1csao1r" path="res://assets/audio/button_click.wav" id="9_plf5w"]
 
 [sub_resource type="Animation" id="Animation_1nnek"]
 resource_name = "light_blink"
@@ -148,7 +149,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.913725, 0.87451, 0.819608, 1)
 theme_override_fonts/font = ExtResource("4_j44pn")
 theme_override_font_sizes/font_size = 60
-text = "You win a lot of candies!!"
+text = "You win a lot of candy!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -209,3 +210,6 @@ theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("4_j44pn")
 theme_override_font_sizes/font_size = 240
 text = "exit"
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_plf5w")

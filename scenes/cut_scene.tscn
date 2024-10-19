@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6kaoaksnnmrh"]
+[gd_scene load_steps=17 format=3 uid="uid://b6kaoaksnnmrh"]
 
 [ext_resource type="Texture2D" uid="uid://deq4bwa2su2bi" path="res://assets/cutscene/background_color.png" id="1_1p4p6"]
 [ext_resource type="Script" path="res://scripts/cut_scene.gd" id="1_uja3n"]
@@ -66,6 +66,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClickLabel:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.520226, 0.475927, 0.475875, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TransitionBackground:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_xmrbg"]
 resource_name = "show_final_message"
@@ -95,11 +119,69 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_khbs3"]
+resource_name = "cutscene_nolabel"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoonLight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.66667, 2.46667, 3, 3.86667, 4.8, 5.7, 6.43333, 7.06667, 8, 8.73333, 9.33333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClickLabel:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.520226, 0.475927, 0.475875, 1), Color(0.521569, 0.47451, 0.47451, 0), Color(0.521569, 0.47451, 0.47451, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bhvu3"]
+resource_name = "start_scene"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoonLight:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bb8i8"]
 _data = {
 "RESET": SubResource("Animation_af6ug"),
 "cutscene": SubResource("Animation_4ol64"),
-"show_final_message": SubResource("Animation_xmrbg")
+"cutscene_nolabel": SubResource("Animation_khbs3"),
+"show_final_message": SubResource("Animation_xmrbg"),
+"start_scene": SubResource("Animation_bhvu3")
 }
 
 [node name="CutScene" type="Control"]
@@ -135,24 +217,25 @@ texture = ExtResource("4_42so5")
 libraries = {
 "": SubResource("AnimationLibrary_bb8i8")
 }
-autoplay = "cutscene"
+autoplay = "start_scene"
 
 [node name="SpeechBubbleContainer" type="Node2D" parent="."]
 
 [node name="MonkeyBubble" type="Sprite2D" parent="SpeechBubbleContainer"]
-position = Vector2(169, 508)
-scale = Vector2(0.16, 0.16)
+visible = false
+position = Vector2(142, 418)
+scale = Vector2(0.19, 0.19)
 texture = ExtResource("5_oybag")
 flip_h = true
 
 [node name="Label" type="Label" parent="SpeechBubbleContainer/MonkeyBubble"]
-offset_left = -671.0
-offset_top = -193.0
-offset_right = 600.0
-offset_bottom = 157.0
+offset_left = -642.105
+offset_top = -200.0
+offset_right = 628.895
+offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 110
 text = "And here we are. The last stop on our journey..."
 autowrap_mode = 2
 
@@ -262,11 +345,12 @@ offset_right = 589.75
 offset_bottom = 256.5
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 110
 text = "let's go inside then. shall we?"
 autowrap_mode = 2
 
 [node name="GhostBubble" type="Sprite2D" parent="SpeechBubbleContainer"]
+visible = false
 position = Vector2(937, 451)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_oybag")
@@ -279,8 +363,8 @@ offset_right = 755.0
 offset_bottom = 372.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 80
-text = "The mansion looks scary y'all... I don't know if you heard but people are saying there might be ghosts living there..."
+theme_override_font_sizes/font_size = 100
+text = "The mansion looks scary y'all... "
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="SpeechBubbleContainer/GhostBubble"]
@@ -291,8 +375,8 @@ offset_right = 755.0
 offset_bottom = 372.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 80
-text = "I don't know about you guys but I would really need this candy"
+theme_override_font_sizes/font_size = 100
+text = "I don't know if you heard but people are saying there might be ghosts living there..."
 autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="SpeechBubbleContainer/GhostBubble"]
@@ -303,48 +387,61 @@ offset_right = 755.0
 offset_bottom = 372.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 100
+text = "I don't know about you guys but I would really need this candy."
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="SpeechBubbleContainer/GhostBubble"]
+visible = false
+offset_left = -610.0
+offset_top = -215.0
+offset_right = 755.0
+offset_bottom = 372.0
+theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_fonts/font = ExtResource("6_q461j")
+theme_override_font_sizes/font_size = 100
 text = "My mum told me not to come back home if I have less than 30... I only have 8 so far."
 autowrap_mode = 2
 
 [node name="DevilBubble" type="Sprite2D" parent="SpeechBubbleContainer"]
+visible = false
 position = Vector2(756, 455)
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("5_oybag")
 
 [node name="Label" type="Label" parent="SpeechBubbleContainer/DevilBubble"]
 visible = false
-offset_left = -594.445
-offset_top = -194.444
-offset_right = 622.555
-offset_bottom = 38.5556
+offset_left = -594.0
+offset_top = -211.0
+offset_right = 706.0
+offset_bottom = 173.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 110
 text = "Before I left my grandma mentioned a house uphill. "
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="SpeechBubbleContainer/DevilBubble"]
 visible = false
-offset_left = -594.445
-offset_top = -194.444
-offset_right = 622.555
-offset_bottom = 38.5556
+offset_left = -611.0
+offset_top = -206.0
+offset_right = 695.0
+offset_bottom = 178.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 110
 text = "She said nobody has lived there for at least 3 decades..."
 autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="SpeechBubbleContainer/DevilBubble"]
 visible = false
-offset_left = -594.445
-offset_top = -194.444
-offset_right = 622.555
-offset_bottom = 38.5556
+offset_left = -600.0
+offset_top = -211.0
+offset_right = 700.0
+offset_bottom = 173.0
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 110
 text = "... but somehow the lights are always on at night..."
 autowrap_mode = 2
 
@@ -384,5 +481,25 @@ vertical_alignment = 1
 [node name="SceneEnd" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(577, 320)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_nyoif")
+
+[node name="ClickLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 778.0
+offset_top = 22.0
+offset_right = 1126.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.520226, 0.475927, 0.475875, 1)
+theme_override_fonts/font = ExtResource("6_q461j")
+theme_override_font_sizes/font_size = 24
+text = "press ENTER/SPACE/LEFT CLICK to skip through dialogue"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TransitionBackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(583, 323)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_nyoif")

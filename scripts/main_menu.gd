@@ -38,7 +38,7 @@ func go_to_settings():
 	
 func quit_game():
 	$ButtonClick.play()
-	pass
+	get_tree().quit()
 	
 	
 # cursor icon operations ===============================================================
