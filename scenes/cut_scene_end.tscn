@@ -1,19 +1,211 @@
-[gd_scene format=3 uid="uid://3am3bd5ddfef"]
+[gd_scene load_steps=13 format=3 uid="uid://3am3bd5ddfef"]
 
-[node name="CutScene_END" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/cut_scene_end.gd" id="1_rbcde"]
+[ext_resource type="Texture2D" uid="uid://deq4bwa2su2bi" path="res://assets/cutscene/background_color.png" id="1_rii56"]
+[ext_resource type="Texture2D" uid="uid://hv4gs3n0akss" path="res://assets/cutscene/moon_aura.png" id="2_vr7vp"]
+[ext_resource type="Texture2D" uid="uid://bgde4b73vr03b" path="res://assets/cutscene/sweets.png" id="3_l2gnd"]
+[ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="4_j44pn"]
+[ext_resource type="Texture2D" uid="uid://b7jey8islyrn3" path="res://assets/UI/button.png" id="5_o6yfa"]
+[ext_resource type="Texture2D" uid="uid://cfehi180lsly4" path="res://assets/UI/button_pressed.png" id="6_fyco3"]
+[ext_resource type="Texture2D" uid="uid://y7w32qhsldpy" path="res://assets/UI/button_hover.png" id="7_qonip"]
 
-[node name="Label" type="Label" parent="."]
+[sub_resource type="Animation" id="Animation_1nnek"]
+resource_name = "light_blink"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.66667, 2.46667, 3, 3.86667, 4.8, 5.7, 6.43333, 7.06667, 8, 8.73333, 9.33333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sweets:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.73333, 2.62333, 3.49, 4.72333, 5.75667, 6.69, 7.89, 8.95667, 9.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(573, 333), Vector2(573, 315), Vector2(573, 332), Vector2(573, 317), Vector2(573, 349), Vector2(573, 333), Vector2(573, 343), Vector2(573, 319), Vector2(573, 348), Vector2(573, 333)]
+}
+
+[sub_resource type="Animation" id="Animation_vaurf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExitButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sweets:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(573, 333)]
+}
+
+[sub_resource type="Animation" id="Animation_s5cbq"]
+resource_name = "show_btn"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.66667, 2.46667, 3, 3.86667, 4.8, 5.7, 6.43333, 7.06667, 8, 8.73333, 9.33333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExitButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 5.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sweets:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.73333, 2.62333, 3.49, 4.72333, 5.75667, 6.69, 7.89, 8.95667, 9.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(573, 333), Vector2(573, 315), Vector2(573, 332), Vector2(573, 317), Vector2(573, 349), Vector2(573, 333), Vector2(573, 343), Vector2(573, 319), Vector2(573, 348), Vector2(573, 333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gs8x"]
+_data = {
+"RESET": SubResource("Animation_vaurf"),
+"light_blink": SubResource("Animation_1nnek"),
+"show_btn": SubResource("Animation_s5cbq")
+}
+
+[node name="CutScene_END" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rbcde")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(564, 326)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_rii56")
+
+[node name="Aura" type="Sprite2D" parent="."]
+position = Vector2(569, 392)
+scale = Vector2(1.5, 1)
+texture = ExtResource("2_vr7vp")
+
+[node name="Sweets" type="Sprite2D" parent="."]
+position = Vector2(573, 333)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_l2gnd")
+
+[node name="TextTop" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
+offset_left = 22.0
+offset_top = 49.0
+offset_right = 1117.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.913725, 0.87451, 0.819608, 1)
+theme_override_fonts/font = ExtResource("4_j44pn")
+theme_override_font_sizes/font_size = 60
+text = "You win a lot of candies!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextBottom" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = 492.0
+offset_right = 1117.0
+offset_bottom = 607.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.913725, 0.87451, 0.819608, 1)
+theme_override_fonts/font = ExtResource("4_j44pn")
+theme_override_font_sizes/font_size = 60
+text = "The kids are happy :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8gs8x")
+}
+autoplay = "show_btn"
+
+[node name="ExitButton" type="TextureButton" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 1007.0
+offset_top = 567.0
+offset_right = 2127.0
+offset_bottom = 1040.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("5_o6yfa")
+texture_pressed = ExtResource("6_fyco3")
+texture_hover = ExtResource("7_qonip")
+texture_focused = ExtResource("7_qonip")
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
 offset_top = -11.5
-offset_right = 61.0
+offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "CUT SCENE END"
-
-[node name="Camera2D" type="Camera2D" parent="."]
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
+theme_override_fonts/font = ExtResource("4_j44pn")
+theme_override_font_sizes/font_size = 240
+text = "exit"
