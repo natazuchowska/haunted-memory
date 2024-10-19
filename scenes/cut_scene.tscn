@@ -11,23 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bfoqck6vjmafo" path="res://assets/audio/owl.wav" id="10_exvax"]
 [ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="10_nyoif"]
 
-[sub_resource type="Animation" id="Animation_4ol64"]
-resource_name = "cutscene"
-length = 10.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MoonLight:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.66667, 2.46667, 3, 3.86667, 4.8, 5.7, 6.43333, 7.06667, 8, 8.73333, 9.33333, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_af6ug"]
 length = 0.001
 tracks/0/type = "value"
@@ -91,32 +74,21 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_xmrbg"]
-resource_name = "show_final_message"
-length = 4.0
+[sub_resource type="Animation" id="Animation_4ol64"]
+resource_name = "cutscene"
+length = 10.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FinalMessage:scale")
+tracks/0/path = NodePath("MoonLight:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.633333, 0.766667, 0.966667, 3.23333, 3.36667, 3.46667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.66667, 2.46667, 3, 3.86667, 4.8, 5.7, 6.43333, 7.06667, 8, 8.73333, 9.33333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.04, 0.04), Vector2(0.3, 0.3), Vector2(0.23, 0.23), Vector2(0.25, 0.25), Vector2(0.25, 0.25), Vector2(0.27, 0.27), Vector2(0.2, 0.2), Vector2(0.001, 0.001)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SceneEnd:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(3.46667, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 0.188235), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.517647), Color(1, 1, 1, 0.85098), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_khbs3"]
@@ -145,6 +117,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.520226, 0.475927, 0.475875, 1), Color(0.521569, 0.47451, 0.47451, 0), Color(0.521569, 0.47451, 0.47451, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xmrbg"]
+resource_name = "show_final_message"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinalMessage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333, 0.766667, 0.966667, 3.23333, 3.36667, 3.46667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.04, 0.04), Vector2(0.3, 0.3), Vector2(0.23, 0.23), Vector2(0.25, 0.25), Vector2(0.25, 0.25), Vector2(0.27, 0.27), Vector2(0.2, 0.2), Vector2(0.001, 0.001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SceneEnd:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.46667, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bhvu3"]
@@ -194,17 +194,17 @@ grow_vertical = 2
 script = ExtResource("1_uja3n")
 
 [node name="BackgroundColor" type="Sprite2D" parent="."]
-position = Vector2(577, 323.5)
-scale = Vector2(2.905, 3.325)
+position = Vector2(577.5, 323.5)
+scale = Vector2(3.0225, 3.325)
 texture = ExtResource("1_1p4p6")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(571, 324)
+position = Vector2(566, 322)
 scale = Vector2(0.401067, 0.401067)
 texture = ExtResource("2_ji842")
 
 [node name="Moon" type="Sprite2D" parent="."]
-position = Vector2(312, 142)
+position = Vector2(311, 139)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_rl4bo")
 
@@ -229,11 +229,11 @@ texture = ExtResource("5_oybag")
 flip_h = true
 
 [node name="Label" type="Label" parent="SpeechBubbleContainer/MonkeyBubble"]
-offset_left = -642.105
-offset_top = -200.0
-offset_right = 628.895
-offset_bottom = 150.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+offset_left = -681.25
+offset_top = -212.5
+offset_right = 589.75
+offset_bottom = 137.5
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 110
 text = "And here we are. The last stop on our journey..."
@@ -241,11 +241,11 @@ autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="SpeechBubbleContainer/MonkeyBubble"]
 visible = false
-offset_left = -712.5
-offset_top = -225.0
-offset_right = 558.5
-offset_bottom = 244.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+offset_left = -681.25
+offset_top = -212.5
+offset_right = 589.75
+offset_bottom = 256.5
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "I've never been here before and I have been trick or treat'ing for 8 years now."
@@ -257,7 +257,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "Well... I guess there always has to be a first time for everything"
@@ -269,7 +269,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "I didn't want to scare you two but I also heard a lot of stories..."
@@ -281,7 +281,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "Apparently, the ghosts inside like to play games..."
@@ -293,7 +293,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "And if you are able to defeat them they always give a HUGE reward"
@@ -305,7 +305,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "One year during halloween I saw one guy with a huge bag of candy"
@@ -317,7 +317,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "I asked 
@@ -330,7 +330,7 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "he replied 
@@ -343,14 +343,13 @@ offset_left = -681.25
 offset_top = -212.5
 offset_right = 589.75
 offset_bottom = 256.5
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 110
 text = "let's go inside then. shall we?"
 autowrap_mode = 2
 
 [node name="GhostBubble" type="Sprite2D" parent="SpeechBubbleContainer"]
-visible = false
 position = Vector2(937, 451)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_oybag")
@@ -361,19 +360,18 @@ offset_left = -610.0
 offset_top = -215.0
 offset_right = 755.0
 offset_bottom = 372.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "The mansion looks scary y'all... "
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="SpeechBubbleContainer/GhostBubble"]
-visible = false
 offset_left = -610.0
 offset_top = -215.0
-offset_right = 755.0
+offset_right = 805.0
 offset_bottom = 372.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "I don't know if you heard but people are saying there might be ghosts living there..."
@@ -385,7 +383,7 @@ offset_left = -610.0
 offset_top = -215.0
 offset_right = 755.0
 offset_bottom = 372.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "I don't know about you guys but I would really need this candy."
@@ -395,9 +393,9 @@ autowrap_mode = 2
 visible = false
 offset_left = -610.0
 offset_top = -215.0
-offset_right = 755.0
+offset_right = 810.0
 offset_bottom = 372.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
 text = "My mum told me not to come back home if I have less than 30... I only have 8 so far."
@@ -415,7 +413,7 @@ offset_left = -594.0
 offset_top = -211.0
 offset_right = 706.0
 offset_bottom = 173.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 110
 text = "Before I left my grandma mentioned a house uphill. "
@@ -427,7 +425,7 @@ offset_left = -611.0
 offset_top = -206.0
 offset_right = 695.0
 offset_bottom = 178.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 110
 text = "She said nobody has lived there for at least 3 decades..."
@@ -439,18 +437,11 @@ offset_left = -600.0
 offset_top = -211.0
 offset_right = 700.0
 offset_bottom = 173.0
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 110
 text = "... but somehow the lights are always on at night..."
 autowrap_mode = 2
-
-[node name="Button" type="Button" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 1155.0
-offset_bottom = 648.0
 
 [node name="FinalMessage" type="Sprite2D" parent="."]
 position = Vector2(547, 330)
@@ -463,13 +454,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1508.5
+offset_left = -1343.5
 offset_top = -1495.0
-offset_right = -158.5
+offset_right = -329.5
 offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
+theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 125
 text = "Complete 3 levels
@@ -486,9 +477,9 @@ texture = ExtResource("10_nyoif")
 
 [node name="ClickLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 778.0
+offset_left = 764.0
 offset_top = 22.0
-offset_right = 1126.0
+offset_right = 1112.0
 offset_bottom = 112.0
 theme_override_colors/font_color = Color(0.520226, 0.475927, 0.475875, 1)
 theme_override_fonts/font = ExtResource("6_q461j")

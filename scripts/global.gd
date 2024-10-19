@@ -14,6 +14,9 @@ func _ready():
 	# store all separate levels in an array
 	LEVELS = ["res://scenes/memory_game_LVL0.tscn", "res://scenes/memory_game_LVL1.tscn", "res://scenes/memory_game_LVL2.tscn", "res://scenes/memory_game_LVL3.tscn"]
 	
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("pause_game"):
+		#get_tree().paused = true
 	
 func increase_level_num():
 	which_lvl += 1

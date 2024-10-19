@@ -7,6 +7,7 @@ var ghost_bubble
 var devil_bubble
 
 func _ready():
+	updateUI()
 	
 	monkey_bubble = $SpeechBubbleContainer/MonkeyBubble
 	ghost_bubble = $SpeechBubbleContainer/GhostBubble
@@ -93,3 +94,36 @@ func hide_label():
 	await get_tree().create_timer(2.5).timeout
 	$ClickLabel.visible = false # hide click tutorial 
 	$AnimationPlayer.play("cutscene")
+	
+func updateUI():
+	
+	#translate all the texts in the narrative
+	$SpeechBubbleContainer/MonkeyBubble/Label.text = tr("CS1")
+	$SpeechBubbleContainer/MonkeyBubble/Label2.text = tr("CS2")
+	$SpeechBubbleContainer/MonkeyBubble/Label3.text = tr("CS3")
+	
+	$SpeechBubbleContainer/GhostBubble/Label.text = tr("CS4")
+	$SpeechBubbleContainer/GhostBubble/Label2.text = tr("CS5")
+	
+	$SpeechBubbleContainer/DevilBubble/Label.text = tr("CS6")
+	$SpeechBubbleContainer/DevilBubble/Label2.text = tr("CS7")
+	$SpeechBubbleContainer/DevilBubble/Label3.text = tr("CS8")
+	
+	$SpeechBubbleContainer/MonkeyBubble/Label4.text = tr("CS9")
+	$SpeechBubbleContainer/MonkeyBubble/Label5.text = tr("CS10")
+	$SpeechBubbleContainer/MonkeyBubble/Label6.text = tr("CS11")
+	$SpeechBubbleContainer/MonkeyBubble/Label7.text = tr("CS12")
+	$SpeechBubbleContainer/MonkeyBubble/Label8.text = tr("CS13")
+	$SpeechBubbleContainer/MonkeyBubble/Label9.text = tr("CS14")
+	
+	$SpeechBubbleContainer/GhostBubble/Label3.text = tr("CS15")
+	$SpeechBubbleContainer/GhostBubble/Label4.text = tr("CS16")
+	
+	$SpeechBubbleContainer/MonkeyBubble/Label10.text = tr("CS17")
+	
+	# translate closing message
+	$FinalMessage/Label.text = tr("CS_CLOSING_MSG")
+	
+	# click label
+	$ClickLabel.text = tr("CS_MESSAGE")
+	

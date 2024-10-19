@@ -1,0 +1,56 @@
+,en,pl,fr
+ENGLISH,English,Angielski,Anglais
+POLISH,Polish,Polski,Polonais
+FRENCH,French,Francuski,Français
+SETTINGS,Settings,Ustawienia,Paramètres
+GO_BACK,Go back,Powrót,Retourner
+LANGUAGE,Language,Język,Langue
+START,Start,Start,Jouer
+QUIT,Quit,Wyjdź,Quitter
+QUESTIONS_LEFT,Questions left,Pozostałe pytania,Questions Restantes
+MISTAKES_LEFT,Mistakes left,Pozostałe błędy,Erreurs Restantes
+YOU_LOST,You lost,Przegrałeś,Perdu
+TRY_AGAIN,Try again,Spróbuj ponownie,Réessayer
+MUSIC,Music,Muzyka,Musique
+SOUND_EFFECTS,Sound effects,Efekty dźwiękowe,Effets Sonores
+TUTORIAL_MSG_1,Click on a memory block to reveal it,Kliknij na bloczek memory by go odsłonić,Clique sur sur un bloc pour le retourner
+TUTORIAL_MSG_2,Click on the ghost to ask a question and then choose the block of interest,Kliknij na ducha w celu zadania pytania a następnie wybierz bloczek o który chcesz zapytać,Clique sur le fantôme pour demander une question et choisis le bloc qui t'intéresse
+TUTORIAL_MSG_3,"but remember! 
+ghost enjoy riddles, they won't always tell the truth...","Jednak pamiętaj! Duchy lubią zagadki, nie zawsze mówią więc prawdę","Mais sois prudent!
+Le fantôme adore les devinettes, et ne dira pas toujours la vérité..."
+TUTORIAL_MSG_4,"however, if you crack their code it can give you a big advantage",Jeśli jednak uda ci się złamać ich szyfr może to dać ci dużą przewagę,Mais si tu déchiffres son code tu auras un gros avantage
+TUTORIAL_MSG_5,once you find all the matching pairs you will defeat your enemy,Odnajdując wszystkie pary na planszy pokonasz przeciwnika,Trouve toutes les paires pour battre ton adversaire
+TUTORIAL_MSG_6,"Good job! 
+Now let's get started...","Dobra robota! 
+A więc pora zaczynać...","Bien joué! 
+Maintenant, on peut commencer..."
+CS1,And here we are. The last stop on our journey...,,"Et voilà, le dernier arrêt de notre parcours..."
+CS2,I've never been here before and I have been trick or treat'ing for 8 years now.,,Je n'ai jamais été ici et je vais chercher des bonbons pour Halloween depuis 8 ans.
+CS3,Well... I guess there always has to be a first time for everything.,,Eh ben... Il ya toujours une première fois pour tout.
+CS4,The mansion looks scary y'all... ,,Les gars ce manoir a l'air flippant..
+CS5,I don't know if you heard but people are saying there might be ghosts living there...,,Je sais pas si vous le savez mes les gens disent que il y a des fantômes qui habitent là-bas
+CS6,Before I left my grandma mentioned a house uphill. ,,"Avant que je suis parti, ma mamie me parlait d'une maison sur une colline"
+CS7,She said nobody has lived there for at least 3 decades...,,Elle m'a dit que personne n'y habitait depuis 3 décennies.
+CS8,... but somehow the lights are always on at night...,,Mais bizarrement les lumières sont toujours allumées pendant la nuit
+CS9,I didn't want to scare you two but I also heard a lot of stories...,,J'ai pas envie de vous faire peur mais j'ai aussi entendu beaucoup d'histoires...
+CS10,"Apparently, the ghosts inside like to play games...",,"Apparement, ces fantômes aiment jouer aux jeux..."
+CS11,And if you are able to defeat them they always give a HUGE reward,,[missing]
+CS12,One year during halloween I saw one guy with a huge bag of candy,,Une fois pendant Halloween j'ai vu un gars avec un gros sac de bonbons
+CS13,"I asked 
+- OH boy how many candies you got there??",,"J'ai demandé:
+- T'as combien de bonbons là-dedans??"
+CS14,"he replied 
+- 12837 and i counted 1 by 1!!",,"Et il m'a répondu:
+- 12837, et je les ai compté 1 par 1!"
+CS15,I don't know about you guys but I would really need this candy.,,Je sais si vous êtes avec moi mais moi j'ai vraiment besoin d'avoir tout ces bonbons.
+CS16,My mum told me not to come back home if I have less than 30... I only have 8 so far.,,"Et ma maman m'a dit de na pas rentrer si j'ai moins de 30 bonbons, et maintenant j'en ai que 8."
+CS17,let's go inside then. shall we?,,Bah entrons dans ce manoir alors!
+WIN_MSG_TOP,You win a lot of candy!!!,,T'as gagné beaucoup de bonbons!!!
+WIN_MSG_BOTTOM,The kids are happy :),,Les enfants sont contents :)
+EXIT,,,exit but french
+CS_MESSAGE,,,msg but french
+CS_CLOSING_MSG,"Complete 3 levels
+=
+win a lot of candy ",,"Passe 3 niveaux
+ =  
+Gagne beaucoup de bonbons"
