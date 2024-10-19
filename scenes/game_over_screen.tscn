@@ -47,9 +47,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
+offset_left = -196.0
 offset_top = 57.0
-offset_right = 1020.0
+offset_right = 1976.0
 offset_bottom = 530.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -57,6 +57,7 @@ scale = Vector2(0.18, 0.18)
 texture_normal = ExtResource("3_o136p")
 texture_pressed = ExtResource("4_er3gb")
 texture_hover = ExtResource("5_vtm83")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/RestartButton"]
 layout_mode = 1
