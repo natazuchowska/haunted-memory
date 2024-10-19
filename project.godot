@@ -54,4 +54,4 @@ pause_game={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://haunted memo translation - Arkusz1-6.en.translation", "res://haunted memo translation - Arkusz1-6.fr.translation", "res://haunted memo translation - Arkusz1-6.pl.translation")
+locale/translations=PackedStringArray("res://haunted memo translation - Arkusz1-7.en.translation", "res://haunted memo translation - Arkusz1-7.fr.translation", "res://haunted memo translation - Arkusz1-7.pl.translation")

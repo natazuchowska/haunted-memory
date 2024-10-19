@@ -22,3 +22,11 @@ func updateUI():
 		$GhostMessage/Label.text = tr("TUTORIAL_MSG_4")
 		%GameTutorial.text = tr("TUTORIAL_MSG_5")
 		%ClosingMessage.text = tr("TUTORIAL_MSG_6")
+		
+	if Global.get_level() == 1:
+		$SceneTransition/TransitionBackground/LevelButton/Label.text = tr("LVL1")
+	elif Global.get_level() == 2:
+		$SceneTransition/TransitionBackground/LevelButton/Label.text = tr("LVL2")
+	elif Global.get_level() == 3:
+		$SceneTransition/TransitionBackground/LevelButton/Label.text = tr("LVL3")
+	

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://q8jutup42tls"
+
+[deps]
+
+files=["res://haunted memo translation - Arkusz1-7.en.translation", "res://haunted memo translation - Arkusz1-7.pl.translation", "res://haunted memo translation - Arkusz1-7.fr.translation"]
+
+source_file="res://haunted memo translation - Arkusz1-7.csv"
+dest_files=["res://haunted memo translation - Arkusz1-7.en.translation", "res://haunted memo translation - Arkusz1-7.pl.translation", "res://haunted memo translation - Arkusz1-7.fr.translation"]
+
+[params]
+
+compress=true
+delimiter=0
