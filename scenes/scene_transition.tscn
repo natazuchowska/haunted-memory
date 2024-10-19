@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://i8gqt8ml5rhs"]
+[gd_scene load_steps=4 format=3 uid="uid://i8gqt8ml5rhs"]
 
 [ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="1_uycqq"]
-[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="2_m7m1k"]
-[ext_resource type="Texture2D" uid="uid://baul5xoua0g5h" path="res://assets/frame_dark.png" id="3_tk864"]
+[ext_resource type="Texture2D" uid="uid://c88xla0samla7" path="res://assets/UI/lvl_background.png" id="2_3g85s"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="4_bnqsr"]
 
 [node name="SceneTransition" type="Node2D"]
@@ -10,16 +9,9 @@
 [node name="TransitionBackground" type="Sprite2D" parent="."]
 texture = ExtResource("1_uycqq")
 
-[node name="FrameBackground" type="Sprite2D" parent="TransitionBackground"]
-modulate = Color(0.135692, 0.0983571, 0.0492942, 1)
-position = Vector2(-4.57764e-05, -3)
-scale = Vector2(0.315269, 0.219207)
-texture = ExtResource("2_m7m1k")
-
 [node name="LevelButton" type="Sprite2D" parent="TransitionBackground"]
 position = Vector2(-0.999992, -2.96885)
-scale = Vector2(1.06, 0.513511)
-texture = ExtResource("3_tk864")
+texture = ExtResource("2_3g85s")
 
 [node name="Label" type="Label" parent="TransitionBackground/LevelButton"]
 anchors_preset = 8
@@ -27,15 +19,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -750.5
-offset_top = -564.0
-offset_right = -149.5
-offset_bottom = -336.0
+offset_left = -881.0
+offset_top = -512.5
+offset_right = -280.0
+offset_bottom = -284.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.278431, 0.227451, 0.152941, 1)
 theme_override_fonts/font = ExtResource("4_bnqsr")
-theme_override_font_sizes/font_size = 160
+theme_override_font_sizes/font_size = 180
 text = "level 1"
 horizontal_alignment = 1
 vertical_alignment = 1

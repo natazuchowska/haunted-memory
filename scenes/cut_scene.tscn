@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://hv4gs3n0akss" path="res://assets/cutscene/moon_aura.png" id="4_42so5"]
 [ext_resource type="Texture2D" uid="uid://bs3skyt2fn78i" path="res://assets/cutscene/speechbubble.png" id="5_oybag"]
 [ext_resource type="FontFile" uid="uid://bh32vrgm5n8yv" path="res://assets/Opsilon-Regular.ttf" id="6_q461j"]
-[ext_resource type="Texture2D" uid="uid://ba4hgkmyu0qcc" path="res://assets/frame_light.png" id="8_8hwl7"]
-[ext_resource type="Texture2D" uid="uid://daqoiymx4unb2" path="res://assets/bg.png" id="9_uuh8d"]
+[ext_resource type="Texture2D" uid="uid://dejnwdeelfp6t" path="res://assets/UI/frame_with_background.png" id="8_mccwm"]
+[ext_resource type="AudioStream" uid="uid://bfoqck6vjmafo" path="res://assets/audio/owl.wav" id="10_exvax"]
 [ext_resource type="Texture2D" uid="uid://4jkwrn2t1tbd" path="res://assets/transition_background.png" id="10_nyoif"]
 
 [sub_resource type="Animation" id="Animation_4ol64"]
@@ -101,10 +101,10 @@ tracks/0/path = NodePath("FinalMessage:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.633333, 0.733333, 0.833333, 3.46667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.633333, 0.766667, 0.966667, 3.23333, 3.36667, 3.46667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.1, 0.1), Vector2(0.55, 0.55), Vector2(0.48, 0.48), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.001, 0.001)]
+"values": [Vector2(0.04, 0.04), Vector2(0.3, 0.3), Vector2(0.23, 0.23), Vector2(0.25, 0.25), Vector2(0.25, 0.25), Vector2(0.27, 0.27), Vector2(0.2, 0.2), Vector2(0.001, 0.001)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -455,23 +455,23 @@ offset_bottom = 648.0
 [node name="FinalMessage" type="Sprite2D" parent="."]
 position = Vector2(547, 330)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("8_8hwl7")
+texture = ExtResource("8_mccwm")
 
-[node name="Sprite2D" type="Sprite2D" parent="FinalMessage"]
-self_modulate = Color(0.485561, 0.437253, 0.346564, 1)
-show_behind_parent = true
-position = Vector2(1, -8.00002)
-scale = Vector2(0.321186, 0.443902)
-texture = ExtResource("9_uuh8d")
-
-[node name="Label" type="Label" parent="FinalMessage/Sprite2D"]
-offset_left = -1037.0
-offset_top = -707.0
-offset_right = 1012.0
-offset_bottom = 721.0
+[node name="Label" type="Label" parent="FinalMessage"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1508.5
+offset_top = -1495.0
+offset_right = -158.5
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.160784, 0.141176, 0.141176, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 125
 text = "Complete 3 levels
 =
 win a lot of candy"
@@ -503,3 +503,7 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(583, 323)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_nyoif")
+
+[node name="OwlSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_exvax")
+autoplay = true
