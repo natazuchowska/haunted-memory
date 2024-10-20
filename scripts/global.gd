@@ -21,6 +21,9 @@ func _ready():
 func increase_level_num():
 	which_lvl += 1
 	
+func reset_game_lvl():
+	which_lvl = 0
+	
 func get_level():
 	return which_lvl
 	

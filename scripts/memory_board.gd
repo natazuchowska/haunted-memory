@@ -189,6 +189,7 @@ func check_card2(c): # second card picked
 				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file(Global.LEVELS[Global.get_level()])
 			else: # game won so play cutscene
+				%TransitionPlayer.play("end_scene")
 				await get_tree().create_timer(1.0).timeout
 				get_tree().change_scene_to_file("res://scenes/cut_scene_end.tscn")
 		
@@ -266,6 +267,16 @@ func check_card2(c): # second card picked
 					for b in cards:
 						if b.texture_normal != b.texture_disabled:
 							b.mouse_filter = 2 # ignore input while animation is playing
+							
+				# swap blocks in code array
+				var temp = children[2]
+				children[2] = children[3]
+				children[3] = temp
+				
+				#var temp_hints = hint_slots[2]
+				#hint_slots[2] = hint_slots[3]
+				#hint_slots[3] = temp_hints
+				
 				swap_rows()
 			else:
 				#wrong_tries_count.text = ("wrong tries count: " + str(wrong_count))
@@ -349,6 +360,7 @@ func swap_rows():
 		$VBoxContainer.move_child(children[3], 2) # swap 2 middle rows
 		
 		# interchange the hint rows BELOW accordingly
+		hint_slots = $HintBoard/VBoxContainer.get_children(false)
 		%HintBoard/VBoxContainer.move_child(hint_slots[3], 2) # swap the same hint rows
 		
 		$AnimationPlayer.play_backwards("row3_switch")

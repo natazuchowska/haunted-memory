@@ -289,10 +289,10 @@ autowrap_mode = 2
 
 [node name="Label6" type="Label" parent="SpeechBubbleContainer/MonkeyBubble"]
 visible = false
-offset_left = -681.25
-offset_top = -212.5
-offset_right = 589.75
-offset_bottom = 256.5
+offset_left = -681.0
+offset_top = -212.0
+offset_right = 690.0
+offset_bottom = 257.0
 theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("6_q461j")
 theme_override_font_sizes/font_size = 100
@@ -350,6 +350,7 @@ text = "let's go inside then. shall we?"
 autowrap_mode = 2
 
 [node name="GhostBubble" type="Sprite2D" parent="SpeechBubbleContainer"]
+visible = false
 position = Vector2(937, 451)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_oybag")
@@ -367,6 +368,7 @@ text = "The mansion looks scary y'all... "
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="SpeechBubbleContainer/GhostBubble"]
+visible = false
 offset_left = -610.0
 offset_top = -215.0
 offset_right = 805.0

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Haunted Memory"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -54,4 +55,9 @@ pause_game={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://haunted memo translation - Arkusz1-7.en.translation", "res://haunted memo translation - Arkusz1-7.fr.translation", "res://haunted memo translation - Arkusz1-7.pl.translation")
+locale/translations=PackedStringArray("res://haunted memo translation - Arkusz1-10.en.translation", "res://haunted memo translation - Arkusz1-10.fr.translation", "res://haunted memo translation - Arkusz1-10.pl.translation")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

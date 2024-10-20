@@ -30,9 +30,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -249.0
+offset_left = -321.0
 offset_top = -102.0
-offset_right = 249.0
+offset_right = 323.0
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -40,6 +40,8 @@ theme_override_colors/font_color = Color(0.270507, 0.207229, 0.124169, 1)
 theme_override_fonts/font = ExtResource("2_rb2qo")
 theme_override_font_sizes/font_size = 120
 text = "YOU LOSE!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RestartButton" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 8

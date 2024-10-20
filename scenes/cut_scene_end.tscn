@@ -238,6 +238,7 @@ text = "exit"
 
 [node name="ButtonClick" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_plf5w")
+bus = &"SFX"
 
 [node name="TransitionBackground" type="Sprite2D" parent="."]
 position = Vector2(578, 323)

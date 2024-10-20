@@ -6,6 +6,7 @@ var cursor_normal = preload("res://assets/UI/cursor_normal.png")
 
 func _ready():
 	GameMusic.play_music_menu()
+	Global.reset_game_lvl()
 	
 	$MenuContainer/VBoxContainer/StartButton.connect("pressed", start_game)
 	$MenuContainer/VBoxContainer/SettingsButton.connect("pressed", go_to_settings)
